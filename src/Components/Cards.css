@@ -1,0 +1,12 @@
+.furnish{
+    display: flex;
+    gap: 25%;
+}
+
+.furniture{
+    width: 10%;
+    text-align: center;
+}
+/* .furniture p{
+    
+} */

@@ -1,0 +1,100 @@
+.Container{
+    width: 30%;
+}
+@media (max-width: 767px) {
+    .Container {
+      width: 50%;
+      align-items: center;
+      justify-content: center;
+      margin-left: 2%;
+    }
+  }
+.Profile{
+    border: 3px solid rgb(243, 241, 241);
+    border-radius: 1rem;
+    height: 60%;
+}
+.Profile h2{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.Profile img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #0EB0FF;
+}
+.Profile h3{
+   font-size: 1.5rem;
+   font-weight: 400;
+}
+.Profile p{
+   font-size: 1.2rem;
+   font-weight: 300;
+}
+
+.percentage div{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid #12713B;
+    border-left: 5px solid #EAFFF3;
+   
+
+}
+.percentage div p{
+   text-align: center;
+   font-size: 1rem;
+   
+
+}
+.percentage {
+display: flex;
+gap: 0.3rem;
+margin-left: 15%;
+font-size: 0.8rem;
+color: #599372;
+   
+
+}
+
+/* contact */
+.contact{
+    border: 3px solid rgb(243, 241, 241);
+    border-radius: 1rem;
+    margin-top: 2%;
+    text-align: left;
+    padding-left: 7%;
+}
+.contact h2{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.job{
+    border: 3px solid rgb(243, 241, 241);
+    border-radius: 1rem;
+    margin-top: 2%;
+    align-items: center;
+    justify-content: center;
+    height: 17%;
+    
+}
+.job p{
+    font-size: 1.5rem;
+    font-weight: 500;
+    
+}
+.job div{
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid #12713B;
+    margin-left: 36%;
+}
+.job div p{
+    font-size: 0.9rem;
+}
+
+
