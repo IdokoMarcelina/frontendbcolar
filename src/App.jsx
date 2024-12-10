@@ -11,13 +11,20 @@ import Siginin from './Pages/Siginin'
 import Signup from './Pages/Signup'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
+import Review from './Components/Review'
+import Book from './Components/Book'
+import Client from './Pages/Client'
 
 
 function App() {
 
   return (
     <>
-    <BrowserRouter>
+    <Profile/>
+    <Review/>
+    <Book/>
+    <Client/>
+    {/* <BrowserRouter>
          <Header />
           <Routes>
             <Route path="/" element={<Home/>} />
@@ -30,7 +37,7 @@ function App() {
             <Route path="/collabo" element={<Collabo/>} />
           </Routes>
         <Footer/>
-      </BrowserRouter>
+      </BrowserRouter> */}
         
     </>
   )

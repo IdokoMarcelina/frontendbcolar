@@ -1,21 +1,24 @@
-import React,{ useState } from 'react'
+import React from 'react'
+import './Userenddetails.css'
 import face from '../assets/images/face.jpg'
-import './Details.css'
 
-const Details = () => {
-  const ratings = {
-    totalRatings: 23980,
-    averageRating: 4.5,
-    starRatings: [
-      { stars: 5, count: 14764 },
-      { stars: 4, count: 9480 },
-      { stars: 3, count: 1240 },
-      { stars: 2, count: 340 },
-      { stars: 1, count: 170 },
-    ],
-  };
+
+
+const Userenddetails = () => {
+    const ratings = {
+        totalRatings: 23980,
+        averageRating: 4.5,
+        starRatings: [
+          { stars: 5, count: 14764 },
+          { stars: 4, count: 9480 },
+          { stars: 3, count: 1240 },
+          { stars: 2, count: 340 },
+          { stars: 1, count: 170 },
+        ],
+      };
   return (
-    <div className='Container'>
+    <div>
+         <div className='Container'>
        <div className='Profile'>
         <h2>Profile information</h2>
         <img src={face} alt="" />
@@ -75,7 +78,8 @@ const Details = () => {
       </div>
     </div>
     </div>
+    </div>
   )
 }
 
-export default Details
+export default Userenddetails

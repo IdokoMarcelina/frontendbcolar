@@ -1,0 +1,316 @@
+.contains{
+    width: 70%;
+    
+    }
+    @media (max-width: 767px) {
+        .Contains {
+          width: 10%;
+          align-items: center;
+          justify-content: center;
+          margin-left: 2%;
+        }
+      }
+    .chats p{
+        background: linear-gradient(45deg, #0f9d58, #34a853, #81c784);
+        color: white;
+        width: 20%;
+        align-items: center;
+        margin-left: 1%;
+        border-radius: 6px;
+        height: 30px;
+        text-align: center;
+        padding-top: 1%;
+    }
+    .chats{
+        /* border: 1px solid black; */
+        justify-content: end;
+        align-content: flex-end;
+        display: flex;
+         
+    }
+    
+    /* freelnace */
+    .freelance{
+        border: 2px solid #EDB7A1;
+        height: 30px;
+        border-radius: 10px;
+        
+    }
+    .freelance ul{
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        width: 90%;
+        margin-top: 0.5px;
+        border-radius: 20px;
+        
+        
+    }
+    .freelance ul li{
+        /* background:  linear-gradient(45deg, #D24605, #D25404, #D27805); */
+        width: 100%;
+        height: 30px;
+        border: 1px solid #EDB7A1;
+        
+    }
+    
+    .statics{
+        border: 3px solid rgb(243, 241, 241);
+        border-radius: 20px;
+        margin-top: 2%;
+        height: 35vh;
+       
+        
+    
+    }
+    .statics h3{
+        justify-content: start;
+        align-content: flex-start;
+        text-align: left;
+        margin-left: 2%;
+        font-size: 1.2rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
+    
+    .Cards{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 3px;
+        column-gap: 3px;
+    }
+    @media (max-width: 767px) {
+        .Cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .Card-1 {
+            width: 10%;
+            height: 40px;
+            font-size: 10px;
+            display: none;
+        }
+      }
+    
+    
+    .card-1{
+        background: #F6F6F6;
+        display: flex;
+        gap: 20px;
+        margin-left: 8%;
+        border-radius: 14px;
+        width: 80%;
+        height: 80px;
+        align-content: center;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-1 h4{
+        color: #EDB7A1;
+        margin-left: 10%;
+    }
+    .card-2{
+        background: #F6F6F6;
+        display: flex;
+        gap: 20px;
+        margin-left: 8%;
+        border-radius: 14px;
+        width: 80%;
+        height: 80px;
+        align-content: center;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-2 h4{
+        color: #EDB7A1;
+        margin-left: 10%;
+    }
+    .card-3{
+        background: #F6F6F6;
+        display: flex;
+        gap: 20px;
+        margin-left: 8%;
+        border-radius: 14px;
+        width: 80%;
+        height: 80px;
+        align-content: center;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-3 h4{
+        color: #EDB7A1;
+        margin-left: 10%;
+    }
+    .card-4{
+        background: #F6F6F6;
+        display: flex;
+        gap: 20px;
+        margin-left: 8%;
+        border-radius: 14px;
+        width: 80%;
+        height: 80px;
+        align-content: center;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-4 h4{
+        color: #EDB7A1;
+        margin-left: 10%;
+    }
+    
+    .rate div{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 5px solid #C99073;
+        border-left: 5px solid #FEEAE1;
+        border-top:5px solid #FEEAE1 ;
+       
+    
+    }
+    .rate div p{
+       text-align: center;
+       font-size: 1rem;
+       
+    
+    }
+    .rate {
+    display: flex;
+    gap: 0.3rem;
+    margin-left: 8%;
+    font-size: 0.8rem;
+    color: black;
+    margin-top: 2%;
+     background: #F6F6F6;
+        border-radius: 14px;
+        width: 100%;
+        height: 80px;
+        align-content: center;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+       
+    
+    }
+    @media (max-width: 767px) {
+        .rate {
+            width: 92%;
+        }
+        .rate div {
+            width: 35px;
+            height: 35px;
+        }
+        .rate div p{
+            text-align: center;
+       font-size: 0.5rem;
+        }
+        .statics{
+           
+            height: 45vh;
+           
+            
+        
+        }
+        
+      }
+    
+    
+    .response div{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 5px solid #1E7847;
+        border-left: 5px solid #EAFFF3;
+        border-top:5px solid #EAFFF3 ;
+       
+    
+    }
+    .response div p{
+       text-align: center;
+       font-size: 1rem;
+       
+    
+    }
+    .response {
+    display: flex;
+    gap: 0.3rem;
+    margin-left: 20%;
+    font-size: 0.8rem;
+    color: black;
+    margin-top: 2%;
+     background: #F6F6F6;
+        border-radius: 14px;
+        width: 100%;
+        height: 80px;
+        align-content: center;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+       
+    
+    }
+    
+    /* about */
+    .about{
+        border: 3px solid rgb(243, 241, 241);
+        border-radius: 20px;
+        margin-top: 2%;
+        height: 23vh;
+    }
+    .about h3{
+        justify-content: start;
+        align-content: flex-start;
+        text-align: left;
+        margin-left: 2%;
+        font-size: 1.2rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
+    .about p{
+        text-align: left;
+        margin-left: 2%;
+    }
+    
+    /* skills */
+    .skills{
+        border: 3px solid rgb(243, 241, 241);
+        border-radius: 20px;
+        margin-top: 2%;
+        height: 13vh;
+        
+    }
+    .skills h3{
+        justify-content: start;
+        align-content: flex-start;
+        text-align: left;
+        margin-left: 2%;
+        font-size: 1.2rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
+    
+    .core{
+        display: flex;
+        gap: 20px;
+        margin-left: 2%;
+        margin-top: -27px;
+    }
+    .core p{
+        border: 2px solid rgb(243, 241, 241);
+        width: 20%;
+        border-radius: 7px;
+    }
+    
+    /* porfolios and reviews */
+    .reviews{
+        display: flex;
+        gap: 30px;
+        margin-top: 3%;
+    }
+    .porfolios hr{
+        margin-top: -10px;
+    }
+    

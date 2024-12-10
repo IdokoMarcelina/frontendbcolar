@@ -11,7 +11,7 @@ width: 70%;
     }
   }
 .chats p{
-    background: linear-gradient(45deg, #0f9d58, #34a853, #81c784);
+    background:#0000FE;
     color: white;
     width: 20%;
     align-items: center;
@@ -312,4 +312,29 @@ margin-top: 2%;
 }
 .porfolios hr{
     margin-top: -10px;
+}
+
+/* work certifications */
+.exper{
+ display: flex;
+ gap: 10px;
+ margin-top: 8%;
+}
+.work{
+ border: 3px solid  rgb(243, 241, 241) ;
+ text-align: left;
+ border-radius: 10px;
+ margin-left: 2%;
+}
+.edu{
+ border: 3px solid  rgb(243, 241, 241) ;
+ text-align: left;
+ border-radius: 10px;
+ margin-left: 2%;
+}
+.qualif{
+ border: 3px solid  rgb(243, 241, 241) ;
+ text-align: left;
+ border-radius: 10px;
+ margin-left: 2%;
 }

@@ -1,14 +1,13 @@
 import React from 'react'
-import capenter from '../assets/images/capenter.jpg'
-import './Bio.css'
+import './Userend.css'
 import Cards from './Cards'
-const Bio = () => {
+const Userend = () => {
   return (
-    <div className='contains'>
-      <div className='chats'>
-      <p> Edit profile
+    <div>
+       <div className='chats'>
+      <p> Booking
        </p>
-      <p>   Message
+      <p>   Chat
        </p>
       </div>
       <div className='freelance'>
@@ -77,28 +76,12 @@ const Bio = () => {
        <p>Reviews</p>
        </div>
         <hr />
-      </div>
-      <div className='add'>
-        <button>Add work</button>
-      </div>
-     {/* cards */}
-     <Cards/>
-     <div className='exper'>
-      <div className='work'>
-        <h3>Work experience</h3>
-        <p> quasi, consequuntur tempora quisquam tempore!</p>
-      </div>
-      <div className='edu'>
-        <h3>Education</h3>
-        <p> quasi, consequuntur tempora quisquam tempore!</p>
-      </div>
-      <div className='qualif'>
-        <h3>Qualification</h3>
-        <p> quasi, consequuntur tempora quisquam tempore!</p>
-      </div>
-     </div>
+      </div>  
+
+       {/* cards */}
+       <Cards/>
     </div>
   )
 }
 
-export default Bio
+export default Userend
