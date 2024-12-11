@@ -8,6 +8,7 @@ import Home from './Pages/Home'
 import Artisans from './Pages/Artisans'
 import Contact from './Pages/Contact'
 import Siginin from './Pages/Siginin'
+import PageTwo from './Pages/PageTwo'
 import Signup from './Pages/Signup'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
@@ -26,6 +27,7 @@ function App() {
             <Route path="/profile" element={<Profile/>} />
             <Route path="/contact" element={<Contact/>} />
             <Route path="/signin" element={<Siginin/>} />
+            <Route path="/pagetwo" element={<PageTwo/>} />
             <Route path="/signup" element={<Signup/>} />
             <Route path="/collabo" element={<Collabo/>} />
           </Routes>
