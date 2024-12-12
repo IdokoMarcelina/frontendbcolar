@@ -64,7 +64,7 @@ export default AdminSidebar;
 // Styled Components
 
 const Sidebar = styled.div`
-  background-color: #0000ff;
+  background-color: #1818c9;
   color: white;
   padding: 20px;
   display: flex;

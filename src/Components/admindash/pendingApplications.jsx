@@ -19,8 +19,11 @@ const pendingApplications = () => {
   // };
 
   return (
-    // <Section>
+    <>
       <Title>Pending Applications</Title>
+
+    </>
+    // <Section>
     //   <ApplicationsList>
     //     {applications.map((application, index) => (
     //       <ListItem key={application.id} shadow={index % 2 === 1}>

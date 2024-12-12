@@ -32,30 +32,25 @@ const NavBarAdmin = () => {
               <h4>Admin</h4>
             </div>
             <hr />
-            <p className="sideTitles">MAIN</p>
             <span className="iconAndText">
               <MdDashboard className="iconsitself" />
               <li>Dashboard</li>
             </span>
-            <p className="sideTitles">LISTS</p>
             <div className="partone">
               <li>User</li>
               <li>Artisan</li>
-              <li>Ratings and Review</li>
+              <li>Ratings</li>
             </div>
-            <p className="sideTitles">USEFUL</p>
             <div className="partone">
               <li>Stats</li>
               <li>Notifications</li>
               <li>Messages</li>
               <li>Reports</li>
             </div>
-            <p className="sideTitles">SERVICE</p>
             <div className="partone">
               <li>System Health</li>
               <li>Settings</li>
             </div>
-            <p className="sideTitles">USER</p>
             <div className="partone">
               <li>Profile</li>
               <li>Logout</li>
@@ -132,11 +127,19 @@ const Sidebar = styled.div`
   width: 250px;
   height: 100%;
   background-color: #1818c9;
+  list-style: none;
+  color: white;
   padding: 20px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  span{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
 `;
 
 const searchIconStyles = {

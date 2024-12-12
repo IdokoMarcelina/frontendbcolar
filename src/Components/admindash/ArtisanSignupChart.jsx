@@ -1,16 +1,13 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
+  ArcElement,
   Tooltip,
   Legend,
 } from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const ArtisanSignupsChart = () => {
   const chartData = {
@@ -19,9 +16,16 @@ const ArtisanSignupsChart = () => {
       {
         label: "Artisan Signups",
         data: [50, 80, 100, 120, 150, 180], // Signups per month
-        backgroundColor: "#4CAF50", // Orange color
-        borderColor: "#4CAF50", // Darker orange border
-        borderWidth: 1,
+        backgroundColor: [
+          "#4CAF50", // Green
+          "#FF9800", // Orange
+          "#2196F3", // Blue
+          "#F44336", // Red
+          "#9C27B0", // Purple
+          "#FFC107", // Yellow
+        ],
+        borderColor: "#ffffff", // White border for better distinction
+        borderWidth: 2,
       },
     ],
   };
@@ -30,7 +34,8 @@ const ArtisanSignupsChart = () => {
     responsive: true,
     plugins: {
       legend: {
-        display: false,
+        display: true,
+        position: "bottom",
       },
       title: {
         display: true,
@@ -39,17 +44,12 @@ const ArtisanSignupsChart = () => {
           size: 16,
         },
       },
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false, // Hide gridlines on x-axis
-        },
-      },
-      y: {
-        beginAtZero: true,
-        grid: {
-          display: true, // Display gridlines on y-axis
+      tooltip: {
+        callbacks: {
+          label: function (tooltipItem) {
+            const value = tooltipItem.raw;
+            return `${value} signups`; // Custom tooltip format
+          },
         },
       },
     },
@@ -57,7 +57,7 @@ const ArtisanSignupsChart = () => {
 
   return (
     <div style={styles.chartContainer}>
-      <Bar data={chartData} options={chartOptions} width={400} height={300} />
+      <Doughnut data={chartData} options={chartOptions} />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import UserGrowthChart from '../../Components/admindash/UserGrowthChart'
 import MostUsedArtisansChart from '../../Components/admindash/MostUsedArtisan'
 import ArtisanSignupsChart from '../../Components/admindash/ArtisanSignupChart'
 import pendingApplications from '../../Components/admindash/pendingApplications'
+import Applications from '../../Components/admindash/Applications'
 
 function Main() {
   return (
@@ -36,6 +37,7 @@ function Main() {
 
       <SETIONTHREE>
         <pendingApplications/>
+        <Applications/>
       </SETIONTHREE>
 
     </AdminContainer>
