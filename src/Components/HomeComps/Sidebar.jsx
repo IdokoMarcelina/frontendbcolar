@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { CiSearch } from "react-icons/ci";
 const Sidebar = () => {
     return ( <SidebarDiv>
 
     <CategorySearch>
 
-    <input type="search" id="searchCountry" placeholder="🔍 Search" />
+    <input type="search"  placeholder={`${<CiSearch />} Search` } />
 
         <li>Barbers</li>
         <li>Bricklayers</li>
@@ -30,7 +31,9 @@ const SidebarDiv = styled.div`
         height: 50px;
         margin: 0px auto;
         border-radius: 10px;
-        border: 1px solid;
+        border: none;
+        background-color: #e7e7e7;
+
     }
 `
 const CategorySearch = styled.div`
@@ -46,5 +49,8 @@ const CategorySearch = styled.div`
             background-color: #E0E1E0; 
         }
     }
+    @media (max-width:890px) {
+   display: none;
+  }
 
 `

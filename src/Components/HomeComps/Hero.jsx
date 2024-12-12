@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import HeroImg from "../assets/hero.png"
-import Hero1 from "../assets/heroEng.avif"
-import Hero2 from "../assets/heroTai.jpg"
+import HeroImg from "../../assets/hero.png"
+import Hero1 from "../../assets/heroEng.avif"
+import Hero2 from "../../assets/heroTai.jpg"
 import SignButton from "../../Reuseables/SignButton";
 
 import { IoMdHammer } from "react-icons/io";
@@ -16,23 +16,26 @@ const Hero = () => {
             <img src={Hero1} alt="" id="hero1" />
         </div>
     <HeroLeft>
-    <div className="heroIcon" id="icon1">
-        <IoMdHammer />
+    <div className="icons">
+        <div className="heroIcon" id="icon1">
+            <IoMdHammer />
+        </div>
+        <div className="heroIcon" id="icon2">
+                <GiStakeHammer />
+            </div>
+            <div className="heroIcon" id="icon3">
+                <FaTape />
+            </div>
+            <div className="heroIcon" id="icon4">
+                <HiOutlineWrenchScrewdriver />
+            </div>
     </div>
-    <div className="heroIcon" id="icon2">
-            <GiStakeHammer />
-        </div>
-        <div className="heroIcon" id="icon3">
-            <FaTape />
-        </div>
-        <div className="heroIcon" id="icon4">
-            <HiOutlineWrenchScrewdriver />        
-        </div>
       
-        <h2>Bringing People and Crafts Together</h2>  
-
-        <h3>A Dynamic Platform for Artisans to Showcase their Skills and Connect with Clients</h3>
-        <h3> Your Next Job or Worker is Just a Click Away</h3>
+        <div className="herotext">
+            <h2>Bringing People and Crafts Together.</h2>
+            <h3>A Dynamic Platform for Artisans to Showcase their Skills and Connect with Clients.</h3>
+            <h3> Your Next Job or Worker is Just a Click Away.</h3>
+        </div>
 
         <div className="buttons">
             <SignButton Title="Sign Up as Artisan"/>
@@ -40,9 +43,10 @@ const Hero = () => {
         </div>
         
     </HeroLeft>
-    <div>
+    <HeroRight >
             <img src={Hero2} alt=""   id="hero2"/>
-        </div>
+            <img src={Hero1} alt="" id="hero3" />
+        </HeroRight>
 
     {/* <HeroRight><img src={HeroImg} alt="" /></HeroRight> */}
     </HeroDiv> );
@@ -50,22 +54,18 @@ const Hero = () => {
  
 export default Hero;
 const HeroDiv = styled.div`
-    /* background-color: #e3dfdf; */
-    /* background-color: #E0E1E0; */
-    /* background-color: #F2F2F2; */
     background-color: #E1E7F3 ;
     text-align: center;
-    background-repeat: no-repeat;
     max-width: 100vw;
     padding: 20px;
     color: #0000ff;
     height: calc(100vh - 80px);
-    border-radius: 0px 0px 40px 40px;
+    border-radius: 0px 0px 50px 50px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     max-width: 1440px;
-    margin: auto;
+    margin:  auto;
 
     .buttons{
         max-width: 350px;
@@ -73,20 +73,21 @@ const HeroDiv = styled.div`
        display: flex;
        justify-content: space-between;
     }
-    #hero1, #hero2{
+    #hero1, #hero2, #hero3{
         width: 250px;
         height: 250px;
         border-radius:125px;
         border: 3px solid #0000ff;
         position: relative;
-    animation: slide 2s linear  infinite alternate;
-   
+        animation: slide 2s linear infinite alternate;
     @keyframes slide {
         0% {top: 0px;}
         50% {top: 10px;}
         100% {top: 20px;}
         }
-
+    }
+    #hero3{
+        display: none;
     }
     .heroIcon{
         color: #e3dfdf;
@@ -117,66 +118,115 @@ const HeroDiv = styled.div`
         left: 950px ;
         top: 420px;
     }
-
-    @media (max-width: 750px) {
+    @media (max-width: 1030px) {
+        #hero1, #hero2{
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+      }
+      .heroIcon{
+        display: none;
+      }
+    }
+    @media (max-width: 870px) {
+        #hero1, #hero2, #hero3{
+        width: 170px;
+        height: 170px;
+        border-radius: 85px;
+      }
+    }
+    @media (max-width: 790px) {
        flex-direction: column;
-       justify-content: center;
+       justify-content: start;
        gap: 30px;
        padding: 10px;
-
+       height: 600px;
+       #hero1{
+        display: none;
+      }
+      #hero3{
+        display: block;
+    }
        .buttons{
         width: 320px;
        }
     }
 `
 const HeroLeft = styled.div`
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
     h2{
-        font-size: 60px;
-        /* line-height: 85px; */
+        font-size: 55px;
         max-width: 650px;
-        /* margin: 0; */
     }
     h3{
         font-size: 20px;
         font-weight: 500;
-        max-width: 750px;
+        max-width: 450px;
+        margin: 0px auto 10px;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1020px) {
         h2{
             font-size: 50px;
-            line-height: 70px;
+            line-height: 60px;
         }
     }
-        @media (max-width: 790px) {
+    @media (max-width: 970px) {
         h2{
             font-size: 45px;
+            line-height: 55px;
+        }
+        h3{
+            font-size: 18px;
+        }
+    }
+        @media (max-width: 920px) {
+        h2{
+            font-size: 42px;
+            line-height: 50px;
+        }
+    }
+    @media (max-width: 870px) {
+        h2{
+            font-size: 38px;
+            line-height: 50px;
+        }
+        h3{
+            font-size: 16px;
+            max-width: 350px;
+        }
+    }
+    @media (max-width: 790px) {
+        h2{
+            font-size: 55px;
             line-height: 65px;
         }
-    }
-    @media (max-width: 750px) {
-        h2{
-            font-size: 60px;
-            line-height: 75px;
-            max-width: 600px;
-            text-align: center;
+        h3{
+        font-size: 20px;
+        max-width: 450px;
         }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 620px) {
         h2{
-            font-size: 40px;
-            line-height: 65px;
-        }
-    }
-    @media (max-width: 500px) {
-        h2{
-            font-size:30px;
+            font-size:40px;
             line-height: 55px;
         }
     }
+    @media (max-width: 510px) {
+        h2{
+            font-size: 35px;
+        }
+        h3{
+        font-size: 16px;
+        max-width: 320px;
+    }
+}
 
 `
-// const HeroRight = styled.div`
-//     img{
-//         height: 450px;
-//     }
-// `
+const HeroRight = styled.div`
+    display: flex;
+    justify-content: center;
+    max-width: 90%;
+    gap: 30px;
+`
