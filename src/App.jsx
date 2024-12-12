@@ -11,6 +11,8 @@ import Siginin from './Pages/Siginin'
 import Signup from './Pages/Signup'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
+import Chatlist from './Components/Chat/Chatlist'
+import Chatwindow from './Components/Chat/Chatwindow'
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
             <Route path="/signin" element={<Siginin/>} />
             <Route path="/signup" element={<Signup/>} />
             <Route path="/collabo" element={<Collabo/>} />
+            <Route path="/chat" element={<Chatlist />} />
+            <Route path="/chat/:id" element={<Chatwindow />} />
           </Routes>
         <Footer/>
       </BrowserRouter>

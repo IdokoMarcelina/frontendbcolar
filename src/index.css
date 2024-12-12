@@ -62,3 +62,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr;
+  }
+}
