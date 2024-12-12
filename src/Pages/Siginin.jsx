@@ -49,7 +49,7 @@ const Siginin = () => {
                         <h1>Welcome to Blue Collar</h1>
                         <h4>Easily connect with verified local artisans for your services</h4>
                     </div>
-                        <img src={signInImg} alt="" id='page-twoImg' />
+                        <img src={signInImg} alt=" " id='page-twoImg' />
                 </div>
     
                  </div>
