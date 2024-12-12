@@ -1,9 +1,17 @@
-import React from 'react'
+import Category from "../Components/Category";
+import Faq from "../Components/Faq";
+import Hero from "../Components/Hero";
+import Steps from "../Components/Steps";
+import Why from "../Components/Why";
 
-const Home = () => {
-  return (
-    <div>Home</div>
-  )
+const LandingPage = () => {
+  return ( <div>
+    <Hero/>
+    <Category/>
+    <Why/>
+    <Steps/>
+    <Faq/>
+  </div> );
 }
-
-export default Home
+ 
+export default LandingPage;
