@@ -11,6 +11,7 @@ import Siginin from './Pages/Siginin'
 import Signup from './Pages/Signup'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
+import Dashboard from './Pages/AdminDashBoard/Dashboard'
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
-         <Header />
+         {/* <Header /> */}
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/artisans" element={<Artisans/>} />
@@ -28,8 +29,10 @@ function App() {
             <Route path="/signin" element={<Siginin/>} />
             <Route path="/signup" element={<Signup/>} />
             <Route path="/collabo" element={<Collabo/>} />
+            <Route path="/admin" element={<Dashboard/>} />
           </Routes>
-        <Footer/>
+        {/* <Footer/> */}
+        
       </BrowserRouter>
         
     </>
