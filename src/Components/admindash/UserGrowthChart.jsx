@@ -30,7 +30,7 @@ const UserGrowthChart = () => {
   };
 
   const chartOptions = {
-    responsive: false, // Use fixed dimensions
+    responsive: true, // Enable responsive scaling
     maintainAspectRatio: false, // Allow custom height and width
     plugins: {
       legend: {
@@ -62,20 +62,20 @@ const UserGrowthChart = () => {
 
   return (
     <div style={styles.chartContainer}>
-      <Line data={chartData} options={chartOptions} width={300} height={300} />
+      <Line data={chartData} options={chartOptions} />
     </div>
   );
 };
 
 const styles = {
   chartContainer: {
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#F3F6F9",
     borderRadius: "10px",
     padding: "10px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    width: "400px", // Container size
-    height: "400px", // Container size
-    margin: "20px auto", // Center chart
+    width: "380px", // Container width
+    height: "270px", // Container height
+    margin: "0 auto", // Center chart horizontally
   },
 };
 

@@ -16,27 +16,17 @@ function Main() {
         <MainDashboard />
       </SECTIONONE>
       
-      <ChartsWrapper>
-        <ChartContainer>
+      <SECTIONTWO>
+        
           <DAUChart />
-        </ChartContainer>
-        <ChartContainer>
-          <UserGrowthChart />
-        </ChartContainer>
-      </ChartsWrapper>
+        <UserGrowthChart />
+      
 
-      <ChartsWrapper>
-        <ChartContainer>
-          <MostUsedArtisansChart/>
-        </ChartContainer>
-
-        <ChartContainer>
-          <ArtisanSignupsChart/>
-        </ChartContainer>
-      </ChartsWrapper>
+      </SECTIONTWO>
+   
 
       <SETIONTHREE>
-        <pendingApplications/>
+        {/* <pendingApplications/> */}
         <Applications/>
       </SETIONTHREE>
 
@@ -56,31 +46,29 @@ const AdminContainer = styled.div`
 const SECTIONONE = styled.div`
   margin-bottom: 50px;
 `;
-const SETIONTHREE = styled.div`
-  margin-bottom: 50px;
-`;
-
-const ChartsWrapper = styled.div`
+const SECTIONTWO = styled.div`
   display: flex;
-  width: 800px;
-  margin: 25px;
-  margin-bottom: 100px;
-  flex-direction: row;
-  gap: 6rem;  // Ensures 2rem space between charts
-  justify-content: space-evenly; // Ensures space between charts even if the screen size increases
-  margin-top: 20px;
-  flex-wrap: wrap;  // Allows charts to wrap on smaller screens
-`;
-
-const ChartContainer = styled.div`
-  width: 300px; // Set width for charts
-  height: 300px; // Set height for charts
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: space-between; */
+  gap: 30px;
 
   @media (max-width: 800px) {
-    width: 200px; // Reduce chart size on mobile
-    height: 200px;
+    flex-wrap: wrap;
   }
 `;
+const CONTAINER = styled.div`
+  width: 500px;
+  height: 350px;
+  background-color: lightblue;
+  
+`;
+const SETIONTHREE = styled.div`
+  margin-bottom: 50px;
+  margin-top: 20px;
+`;
+
+
+//   @media (max-width: 800px) {
+//     width: 200px; // Reduce chart size on mobile
+//     height: 200px;
+//   }
+// `;

@@ -69,8 +69,8 @@ const NavBar = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #1818c9;
-  color: white;
+  background-color: #F3F6F9;
+  color: black;
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
@@ -81,7 +81,7 @@ const NavBar = styled.nav`
 const Logo = styled.div`
   font-size: 20px;
   font-weight: bold;
-  color: white;
+  color: #007BFF;
 
   @media (max-width: 768px) {
     font-size: 16px;

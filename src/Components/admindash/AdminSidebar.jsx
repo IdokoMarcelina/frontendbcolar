@@ -13,44 +13,47 @@ import { TbHealthRecognition } from "react-icons/tb";
 import { TbLogs } from "react-icons/tb";
 import { IoSettings } from "react-icons/io5";
 import { FaEnvelope } from "react-icons/fa";
+import chef from '../../assets/images/chef.jpg'
 
 function AdminSidebar() {
   return (
     <Sidebar>
       <div className="title">
-        <h4>Admin</h4>
+        
+      <AvatarContainer>
+      <div className="avatar">
+        <img src={chef} alt="Admin Avatar" />
+        <div className="status"></div>
       </div>
+      <div className="info">
+        <h6>Mimi Idoko</h6>
+        <span>Admin</span>
+      </div>
+    </AvatarContainer>
+    </div>
 
       <hr />
 
-      <p className="sideTitles">MAIN</p>
-      <span className="iconAndText">
-        <MdDashboard className="iconsitself" />
-        <li>Dashboard</li>
-      </span>
+      
+        <li><MdDashboard className="icons" /> Dashboard</li>
+    
 
-      <p className="sideTitles">LISTS</p>
-      <div className="partone">
+      
         <li><FaUserAlt className="icons" /> User</li>
         <li><FaUserSecret className="icons" /> Artisan</li>
         <li><MdOutlineShoppingBasket className="icons" /> Ratings and Review</li>
-      </div>
+      
 
-      <p className="sideTitles">USEFUL</p>
-      <div className="partone">
-        <li><IoBarChartSharp className="icons" /> Stats</li>
         <li><IoIosNotificationsOutline className="icons" /> Notifications</li>
         <li><FaEnvelope className="icons" /> Messages</li>
         <li><TbLogs className="icons" /> Reports</li>
-      </div>
+  
 
-      <p className="sideTitles">SERVICE</p>
-      <div className="partone">
-        <li><TbHealthRecognition className="icons" /> System Health</li>
+  
         <li><IoSettings className="icons" /> Settings</li>
-      </div>
+    
 
-      <p className="sideTitles">USER</p>
+    
       <div className="partone">
         <li><CgProfile className="icons" /> Profile</li>
         <li><GrLogout className="icons" /> Logout</li>
@@ -63,51 +66,105 @@ export default AdminSidebar;
 
 // Styled Components
 
+
+
+const AvatarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+
+  .avatar {
+    position: relative;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .status {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 10px;
+      height: 10px;
+      background: var(--success, green);
+      border: 2px solid white;
+      border-radius: 50%;
+    }
+  }
+
+  .info {
+    margin-left: 1rem;
+
+    h6 {
+      margin: 0;
+    }
+
+    span {
+      color: gray;
+      font-size: 0.9rem;
+    }
+  }
+`;
 const Sidebar = styled.div`
-  background-color: #1818c9;
-  color: white;
+  background-color: #F3F6F9;
+  color: black;
   padding: 20px;
   display: flex;
+  height: 150vh;
   flex-direction: column;
+  
 
   .title {
     text-align: center;
     margin-bottom: 20px;
   }
 
-  hr {
-    margin: 10px 0;
-  }
-
-  .sideTitles {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-
-  .iconAndText {
+  li {
+    list-style: none;
+    padding: 10px;
+    margin: 5px 0;
     display: flex;
     align-items: center;
-    margin-top: 10px;
-    .iconsitself {
-      margin-right: 10px;
-    }
-  }
+    cursor: pointer;
+    transition: background-color 0.3s, border-radius 0.3s;
 
-  .partone {
-    margin-top: 10px;
-    li {
-      list-style-type: none;
-      padding: 8px 0;
-      display: flex;
-      align-items: center;
+    &:hover {
+      background-color: gray;
+      border-radius: 50px;
     }
+
+    &.active {
+      background-color: gray;
+      border-radius: 50px;
+    }
+
     .icons {
       margin-right: 10px;
     }
   }
 
+  hr {
+    margin: 10px 0;
+  }
+
+  .avatar {
+    width: 50px;
+
+    img {
+      width: 50px;
+    }
+  }
+
+  .partone {
+    margin-top: 10px;
+
+    
+  }
+
   @media (max-width: 768px) {
-    display: none;  // Hide sidebar on small screens
+    display: none; // Hide sidebar on small screens
   }
 `;

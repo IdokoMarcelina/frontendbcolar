@@ -35,7 +35,7 @@ const AdminDashboard = styled.div`
   }
 `
 const RIGHT = styled.div`
-    width: 70%; 
+    width: 75%; 
   @media (max-width: 800px) {
    flex-wrap: wrap;
   }

@@ -27,7 +27,8 @@ const DAUChart = () => {
   };
 
   const chartOptions = {
-    responsive: true, 
+    responsive: true,
+    maintainAspectRatio: false, // Allow dynamic height and width
     plugins: {
       legend: {
         display: false, // Hide legend
@@ -57,21 +58,25 @@ const DAUChart = () => {
 
   return (
     <div style={styles.chartContainer}>
-      <Bar data={chartData} options={chartOptions} width={400} height={400} />
+      <Bar data={chartData} options={chartOptions} />
     </div>
   );
 };
 
 const styles = {
   chartContainer: {
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#F3F6F9",
     borderRadius: "10px",
     padding: "10px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    width: "400px",
-    height: "400px",
-    marginLeft: "20px",
+    width: "500px", // Adjust width as needed
+    height: "270px", // Adjust height as needed
+    margin: "0 auto", // Center chart horizontally
+  
+  
   },
+
+  
 };
 
 export default DAUChart;

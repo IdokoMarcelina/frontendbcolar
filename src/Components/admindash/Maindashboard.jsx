@@ -6,23 +6,27 @@ const MainDashboard = () => {
   const cards = [
     { title: "Users", icon: <FaUsers />, value: 500, color: "#4CAF50" },
     { title: "Artisans", icon: <FaHammer />, value: 120, color: "#2196F3" },
-    { title: "Most-Used Service", icon: <FaTools />, value: 200, color: "#FF9800" },
-    { title: "Least-Used Service", icon: <FaChartBar />, value: 30, color: "#F44336" },
+    { title: "Most-Used ", icon: <FaTools />, value: 200, color: "#2196F3" },
+    { title: "Least-Used ", icon: <FaChartBar />, value: 30, color: "#F44336" },
   ];
+
+  const handleViewAll = (title) => {
+    alert(`Viewing all for ${title}`);
+  };
 
   return (
     <Container>
       <Dashboard>
         {cards.map((card, index) => (
-          <Card key={index} cardColor={card.color}>
-            <CardBody>
-              <h3>{card.title}</h3>
-              <Value>{card.value}</Value>
-            </CardBody>
-            <CardFooter>
-              <ViewAll>View All</ViewAll>
+          <Card key={index}>
+            <CardContent>
               <Icon color={card.color}>{card.icon}</Icon>
-            </CardFooter>
+              <TextContent>
+                <Title>{card.title}</Title>
+                <Value>{card.value}</Value>
+              </TextContent>
+            </CardContent>
+            <ViewAll onClick={() => handleViewAll(card.title)}>View All</ViewAll>
           </Card>
         ))}
       </Dashboard>
@@ -35,16 +39,12 @@ export default MainDashboard;
 // Styled Components
 
 const Container = styled.div`
-  width: 800px;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0px;
 
   @media (max-width: 800px) {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 `;
 
@@ -59,66 +59,73 @@ const Dashboard = styled.div`
 
   @media (max-width: 800px) {
     grid-template-columns: 1fr;
-    justify-content: center;
-    align-items: center;
+    
   }
 `;
 
 const Card = styled.div`
-  background-color: #f5f5f5;
+  background-color: #F3F6F9;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
   padding: 15px;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  height: 220px;
-  width: 170px; // Default width
-  color: ${(props) => props.cardColor || "#fff"};
+  height: 100px;
+  width: 170px;
+  overflow: hidden;
+  position: relative;
 
   @media (max-width: 800px) {
-    width: 150%; // Increase width on smaller screens
-    height: 250px; // Adjust height to maintain proportion
-    margin: 10px 0; // Add spacing between centered cards
+    width: 270px; /* Set card width to 400px */
+    margin: 0 auto; /* Center align the card */
   }
 `;
 
-const CardBody = styled.div`
-  text-align: center;
-  flex-grow: 1;
+const CardContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+`;
+
+const Icon = styled.span`
+  font-size: 30px; /* Increased icon size */
+  color: ${(props) => props.color};
+  margin-right: 10px;
+`;
+
+const TextContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
-const Value = styled.div`
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 10px;
+const Title = styled.h3`
+  font-size: 14px;
+  color: black;
+  margin: 0;
 `;
 
-const CardFooter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0 10px;
-  position: absolute;
-  bottom: 10px;
+const Value = styled.div`
+  font-size: 12px;
+  font-weight: bold;
+  color: gray;
 `;
 
 const ViewAll = styled.span`
   font-size: 14px;
-  color: #555;
+  color: #2196F3; /* Blue color to indicate it's clickable */
   cursor: pointer;
-  margin-left: 10px;
-`;
+  text-align: center;
+  margin-top: 5px;
+  transition: color 0.3s ease;
 
-const Icon = styled.span`
-  font-size: 20px;
-  color: ${(props) => props.color};
-  cursor: pointer;
-  margin-right: 10px;
+  &:hover {
+    color: #1976D2; /* Darker blue on hover */
+  }
+
+  &:active {
+    color: #1565C0; /* Even darker blue when clicked */
+  }
 `;
