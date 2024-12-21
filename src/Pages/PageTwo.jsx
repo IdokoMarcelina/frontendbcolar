@@ -18,7 +18,7 @@ const PageTwo = ()=>{
             <div className="sign-Wrapper">
             
             <form className='form-part'>
-                <h2>Create Account</h2>
+                <h2>Create Service Account</h2>
     
                     <section className='name-section'>
                        <div className='label-tag'>
@@ -76,7 +76,7 @@ const PageTwo = ()=>{
                 
     
     
-                    <button>Continue</button>
+                    <button>Create Account</button>
     
                     <p>Already a member? <span>
                       <Link to="signin">

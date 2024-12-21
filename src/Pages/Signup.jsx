@@ -5,7 +5,6 @@ import { FaEye } from "react-icons/fa";
 import signInImg from '../assets/images/signin-img.jpg'
 import './ArtisanSignup.css'
 import {Link} from 'react-router-dom'
-import PageTwo from './PageTwo';
 const Signup = () => {
   const [click, setClick] = useState(true)
     
@@ -26,7 +25,7 @@ const Signup = () => {
         <div className="sign-Wrapper">
           
           <form className='form-part'>
-              <h2>Create Account</h2>
+              <h2>Create Service Account</h2>
   
                   <section className='name-section'>
                      <div className='label-tag'>
