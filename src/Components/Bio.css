@@ -3,11 +3,16 @@ width: 70%;
 
 }
 @media (max-width: 767px) {
+    .contains {
+       width: 100%;
+       /* margin: auto; */
+    }
+}
+@media (max-width: 480px) {
     .Contains {
-      width: 10%;
+      width: 100%;
       align-items: center;
-      justify-content: center;
-      margin-left: 2%;
+      /* margin: auto; */
     }
   }
 .chats p{
@@ -19,8 +24,15 @@ width: 70%;
     border-radius: 6px;
     height: 30px;
     text-align: center;
-    padding-top: 1%;
+    padding-top: 0.5%;
+    cursor: pointer;
 }
+.chats p:hover {
+    background-color: #ffff; 
+    color: #0000FE;
+    border: 1px solid  #0000FE;
+  }
+
 .chats{
     /* border: 1px solid black; */
     justify-content: end;
@@ -28,10 +40,27 @@ width: 70%;
     display: flex;
      
 }
+@media (max-width: 767px) {
+    .chats{
+        /* border: 1px solid black; */
+        justify-content: center;
+        align-content: flex-end;
+        padding-left: 40%;
+        font-size: 14px;
+         
+    }
+    .chats p{
+        text-align: center;
+        padding-top: 2%;
+        width: 100%;
+        
+    }
+}
+
 
 /* freelnace */
 .freelance{
-    border: 2px solid #EDB7A1;
+    border: 2px solid rgb(218, 217, 217);
     height: 30px;
     border-radius: 10px;
     
@@ -41,7 +70,7 @@ width: 70%;
     justify-content: space-between;
     list-style: none;
     width: 90%;
-    margin-top: 0.5px;
+    margin-top: 1px;
     border-radius: 20px;
     
     
@@ -50,9 +79,15 @@ width: 70%;
     /* background:  linear-gradient(45deg, #D24605, #D25404, #D27805); */
     width: 100%;
     height: 30px;
-    border: 1px solid #EDB7A1;
+    /* border: 1px solid #EDB7A1; */
     
 }
+
+.freelance ul li:hover {
+    background-color: #ffff; 
+    color: #0000FE;
+    border: 0px 1px 2px 0px solid  #0000FE;
+  }
 
 .statics{
     border: 3px solid rgb(243, 241, 241);
@@ -72,6 +107,38 @@ width: 70%;
     font-weight: 500;
     font-family: Poppins;
 }
+@media (max-width: 767px) {
+    .freelance ul{
+       display: grid;
+       grid-template-columns: repeat(2, 1fr);
+       border:3px solid rgb(243, 241, 241);
+       width: 85%;
+        
+    }
+    .freelance ul li{
+       margin-left: -25px;
+        
+    }
+    .freelance{
+        border: none;
+        height: 7vh;
+        
+        
+    }
+    .statics{
+        border: 3px solid rgb(243, 241, 241);
+        border-radius: 20px;
+        margin-top: 9%;
+        width: 97%;
+        height: 38vh;
+        
+    }
+    .statics h3{
+       font-size: 1rem;
+        font-weight: 500;
+       
+    }
+}
 
 .Cards{
     display: grid;
@@ -82,12 +149,6 @@ width: 70%;
 @media (max-width: 767px) {
     .Cards {
         grid-template-columns: repeat(2, 1fr);
-    }
-    .Card-1 {
-        width: 10%;
-        height: 40px;
-        font-size: 10px;
-        display: none;
     }
   }
 
@@ -109,22 +170,50 @@ width: 70%;
     color: #EDB7A1;
     margin-left: 10%;
 }
+@media (max-width: 767px) {
+    .card-1{
+        background: #F6F6F6;
+        display: flex;
+        gap: 4px;
+        font-size: 0.7rem;
+        height: 50px;
+        padding-right: 10px;
+
+    }
+    .card-1 h4{
+        color: #EDB7A1;
+    }
+}
 .card-2{
     background: #F6F6F6;
     display: flex;
-    gap: 20px;
+    gap: 4px;
     margin-left: 8%;
     border-radius: 14px;
     width: 80%;
     height: 80px;
     align-content: center;
     text-align: center;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding-right: 10px;
 }
 .card-2 h4{
     color: #EDB7A1;
     margin-left: 10%;
+}
+@media (max-width: 767px) {
+    .card-2{
+        background: #F6F6F6;
+        display: flex;
+        gap: 0px;
+        font-size: 0.7rem;
+        height: 50px;
+
+    }
+    .card-1 h4{
+        color: #EDB7A1;
+    }
 }
 .card-3{
     background: #F6F6F6;
@@ -143,6 +232,20 @@ width: 70%;
     color: #EDB7A1;
     margin-left: 10%;
 }
+@media (max-width: 767px) {
+    .card-3{
+        background: #F6F6F6;
+        display: flex;
+        gap: 6px;
+        font-size: 0.7rem;
+        height: 50px;
+        padding-right: 10px;
+
+    }
+    .card-1 h4{
+        color: #EDB7A1;
+    }
+}
 .card-4{
     background: #F6F6F6;
     display: flex;
@@ -159,6 +262,20 @@ width: 70%;
 .card-4 h4{
     color: #EDB7A1;
     margin-left: 10%;
+}
+@media (max-width: 767px) {
+    .card-4{
+        background: #F6F6F6;
+        display: flex;
+        gap: 6px;
+        font-size: 0.7rem;
+        height: 50px;
+        padding-right: 10px;
+
+    }
+    .card-1 h4{
+        color: #EDB7A1;
+    }
 }
 
 .rate div{
@@ -197,22 +314,16 @@ margin-top: 2%;
 }
 @media (max-width: 767px) {
     .rate {
-        width: 92%;
+        width: 89%;
+        font-size: 0.58rem;
     }
     .rate div {
-        width: 35px;
-        height: 35px;
+        width: 25px;
+        height: 25px;
     }
     .rate div p{
         text-align: center;
    font-size: 0.5rem;
-    }
-    .statics{
-       
-        height: 45vh;
-       
-        
-    
     }
     
   }
@@ -252,6 +363,23 @@ margin-top: 2%;
    
 
 }
+@media (max-width: 767px) {
+    .response {
+        width: 89%;
+        font-size: 0.58rem;
+        margin-left: 8px;
+    }
+    .response div {
+        width: 25px;
+        height: 25px;
+    }
+    .response div p{
+        text-align: center;
+   font-size: 0.5rem;
+    }
+    
+    
+  }
 
 /* about */
 .about{
@@ -273,6 +401,17 @@ margin-top: 2%;
     text-align: left;
     margin-left: 2%;
 }
+@media (max-width: 767px) {
+    .about {
+        width: 98%;
+        font-size: 0.7rem;
+        justify-content: center;
+        margin-left: 0px;
+    }
+   
+    
+  }
+
 
 /* skills */
 .skills{
@@ -303,6 +442,14 @@ margin-top: 2%;
     width: 20%;
     border-radius: 7px;
 }
+@media (max-width: 767px) {
+    .skills {
+        width: 97%;
+        margin-left: 8px;
+    }
+    
+  }
+
 
 /* porfolios and reviews */
 .reviews{
@@ -313,6 +460,15 @@ margin-top: 2%;
 .porfolios hr{
     margin-top: -10px;
 }
+@media (max-width: 767px) {
+    /* .porfolios {
+        width: 50%;
+        
+    } */
+   
+    
+  }
+
 
 /* work certifications */
 .exper{
@@ -338,3 +494,32 @@ margin-top: 2%;
  border-radius: 10px;
  margin-left: 2%;
 }
+@media (max-width: 767px) {
+    .exper {
+        /* border: 1px solid black; */
+        width: 100%;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, 1fr);
+        
+        
+    }
+    .work {
+        width: 100%;
+        height: 20vh;
+        font-size: 0.9rem;
+    }
+    .edu {
+        width: 100%;
+        height: 20vh;
+        font-size: 0.9rem;
+    }
+    .qualif {
+        width: 100%;
+        height: 20vh;
+        font-size: 0.9rem;
+    }
+   
+    
+  }
+

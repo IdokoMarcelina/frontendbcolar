@@ -18,8 +18,8 @@ const Userenddetails = () => {
       };
   return (
     <div>
-         <div className='Container'>
-       <div className='Profile'>
+         <div className='Containe'>
+       <div className='Profil'>
         <h2>Profile information</h2>
         <img src={face} alt="" />
         <h3>Mohamend kamel</h3>
@@ -29,12 +29,12 @@ const Userenddetails = () => {
         </ul>
         <p>Member since 2024</p>
         <p>Active 5mins ago</p>
-        <div className='percentage'><div><p>75%</p></div><p>Complete your profile</p></div>
+        <div className='percentag'><div><p>75%</p></div><p>Complete your profile</p></div>
 
        </div>
 
        {/* contact */}
-       <div className='contact'>
+       <div className='contac'>
         <h2>Conctact information</h2>
         <p>moh@gmail.com</p>
         <p>070368029348</p>
@@ -42,29 +42,29 @@ const Userenddetails = () => {
        </div>
 
        {/* total numbers of jobs completed */}
-       <div className='job'>
+       <div className='jobb'>
        <p>Total job completed</p>
        <div><p>30</p></div>
        </div>
 
        {/* rating  */}
-       <div className="rating-container">
-      <div className="average-rating">
-        <div className="star-icon">⭐</div>
-        <div className="rating-number">{ratings.averageRating}</div>
-        <div className="rating-text">
+       <div className="rating-containe">
+      <div className="average-ratin">
+        <div className="star-iconn">⭐</div>
+        <div className="rating-numba">{ratings.averageRating}</div>
+        <div className="rating-tex">
           Average Rating
           <br />
           <span>Based on {ratings.totalRatings.toLocaleString()} ratings</span>
         </div>
       </div>
-      <div className="rating-bars">
+      <div className="rating-bar">
         {ratings.starRatings.map((rating) => (
-          <div key={rating.stars} className="rating-bar">
+          <div key={rating.stars} className="rating-bars">
             <span className="star-label">{rating.stars} star</span>
-            <div className="bar-container">
+            <div className="bar-containe">
               <div
-                className="bar"
+                className="barr"
                 style={{
                   width: `${
                     (rating.count / ratings.totalRatings) * 100

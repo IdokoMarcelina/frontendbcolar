@@ -1,12 +1,21 @@
 .Container{
     width: 30%;
+    /* border: 1px solid black; */
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .Container {
-      width: 50%;
-      align-items: center;
-      justify-content: center;
-      margin-left: 2%;
+      width: 90%;
+      /* align-items: center;
+      justify-content: center; */
+      margin: auto;
+    }
+  }
+@media (max-width: 480px) {
+    .Container {
+      width: 95%;
+      /* align-items: center;
+      justify-content: center; */
+      margin: auto;
     }
   }
 .Profile{
@@ -58,6 +67,52 @@ color: #599372;
    
 
 }
+@media (max-width: 768px) {
+  .Profile h2{
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.Profile img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  
+}
+.Profile h3{
+   font-size: 0.9rem;
+   font-weight: 400;
+}
+.Profile p{
+   font-size: 1rem;
+   font-weight: 300;
+}
+
+.percentage div{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+   
+
+}
+.percentage div p{
+   font-size: 0.6rem;
+   text-align: center;
+   }
+.percentage {
+font-size: 1rem;
+align-items: center;
+   
+
+}
+}
+@media (max-width: 480px) {
+  .Container {
+    width: 95%;
+    /* align-items: center;
+    justify-content: center; */
+    margin: auto;
+  }
+}
 
 /* contact */
 .contact{
@@ -95,6 +150,19 @@ color: #599372;
 }
 .job div p{
     font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+.contact h2{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.job p{
+    font-size: 1rem;
+    font-weight: 500;
+    
+}
+
 }
 
 

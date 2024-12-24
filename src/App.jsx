@@ -21,9 +21,9 @@ function App() {
   return (
     <>
     <Profile/>
-    <Review/>
-    <Book/>
-    <Client/>
+    {/* <Review/> */}
+    {/* <Book/> */}
+    {/* <Client/> */}
     {/* <BrowserRouter>
          <Header />
           <Routes>

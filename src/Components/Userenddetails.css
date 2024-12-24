@@ -1,40 +1,48 @@
-.Container{
-    width: 30%;
+.Containe{
+    width: 90%;
 }
 @media (max-width: 767px) {
-    .Container {
-      width: 50%;
-      align-items: center;
-      justify-content: center;
-      margin-left: 2%;
+    .Containe {
+      width: 90%;
+      /* align-items: center;
+      justify-content: center; */
+      margin: auto;
     }
   }
-.Profile{
+  @media (max-width: 480px) {
+    .Containe {
+      width: 95%;
+      /* align-items: center;
+      justify-content: center; */
+      margin: auto;
+    }
+  }
+.Profil{
     border: 3px solid rgb(243, 241, 241);
     border-radius: 1rem;
     height: 60%;
 }
-.Profile h2{
+.Profil h2{
     font-size: 1.3rem;
     font-weight: 500;
 }
-.Profile img{
+.Profil img{
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid #0EB0FF;
 }
-.Profile h3{
+.Profil h3{
    font-size: 1.5rem;
    font-weight: 400;
 }
-.Profile p{
+.Profil p{
    font-size: 1.2rem;
    font-weight: 300;
 }
 
-.percentage div{
+.percentag div{
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -43,35 +51,78 @@
    
 
 }
-.percentage div p{
+.percentag div p{
    text-align: center;
    font-size: 1rem;
    
 
 }
-.percentage {
+.percentag {
+  /* border: 1px solid black; */
 display: flex;
 gap: 0.3rem;
 margin-left: 15%;
 font-size: 0.8rem;
 color: #599372;
+
    
 
 }
+@media (max-width: 768px) {
+  .Profil h2{
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.Profil img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  
+}
+.Profil h3{
+   font-size: 0.9rem;
+   font-weight: 400;
+}
+.Profil p{
+   font-size: 1rem;
+   font-weight: 300;
+}
+
+.percentag div{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+   
+
+}
+.percentag div p{
+   font-size: 0.6rem;
+   text-align: center;
+   }
+.percentag {
+font-size: 1rem;
+align-items: center;
+   
+
+}
+}
+
+
+
 
 /* contact */
-.contact{
+.contac{
     border: 3px solid rgb(243, 241, 241);
     border-radius: 1rem;
     margin-top: 2%;
     text-align: left;
     padding-left: 7%;
 }
-.contact h2{
+.contac h2{
     font-size: 1.5rem;
     font-weight: 500;
 }
-.job{
+.jobb{
     border: 3px solid rgb(243, 241, 241);
     border-radius: 1rem;
     margin-top: 2%;
@@ -80,12 +131,12 @@ color: #599372;
     height: 17%;
     
 }
-.job p{
+.jobb p{
     font-size: 1.5rem;
     font-weight: 500;
     
 }
-.job div{
+.jobb div{
     
     width: 50px;
     height: 50px;
@@ -93,14 +144,27 @@ color: #599372;
     border: 5px solid #12713B;
     margin-left: 36%;
 }
-.job div p{
+.jobb div p{
     font-size: 0.9rem;
 }
+@media (max-width: 768px) {
+  .contac h2{
+      font-size: 1rem;
+      font-weight: 500;
+  }
+  
+  .jobb p{
+      font-size: 1rem;
+      font-weight: 500;
+      
+  }
+  
+  }
 
 
 /* rating */
 
-.rating-container {
+.rating-containe {
     margin-top:2%;
     max-width: 600px;
     padding: 20px;
@@ -111,30 +175,30 @@ color: #599372;
     border: 3px solid  rgb(243, 241, 241);
   }
   
-  .average-rating {
+  .average-ratin {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 2px;
     margin-bottom: 20px;
     text-align: center;
   }
   
-  .star-icon {
+  .star-iconn {
     font-size: 40px;
     color: gold;
   }
   
-  .rating-number {
+  .rating-numba {
     font-size: 36px;
     font-weight: bold;
   }
   
-  .rating-text {
+  .rating-tex {
     font-size: 14px;
     color: #555;
   }
   
-  .rating-bars {
+  .rating-bar {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -151,7 +215,7 @@ color: #599372;
     font-size: 14px;
   }
   
-  .bar-container {
+  .bar-containe {
     flex: 1;
     height: 10px;
     background-color: #e0e0e0;
@@ -159,7 +223,7 @@ color: #599372;
     overflow: hidden;
   }
   
-  .bar {
+  .barr {
     height: 100%;
     background-color: #ffd700;
   }
@@ -171,20 +235,20 @@ color: #599372;
   }
   
   @media (max-width: 480px) {
-    .rating-container {
+    .rating-containe {
       padding: 10px;
     }
   
-    .average-rating {
+    .average-ratin {
       flex-direction: column;
       gap: 5px;
     }
   
-    .rating-number {
+    .rating-numba {
       font-size: 28px;
     }
   
-    .rating-bars {
+    .rating-bar {
       gap: 5px;
     }
   }
