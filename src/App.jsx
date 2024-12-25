@@ -22,11 +22,11 @@ function App() {
   return (
     <>
     <Edit/>
-    {/* <Profile/> */}
-    {/* <Review/> */}
-    {/* <Book/> */}
-    {/* <Client/> */}
-    {/* <BrowserRouter>
+    <Profile/>
+    <Review/>
+    <Book/>
+    <Client/>
+    <BrowserRouter>
          <Header />
           <Routes>
             <Route path="/" element={<Home/>} />
@@ -39,7 +39,7 @@ function App() {
             <Route path="/collabo" element={<Collabo/>} />
           </Routes>
         <Footer/>
-      </BrowserRouter> */}
+      </BrowserRouter>
         
     </>
   )
