@@ -1,172 +1,172 @@
 /* General Styles */
 .info {
-    background-color: #ffffff; /* White background */
-    border-radius: 0.75rem; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 1.5rem; /* Space inside the container */
-    margin-bottom: 1.5rem; /* Space between components */
+    background-color: #ffffff; 
+    border-radius: 0.75rem; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem; 
+    margin-bottom: 1.5rem; 
   }
   
   /* Header Styles */
   .back {
     display: flex;
-    justify-content: space-between; /* Spread title and button */
-    align-items: center; /* Center vertically */
-    margin-bottom: 1rem; /* Space below header */
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 1rem; 
   }
   
   .title {
-    font-size: 1.25rem; /* Larger text */
-    font-weight: 600; /* Semi-bold */
-    color: #374151; /* Dark gray */
-    margin: 0; /* Remove default margin */
+    font-size: 1.25rem; 
+    font-weight: 600; 
+    color: #374151; 
+    margin: 0; 
   }
   
   .icon {
     background: none;
     border: none;
-    color: #3b82f6; /* Blue */
-    font-size: 0.875rem; /* Smaller text */
+    color: #3b82f6; 
+    font-size: 0.875rem; 
     display: flex;
     align-items: center;
     cursor: pointer;
   }
   
   .icon span {
-    margin-left: 0.5rem; /* Space between icon and text */
-    font-size: 0.875rem; /* Smaller text */
+    margin-left: 0.5rem; 
+    font-size: 0.875rem; 
   }
   
   /* Fields Section */
   .index {
     display: grid;
-    gap: 1rem; /* Space between fields */
+    gap: 1rem; 
   }
   
   @media (min-width: 768px) {
     .index {
-      grid-template-columns: repeat(2, 1fr); /* Two columns on medium and large screens */
+      grid-template-columns: repeat(2, 1fr); 
     }
   }
   
   .field {
-    font-size: 0.875rem; /* Small label */
-    font-weight: 500; /* Medium weight */
-    color: #6b7280; /* Gray */
-    margin: 0; /* Remove default margin */
+    font-size: 0.875rem; 
+    font-weight: 500; 
+    color: #6b7280; 
+    margin: 0; 
   }
   
   .value {
-    font-size: 1rem; /* Normal size for values */
-    font-weight: 600; /* Bold values */
-    color: #374151; /* Dark gray */
-    margin: 0.25rem 0 0; /* Add slight margin above values */
+    font-size: 1rem; 
+    font-weight: 600; 
+    color: #374151; 
+    margin: 0.25rem 0 0; 
   }
   
   /* Responsive Styling */
   @media (max-width: 768px) {
     .info {
-      padding: 1rem; /* Smaller padding on small screens */
+      padding: 1rem; 
     }
   
     .title {
-      font-size: 1rem; /* Slightly smaller title */
+      font-size: 1rem; 
     }
   
     .icon {
-      font-size: 0.875rem; /* Reduce icon size */
+      font-size: 0.875rem; 
     }
   }
   
 
   /* Profile Card Container */
 .prof {
-  background-color: #ffffff; /* White background */
-  border-radius: 0.75rem; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 1.5rem; /* Space inside the container */
+  background-color: #ffffff; 
+  border-radius: 0.75rem; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 1.5rem; 
   display: flex;
-  align-items: center; /* Align items vertically */
-  justify-content: space-between; /* Spread content horizontally */
-  margin-bottom: 1.5rem; /* Space below the component */
+  align-items: center; 
+  justify-content: space-between; 
+  margin-bottom: 1.5rem; 
 }
 
 /* Card Content */
 .cad {
   display: flex;
-  align-items: center; /* Align image and text vertically */
-  gap: 1rem; /* Space between image and text */
+  align-items: center; 
+  gap: 1rem; 
 }
 
 /* Profile Image */
 .detail {
   width: 80px;
   height: 80px;
-  border-radius: 50%; /* Circular image */
-  object-fit: cover; /* Ensure the image fits properly */
+  border-radius: 50%; 
+  object-fit: cover; 
 }
 
 /* Profile Text */
 .name {
-  font-size: 1.25rem; /* Larger text for the name */
-  font-weight: 600; /* Semi-bold */
-  color: #374151; /* Dark gray */
-  margin: 0; /* Remove default margin */
+  font-size: 1.25rem; 
+  font-weight: 600; 
+  color: #374151; 
+  margin: 0; 
 }
 
 .team {
-  font-size: 1rem; /* Normal size for role */
-  color: #6b7280; /* Medium gray */
-  margin: 0.25rem 0; /* Space between text */
+  font-size: 1rem; 
+  color: #6b7280; 
+  margin: 0.25rem 0; 
 }
 
 .location {
-  font-size: 0.875rem; /* Slightly smaller text for location */
-  color: #9ca3af; /* Lighter gray */
-  margin: 0; /* Remove default margin */
+  font-size: 0.875rem;
+  color: #9ca3af; 
+  margin: 0; 
 }
 
 /* Edit Button */
 .icn {
   background: none;
   border: none;
-  color: #3b82f6; /* Blue */
-  font-size: 0.875rem; /* Smaller text */
+  color: #3b82f6; 
+  font-size: 0.875rem; 
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
 .icn span {
-  margin-left: 0.5rem; /* Space between icon and text */
-  font-size: 0.875rem; /* Smaller text */
+  margin-left: 0.5rem; 
+  font-size: 0.875rem; 
 }
 
 /* Responsive Styling */
 @media (max-width: 768px) {
   .prof {
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the left */
-    padding: 1rem; /* Reduce padding */
+    flex-direction: column; 
+    align-items: flex-start; 
+    padding: 1rem; 
   }
 
   .cad {
-    flex-direction: column; /* Stack image and text vertically */
-    align-items: center; /* Center items */
-    gap: 0.5rem; /* Smaller gap */
+    flex-direction: column; 
+    align-items: center; 
+    gap: 0.5rem; 
   }
 
   .icn {
-    align-self: flex-end; /* Align button to the right */
-    margin-top: 1rem; /* Add space above the button */
+    align-self: flex-end; 
+    margin-top: 1rem; 
   }
 
   .name {
-    font-size: 1rem; /* Slightly smaller name */
+    font-size: 1rem;
   }
 
   .team,
   .location {
-    font-size: 0.875rem; /* Smaller text for role and location */
+    font-size: 0.875rem;
   }
 }
