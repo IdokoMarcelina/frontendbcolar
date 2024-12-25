@@ -54,6 +54,8 @@
   @media (min-width: 768px) {
     .review-container {
       justify-content: flex-start;
+     
+      
     }
   
     .review-card {

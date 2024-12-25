@@ -1,0 +1,172 @@
+/* General Styles */
+.info {
+    background-color: #ffffff; /* White background */
+    border-radius: 0.75rem; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 1.5rem; /* Space inside the container */
+    margin-bottom: 1.5rem; /* Space between components */
+  }
+  
+  /* Header Styles */
+  .back {
+    display: flex;
+    justify-content: space-between; /* Spread title and button */
+    align-items: center; /* Center vertically */
+    margin-bottom: 1rem; /* Space below header */
+  }
+  
+  .title {
+    font-size: 1.25rem; /* Larger text */
+    font-weight: 600; /* Semi-bold */
+    color: #374151; /* Dark gray */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .icon {
+    background: none;
+    border: none;
+    color: #3b82f6; /* Blue */
+    font-size: 0.875rem; /* Smaller text */
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .icon span {
+    margin-left: 0.5rem; /* Space between icon and text */
+    font-size: 0.875rem; /* Smaller text */
+  }
+  
+  /* Fields Section */
+  .index {
+    display: grid;
+    gap: 1rem; /* Space between fields */
+  }
+  
+  @media (min-width: 768px) {
+    .index {
+      grid-template-columns: repeat(2, 1fr); /* Two columns on medium and large screens */
+    }
+  }
+  
+  .field {
+    font-size: 0.875rem; /* Small label */
+    font-weight: 500; /* Medium weight */
+    color: #6b7280; /* Gray */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .value {
+    font-size: 1rem; /* Normal size for values */
+    font-weight: 600; /* Bold values */
+    color: #374151; /* Dark gray */
+    margin: 0.25rem 0 0; /* Add slight margin above values */
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .info {
+      padding: 1rem; /* Smaller padding on small screens */
+    }
+  
+    .title {
+      font-size: 1rem; /* Slightly smaller title */
+    }
+  
+    .icon {
+      font-size: 0.875rem; /* Reduce icon size */
+    }
+  }
+  
+
+  /* Profile Card Container */
+.prof {
+  background-color: #ffffff; /* White background */
+  border-radius: 0.75rem; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 1.5rem; /* Space inside the container */
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Spread content horizontally */
+  margin-bottom: 1.5rem; /* Space below the component */
+}
+
+/* Card Content */
+.cad {
+  display: flex;
+  align-items: center; /* Align image and text vertically */
+  gap: 1rem; /* Space between image and text */
+}
+
+/* Profile Image */
+.detail {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Circular image */
+  object-fit: cover; /* Ensure the image fits properly */
+}
+
+/* Profile Text */
+.name {
+  font-size: 1.25rem; /* Larger text for the name */
+  font-weight: 600; /* Semi-bold */
+  color: #374151; /* Dark gray */
+  margin: 0; /* Remove default margin */
+}
+
+.team {
+  font-size: 1rem; /* Normal size for role */
+  color: #6b7280; /* Medium gray */
+  margin: 0.25rem 0; /* Space between text */
+}
+
+.location {
+  font-size: 0.875rem; /* Slightly smaller text for location */
+  color: #9ca3af; /* Lighter gray */
+  margin: 0; /* Remove default margin */
+}
+
+/* Edit Button */
+.icn {
+  background: none;
+  border: none;
+  color: #3b82f6; /* Blue */
+  font-size: 0.875rem; /* Smaller text */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icn span {
+  margin-left: 0.5rem; /* Space between icon and text */
+  font-size: 0.875rem; /* Smaller text */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .prof {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+    padding: 1rem; /* Reduce padding */
+  }
+
+  .cad {
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center items */
+    gap: 0.5rem; /* Smaller gap */
+  }
+
+  .icn {
+    align-self: flex-end; /* Align button to the right */
+    margin-top: 1rem; /* Add space above the button */
+  }
+
+  .name {
+    font-size: 1rem; /* Slightly smaller name */
+  }
+
+  .team,
+  .location {
+    font-size: 0.875rem; /* Smaller text for role and location */
+  }
+}

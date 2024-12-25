@@ -14,13 +14,15 @@ import About from './Pages/About'
 import Review from './Components/Review'
 import Book from './Components/Book'
 import Client from './Pages/Client'
+import Edit from './Components/Edit-profile/Edit'
 
-
+ 
 function App() {
 
   return (
     <>
-    <Profile/>
+    <Edit/>
+    {/* <Profile/> */}
     {/* <Review/> */}
     {/* <Book/> */}
     {/* <Client/> */}
