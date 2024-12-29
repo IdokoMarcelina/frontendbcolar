@@ -12,15 +12,16 @@ import PageTwo from './Pages/PageTwo'
 import Signup from './Pages/Signup'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
-import Chatlist from './Components/Chat/Chatlist'
-import Chatwindow from './Components/Chat/Chatwindow'
-
-
 
 function App() {
 
   return (
     <>
+    <Edit/>
+    <Profile/>
+    <Review/>
+    <Book/>
+    <Client/>
     <BrowserRouter>
          <Header />
           <Routes>

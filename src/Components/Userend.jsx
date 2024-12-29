@@ -1,17 +1,16 @@
 import React from 'react'
-import capenter from '../assets/images/capenter.jpg'
-import './Bio.css'
+import './Userend.css'
 import Cards from './Cards'
-const Bio = () => {
+const Userend = () => {
   return (
-    <div className='contains'>
-      <div className='chats'>
-      <p> Edit profile
+    <div className='contain'>
+       <div className='chat'>
+      <p> Booking
        </p>
-      <p>   Message
+      <p>   Chat
        </p>
       </div>
-      <div className='freelance'>
+      <div className='freelanc'>
         <ul>
         <li>Freelance</li>
         <li>Project</li>
@@ -23,30 +22,30 @@ const Bio = () => {
 
       {/* statics */}
 
-      <div className='statics'>
+      <div className='static'>
         <h3>Statics</h3>
-       <div className='Cards'>
-       <div className='card-1'>
+       <div className='Cardss'>
+       <div className='card-one'>
           <h4>12</h4>
           <p>completed projects</p>
         </div>
-        <div className='card-2'>
+        <div className='card-two'>
           <h4>02</h4>
           <p>projects in progress</p>
         </div>
-        <div className='card-3'>
+        <div className='card-three'>
           <h4>12</h4>
           <p>Total reviews</p>
         </div>
-        <div className='card-4'>
+        <div className='card-four'>
           <h4>12</h4>
           <p>total points gain</p>
         </div>
-        <div className='rate'>
+        <div className='rates'>
           <div><p>66%</p></div>
           <p>Project completed rate</p>
         </div>
-        <div className='response'>
+        <div className='responses'>
           <div><p>76%</p></div>
           <p>Response rate</p>
         </div>
@@ -54,14 +53,14 @@ const Bio = () => {
       </div>
 
       {/* about */}
-      <div className='about'>
+      <div className='abouts'>
         <h3>About</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, 
           odio. Voluptates sapiente vel pariatur? Sunt mollitia est non, 
           maiores laborum minima 
           obcaecati quo iusto, quia, fugit adipisci dolore distinctio consectetur?</p>
       </div>
-      <div className='skills'>
+      <div className='skillss'>
         <h3>core skill</h3>
         <div className='core'>
           <p>Furniture</p>
@@ -71,28 +70,26 @@ const Bio = () => {
       </div>
       
       {/* portfolios and reviews */}
-      <div className='porfolios'>
-       <div className='reviews'>
+      <div className='porfolioss'>
+       <div className='reviewss'>
        <p>Porfolios</p>
        <p>Reviews</p>
        </div>
         <hr />
-      </div>
-      <div className='add'>
-        <button>Add work</button>
-      </div>
-     {/* cards */}
-     <Cards/>
-     <div className='exper'>
-      <div className='work'>
+      </div>  
+
+       {/* cards */}
+       <Cards/>
+       <div className='experts'>
+      <div className='worc'>
         <h3>Work experience</h3>
         <p> quasi, consequuntur tempora quisquam tempore!</p>
       </div>
-      <div className='edu'>
+      <div className='educate'>
         <h3>Education</h3>
         <p> quasi, consequuntur tempora quisquam tempore!</p>
       </div>
-      <div className='qualif'>
+      <div className='qualify'>
         <h3>Qualification</h3>
         <p> quasi, consequuntur tempora quisquam tempore!</p>
       </div>
@@ -101,4 +98,4 @@ const Bio = () => {
   )
 }
 
-export default Bio
+export default Userend
