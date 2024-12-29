@@ -12,8 +12,7 @@ import PageTwo from './Pages/PageTwo'
 import Signup from './Pages/Signup'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
-import ProductPage from './Pages/ProductPage/ProductPage'
-import UserSignup from './Pages/UserSignup'
+
 
 
 function App() {
@@ -33,9 +32,10 @@ function App() {
             <Route path="/signup" element={<Signup/>} />
             <Route path="/usersignup" element={< UserSignup />} />
             <Route path="/collabo" element={<Collabo/>} />
-            <Route path="/productpage" element={< ProductPage/>} />
+
           </Routes>
-        <Footer/>
+        {/* <Footer/> */}
+        
       </BrowserRouter>
         
     </>
