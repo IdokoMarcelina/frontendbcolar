@@ -58,6 +58,7 @@ const TestimonialPropsDiv = styled.div`
     height: 150px;
     border-radius: 75px;
     border: 4px solid white;
+    margin: auto;
             
     }
         
