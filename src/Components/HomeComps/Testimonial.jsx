@@ -1,16 +1,10 @@
 import styled from "styled-components";
 import TestimonialProps from "../../Reuseables/TestimonialProps";
 
-
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Img from "../../assets/profile/profile.avif"
-
-
-
- 
+import Img from "../../assets/profile/profile.avif" 
 
 const Testimonial = () => {
     const settings = {
@@ -20,7 +14,40 @@ const Testimonial = () => {
         slidesToScroll: 1, 
         autoplay: true,
         autoplaySpeed: 4000,  
-        centerMode: true
+        centerMode: true,
+        arrows: true,
+        centerPadding: "0px",
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2.5,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 910,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1.5,
+                    slidesToScroll: 1,
+                    dots: false,
+                },
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
 
     
       };
@@ -42,21 +69,28 @@ const Testimonial = () => {
 export default Testimonial;
 
 const TestimonialDiv = styled.div`
-    max-width: 1440px;
-    margin: auto;
-    border: 1px solid;
+    max-width: 100%;
+    margin: 30px auto;
     height: 600px;
-    /* display: flex; */
-    /* justify-items: center; */
     padding: 30px ;
-    /* background-color: hsl(90, 70%, 80%); */
     border-radius: 40px;
+    h2{
+  font-size: 35px;
+  width: fit-content;
+  color: #0000ff;
+  margin: auto;
+  margin-bottom: 50px;
+
+  @media (max-width:720px) {
+    font-size: 28px;
+    text-align: center;
+  }
+  @media (max-width:420px) {
+    font-size: 22px;
+    }
+  }
+  @media (max-width:820px) {
+    width: 80%;
+  }
 
 `
-// const TestCard = styled.div`
-//     margin: auto;
-//     display: flex;
-//    /* flex-wrap: wrap; */
-//    justify-content: space-between;
-//     gap: 30px;
-// `
