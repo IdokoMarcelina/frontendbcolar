@@ -14,6 +14,7 @@ import Collabo from './Pages/Collabo'
 import About from './Pages/About'
 import ProductPage from './Pages/ProductPage/ProductPage'
 import UserSignup from './Pages/UserSignup'
+import Verification from './Pages/Verification'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/pagetwo" element={<PageTwo/>} />
             <Route path="/signup" element={<Signup/>} />
             <Route path="/usersignup" element={< UserSignup />} />
+            <Route path="/verification" element={< Verification />} />
             <Route path="/collabo" element={<Collabo/>} />
             <Route path="/productpage" element={< ProductPage/>} />
           </Routes>

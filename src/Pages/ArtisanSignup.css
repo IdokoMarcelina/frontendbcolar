@@ -26,6 +26,7 @@
     font-weight: 600;
     font-size: 15px;
     text-align: center;
+    cursor: pointer;
     @media (max-width: 900px){
       max-width: 200px;
   }
