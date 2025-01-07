@@ -22,6 +22,11 @@ function App() {
 
   return (
     <>
+    <Edit/>
+    <Profile/>
+    <Review/>
+    <Book/>
+    <Client/>
     <BrowserRouter>
          <Header />
           <Routes>
@@ -35,9 +40,10 @@ function App() {
             <Route path="/usersignup" element={< UserSignup />} />
             <Route path="/verification" element={< Verification />} />
             <Route path="/collabo" element={<Collabo/>} />
-            <Route path="/productpage" element={< ProductPage/>} />
+
           </Routes>
-        <Footer/>
+        {/* <Footer/> */}
+        
       </BrowserRouter>
         
     </>

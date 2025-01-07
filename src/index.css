@@ -1,9 +1,15 @@
-:root {
+*{
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-family:  Geneva, Tahoma, sans-serif;
+}
+
+/* :root {
   font-family: "Poppins",Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -12,11 +18,4 @@
 
 
 
-body {
-  margin: 0;
-}
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}

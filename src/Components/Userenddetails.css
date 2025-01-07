@@ -1,0 +1,256 @@
+.Containe{
+    width: 90%;
+}
+@media (max-width: 767px) {
+    .Containe {
+      width: 90%;
+      /* align-items: center;
+      justify-content: center; */
+      margin: auto;
+    }
+  }
+  @media (max-width: 480px) {
+    .Containe {
+      width: 95%;
+      /* align-items: center;
+      justify-content: center; */
+      margin: auto;
+    }
+  }
+.Profil{
+    border: 3px solid rgb(243, 241, 241);
+    border-radius: 1rem;
+    height: 60%;
+}
+.Profil h2{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.Profil img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #0EB0FF;
+}
+.Profil h3{
+   font-size: 1.5rem;
+   font-weight: 400;
+}
+.Profil p{
+   font-size: 1.2rem;
+   font-weight: 300;
+}
+
+.percentag div{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid #12713B;
+    border-left: 5px solid #EAFFF3;
+   
+
+}
+.percentag div p{
+   text-align: center;
+   font-size: 1rem;
+   
+
+}
+.percentag {
+  /* border: 1px solid black; */
+display: flex;
+gap: 0.3rem;
+margin-left: 15%;
+font-size: 0.8rem;
+color: #599372;
+
+   
+
+}
+@media (max-width: 768px) {
+  .Profil h2{
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.Profil img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  
+}
+.Profil h3{
+   font-size: 0.9rem;
+   font-weight: 400;
+}
+.Profil p{
+   font-size: 1rem;
+   font-weight: 300;
+}
+
+.percentag div{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+   
+
+}
+.percentag div p{
+   font-size: 0.6rem;
+   text-align: center;
+   }
+.percentag {
+font-size: 1rem;
+align-items: center;
+   
+
+}
+}
+
+
+
+
+/* contact */
+.contac{
+    border: 3px solid rgb(243, 241, 241);
+    border-radius: 1rem;
+    margin-top: 2%;
+    text-align: left;
+    padding-left: 7%;
+}
+.contac h2{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.jobb{
+    border: 3px solid rgb(243, 241, 241);
+    border-radius: 1rem;
+    margin-top: 2%;
+    align-items: center;
+    justify-content: center;
+    height: 17%;
+    
+}
+.jobb p{
+    font-size: 1.5rem;
+    font-weight: 500;
+    
+}
+.jobb div{
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid #12713B;
+    margin-left: 36%;
+}
+.jobb div p{
+    font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+  .contac h2{
+      font-size: 1rem;
+      font-weight: 500;
+  }
+  
+  .jobb p{
+      font-size: 1rem;
+      font-weight: 500;
+      
+  }
+  
+  }
+
+
+/* rating */
+
+.rating-containe {
+    margin-top:2%;
+    max-width: 600px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #ffff;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    border: 3px solid  rgb(243, 241, 241);
+  }
+  
+  .average-ratin {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .star-iconn {
+    font-size: 40px;
+    color: gold;
+  }
+  
+  .rating-numba {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .rating-tex {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .rating-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .star-label {
+    min-width: 50px;
+    font-size: 14px;
+  }
+  
+  .bar-containe {
+    flex: 1;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .barr {
+    height: 100%;
+    background-color: #ffd700;
+  }
+  
+  .rating-count {
+    font-size: 14px;
+    min-width: 50px;
+    text-align: right;
+  }
+  
+  @media (max-width: 480px) {
+    .rating-containe {
+      padding: 10px;
+    }
+  
+    .average-ratin {
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .rating-numba {
+      font-size: 28px;
+    }
+  
+    .rating-bar {
+      gap: 5px;
+    }
+  }
+  
+
