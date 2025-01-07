@@ -109,8 +109,8 @@ const Header = () => {
           <a href="#signin">Signin</a>
           </Link>
           <span className="divider">|</span>
-          <Link to="signup">
-          <a href="#signup">Signup</a>
+          <Link to="usersignup">
+          <>Signup</>
           </Link>
         </div>
 

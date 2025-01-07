@@ -34,6 +34,7 @@ function App() {
             <Route path="/pagetwo" element={<PageTwo/>} />
             <Route path="/signup" element={<Signup/>} />
             <Route path="/usersignup" element={< UserSignup />} />
+            <Route path="/verification" element={< Verification />} />
             <Route path="/collabo" element={<Collabo/>} />
 
           </Routes>
