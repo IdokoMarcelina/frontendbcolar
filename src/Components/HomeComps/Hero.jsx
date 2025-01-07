@@ -12,9 +12,7 @@ import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
 
 const Hero = () => {
     return ( <HeroDiv>
-        <div >
-            <img src={Hero1} alt="" id="hero1" />
-        </div>
+       
     <HeroLeft>
     <div className="icons">
         <div className="heroIcon" id="icon1">
@@ -45,7 +43,7 @@ const Hero = () => {
     </HeroLeft>
     <HeroRight >
             <img src={Hero2} alt=""   id="hero2"/>
-            <img src={Hero1} alt="" id="hero3" />
+            {/* <img src={Hero1} alt="" id="hero3" /> */}
         </HeroRight>
 
     {/* <HeroRight><img src={HeroImg} alt="" /></HeroRight> */}
@@ -63,7 +61,7 @@ const HeroDiv = styled.div`
     border-radius: 0px 0px 50px 50px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     max-width: 1440px;
     margin:  auto;
 
@@ -73,21 +71,10 @@ const HeroDiv = styled.div`
        display: flex;
        justify-content: space-between;
     }
-    #hero1, #hero2, #hero3{
-        width: 250px;
-        height: 250px;
-        border-radius:125px;
-        border: 3px solid #0000ff;
-        position: relative;
-        animation: slide 2s linear infinite alternate;
-    @keyframes slide {
-        0% {top: 0px;}
-        50% {top: 10px;}
-        100% {top: 20px;}
-        }
-    }
-    #hero3{
-        display: none;
+     #hero2{
+        width: 350px;
+        height: 350px;
+        border-radius:25px;
     }
     .heroIcon{
         color: #e3dfdf;
@@ -103,26 +90,25 @@ const HeroDiv = styled.div`
         margin: 0;
     }
     #icon1{
-        left: 280px ;
-        top: 420px
+        left: 150px ;
+        top: 90px
     }
     #icon2{
-        left: 280px ;
-        top: 100px;
+        left: 150px ;
+        top: 490px;
     }
     #icon3{
         left: 950px ;
-        top: 100px
+        top: 90px
     }
     #icon4{
         left: 950px ;
-        top: 420px;
+        top: 490px;
     }
     @media (max-width: 1030px) {
-        #hero1, #hero2{
-        width: 200px;
-        height: 200px;
-        border-radius: 100px;
+     #hero2{
+        width: 300px;
+        height: 300px;
       }
       .heroIcon{
         display: none;
@@ -130,9 +116,8 @@ const HeroDiv = styled.div`
     }
     @media (max-width: 870px) {
         #hero1, #hero2, #hero3{
-        width: 170px;
-        height: 170px;
-        border-radius: 85px;
+        width: 250px;
+        height: 250px;
       }
     }
     @media (max-width: 790px) {
@@ -140,12 +125,10 @@ const HeroDiv = styled.div`
        justify-content: start;
        gap: 30px;
        padding: 10px;
-       height: 600px;
-       #hero1{
-        display: none;
-      }
-      #hero3{
-        display: block;
+       height: fit-content;
+       #hero2{
+        width: 350px;
+        height: 350px;      
     }
        .buttons{
         width: 320px;

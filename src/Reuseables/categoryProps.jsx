@@ -12,6 +12,11 @@ const CategoryPropsDiv = styled.div`
   height: 320px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   border-radius: 20px;
+  &:hover{
+    transform: scale(1.05); 
+    transition: transform 0.3s ease-in-out;
+
+  }
   
   
   h6{
