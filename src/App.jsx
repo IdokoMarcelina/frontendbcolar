@@ -15,6 +15,7 @@ import About from './Pages/About'
 import ProductPage from './Pages/ProductPage/ProductPage'
 import UserSignup from './Pages/UserSignup'
 import Verification from './Pages/Verification'
+import SignupFlow from './Pages/SignupFlow'
 
 
 function App() {
@@ -30,8 +31,7 @@ function App() {
             <Route path="/profile" element={<Profile/>} />
             <Route path="/contact" element={<Contact/>} />
             <Route path="/signin" element={<Siginin/>} />
-            <Route path="/pagetwo" element={<PageTwo/>} />
-            <Route path="/signup" element={<Signup/>} />
+            <Route path="/signup" element={<SignupFlow />} />
             <Route path="/usersignup" element={< UserSignup />} />
             <Route path="/verification" element={< Verification />} />
             <Route path="/collabo" element={<Collabo/>} />

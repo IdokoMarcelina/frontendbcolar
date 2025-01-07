@@ -13,7 +13,8 @@ const UserSignup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [regionLGA, setRegionLGA] = useState("");
+  const [LGA, setLGA] = useState("");
+  const [state, setState] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -28,7 +29,7 @@ const UserSignup = () => {
     e.preventDefault();
 
     // Basic validation
-    if (!name || !email || !phone || !regionLGA || !password || !confirmPassword) {
+    if (!name || !email || !phone || !state || !LGA || !password || !confirmPassword) {
       alert("Please fill out all fields.");
       return;
     }
@@ -50,7 +51,8 @@ const UserSignup = () => {
         name,
         email,
         phone,
-        regionLGA,
+        LGA,
+        state,
         password,
         confirmPassword,
         userType,
@@ -105,14 +107,31 @@ const UserSignup = () => {
             />
           </div>
 
-          <div className="label-tag">
-            <label>Region/LGA</label>
-            <input
-              type="text"
-              value={regionLGA}
-              onChange={(e) => setRegionLGA(e.target.value)}
-            />
-          </div>
+          <section className="name-section">
+            <div className="label-tag">
+              <label>State</label>
+              <input
+                type="text"
+                id="nameInput"
+                name="state"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                placeholder="State"
+              />
+            </div>
+
+            <div className="label-tag">
+              <label>LGA</label>
+              <input
+                type="text"
+                id="nameInput"
+                name="LGA"
+                value={LGA}
+                onChange={(e) => setLGA(e.target.value)}
+                placeholder="LGA"
+              />
+            </div>
+          </section>
 
           <div className="label-tag">
             <label>Password</label>
