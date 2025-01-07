@@ -3,6 +3,17 @@ import face from '../assets/images/face.jpg'
 import './Details.css'
 
 const Details = () => {
+  const ratings = {
+    totalRatings: 23980,
+    averageRating: 4.5,
+    starRatings: [
+      { stars: 5, count: 14764 },
+      { stars: 4, count: 9480 },
+      { stars: 3, count: 1240 },
+      { stars: 2, count: 340 },
+      { stars: 1, count: 170 },
+    ],
+  };
   return (
     <div className='Container'>
        <div className='Profile'>
@@ -32,6 +43,37 @@ const Details = () => {
        <p>Total job completed</p>
        <div><p>30</p></div>
        </div>
+
+       {/* rating  */}
+       <div className="rating-container">
+      <div className="average-rating">
+        <div className="star-icon">⭐</div>
+        <div className="rating-number">{ratings.averageRating}</div>
+        <div className="rating-text">
+          Average Rating
+          <br />
+          <span>Based on {ratings.totalRatings.toLocaleString()} ratings</span>
+        </div>
+      </div>
+      <div className="rating-bars">
+        {ratings.starRatings.map((rating) => (
+          <div key={rating.stars} className="rating-bar">
+            <span className="star-label">{rating.stars} star</span>
+            <div className="bar-container">
+              <div
+                className="bar"
+                style={{
+                  width: `${
+                    (rating.count / ratings.totalRatings) * 100
+                  }%`,
+                }}
+              ></div>
+            </div>
+            <span className="rating-count">{rating.count.toLocaleString()}</span>
+          </div>
+        ))}
+      </div>
+    </div>
     </div>
   )
 }

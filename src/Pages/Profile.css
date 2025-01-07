@@ -4,7 +4,7 @@
 }
 @media (max-width: 767px) {
     .profile {
-     display: grid;
+     align-items: center;
     }
 
     }
