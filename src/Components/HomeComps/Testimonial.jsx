@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import TestimonialProps from "../../Reuseables/TestimonialProps";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -16,7 +15,6 @@ const Testimonial = () => {
         autoplaySpeed: 4000,  
         centerMode: true,
         arrows: true,
-        centerPadding: "0px",
         responsive: [
             {
                 breakpoint: 1024,
@@ -33,9 +31,17 @@ const Testimonial = () => {
                 },
             },
             {
-                breakpoint: 768,
+                breakpoint: 790,
                 settings: {
                     slidesToShow: 1.5,
+                    slidesToScroll: 1,
+                    dots: false,
+                },
+            },
+            {
+                breakpoint: 700,
+                settings: {
+                    slidesToShow: 1.3,
                     slidesToScroll: 1,
                     dots: false,
                 },
@@ -45,10 +51,10 @@ const Testimonial = () => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    centerMode: false
                 },
             },
         ],
-
     
       };
 
@@ -91,6 +97,7 @@ const TestimonialDiv = styled.div`
   }
   @media (max-width:820px) {
     width: 80%;
+    padding: 5px ;
   }
 
 `

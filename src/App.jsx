@@ -11,6 +11,8 @@ import Siginin from './Pages/Siginin'
 import Signup from './Pages/Signup'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
+import ForgotPassword from './Pages/ForgotPassword'
+import ResetPassword from './Pages/ResetPassword'
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
             <Route path="/signin" element={<Siginin/>} />
             <Route path="/signup" element={<Signup/>} />
             <Route path="/collabo" element={<Collabo/>} />
+            <Route path ="/forgotPassword" element={<ForgotPassword/>}/>
+            <Route path ="/resetPassword" element={<ResetPassword/>}/>
           </Routes>
         <Footer/>
       </BrowserRouter>

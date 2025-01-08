@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const CategoryProps = (props) => {
-    return ( <CategoryPropsDiv>
+    return ( <CategoryPropsDiv >
       <ImageBox><img src={props.image} alt={`${props.title}`} /></ImageBox>
       <h6>{props.title}</h6>
     </CategoryPropsDiv> );
@@ -56,6 +56,10 @@ const CategoryPropsDiv = styled.div`
     width: 350px;
     height: 320px;
   }
+  @media (max-width:430px) {
+    width: 300px;
+    height: 280px;
+  }
 `
 const ImageBox = styled.div`
   width: 350px;
@@ -91,6 +95,10 @@ const ImageBox = styled.div`
   @media (max-width:680px) {
     width: 350px;
     height: 250px;
+  }
+  @media (max-width:430px) {
+    width: 300px;
+    height: 220px;
   }
 
   img{
