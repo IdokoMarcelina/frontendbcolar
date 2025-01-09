@@ -13,23 +13,18 @@ import Tailor from "../../assets/categories/tailor.jpg"
 import Welder from "../../assets/categories/welder.jpg"
 import Sidebar from "./Sidebar";
 
-import { CiSearch } from "react-icons/ci";
-
-
 const Category = () => {
     return ( <CategoryDiv>
         <h2>Explore by Category</h2>
 
-        <input type="search"  id="searchHidden" placeholder={`${<CiSearch />} Search` } />
+        <input type="search"  id="searchHidden" placeholder="Search" />
 
         <CategoryFlex>
 
-          
-
           <Sidebar/>
 
-          <ExploreDiv>
-          <CategoryProps image ={Barber} title = "Barbers" />
+          <ExploreDiv >
+          <CategoryProps image ={Barber} title = "Barbers"  />
           <CategoryProps image ={Bricklayer} title = "Bricklayers" />
           <CategoryProps image ={Carpenter} title = "Carpenters" />
           <CategoryProps image ={Electrician} title = "Electricians" />
@@ -80,10 +75,8 @@ const CategoryDiv = styled.div`
         @media (max-width:420px) {
             font-size: 22px;
         }
-
   }
 `
-
 const ExploreDiv = styled.div`
   max-width: 900px;
   display: flex;

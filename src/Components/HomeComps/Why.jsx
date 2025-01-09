@@ -38,12 +38,17 @@ const Why = () => {
 export default Why;
 
 const WhySection = styled.div`
-     padding: 30px;
+    padding: 30px;
     h2{
         text-align: center;
         font-size: 35px;
         color: #0000ff;
     }
+    @media (max-width:570px) {
+    h2{
+        font-size: 28px;
+    }    
+}
 
 `
 
@@ -73,7 +78,13 @@ const WhyLeft = styled.div`
      width: 350px ;
     }
     @media (max-width:830px) {
-     max-width: 500px ;
+     width: 500px ;
+    }
+    @media (max-width:570px) {
+     width: 400px ;
+    }
+    @media (max-width:470px) {
+     max-width: 310px ;
     }
 `
 const WhyRight = styled.div`
@@ -86,7 +97,13 @@ const WhyRight = styled.div`
      width: 350px ;
     }
     @media (max-width:830px) {
-     max-width: 550px ;
+        width: 500px ;
+    }
+    @media (max-width:570px) {
+     width: 400px ;
+    }
+    @media (max-width:470px) {
+     max-width: 310px ;
     }
 
 `

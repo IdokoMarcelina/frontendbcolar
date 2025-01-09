@@ -12,7 +12,10 @@ import PageTwo from './Pages/PageTwo'
 import Signup from './Pages/Signup'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
+import ForgotPassword from './Pages/ForgotPassword'
+import ResetPassword from './Pages/ResetPassword'
 import FormComponent from './Components/CollaboComponents/FormComponent'
+
 
 function App() {
 
@@ -37,8 +40,10 @@ function App() {
             {/* <Route path="/usersignup" element={< UserSignup />} /> */}
             {/* <Route path="/verification" element={< Verification />} /> */}
             <Route path="/collabo" element={<Collabo/>} />
-            <Route path="/post-gig" element={<FormComponent />} />
 
+            <Route path ="/forgotPassword" element={<ForgotPassword/>}/>
+            <Route path ="/resetPassword" element={<ResetPassword/>}/>
+            <Route path="/post-gig" element={<FormComponent />} />
           </Routes>
         {/* <Footer/> */}
         
