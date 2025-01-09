@@ -14,6 +14,10 @@ import ProductPage from './Pages/ProductPage/ProductPage'
 import UserSignup from './Pages/UserSignup'
 import Verification from './Pages/Verification'
 import SignupFlow from './Pages/SignupFlow'
+import ForgotPassword from './Pages/ForgotPassword'
+import ResetPassword from './Pages/ResetPassword'
+import FormComponent from './Components/CollaboComponents/FormComponent'
+
 
 
 function App() {
@@ -21,14 +25,14 @@ function App() {
   return (
     <>
     {/* <Edit/> */}
-    <Profile/>
+    {/* <Profile/> */}
     {/* <Review/> */}
     {/* <Book/> */}
     {/* <Client/> */}
     <BrowserRouter>
          <Header />
           <Routes>
-            <Route path="/" element={<Home/>} />
+            {/* <Route path="/" element={<Home/>} /> */}
             <Route path="/artisans" element={<Artisans/>} />
             <Route path="/about" element={<About/>} />
             <Route path="/profile" element={<Profile/>} />
@@ -38,8 +42,12 @@ function App() {
             <Route path="/signup" element={<SignupFlow />} />
             <Route path="/usersignup" element={< UserSignup />} />
             <Route path="/verification" element={< Verification />} />
+
             <Route path="/collabo" element={<Collabo/>} />
 
+            <Route path ="/forgotPassword" element={<ForgotPassword/>}/>
+            <Route path ="/resetPassword" element={<ResetPassword/>}/>
+            <Route path="/post-gig" element={<FormComponent />} />
           </Routes>
         {/* <Footer/> */}
         

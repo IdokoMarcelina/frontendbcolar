@@ -20,7 +20,8 @@ export default TestimonialProps;
 
 const TestimonialPropsDiv = styled.div`
     height: 370px;
-    width: 300px;
+    width: 90%;
+    max-width: 300px;
     text-align: center;
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -57,10 +58,14 @@ const TestimonialPropsDiv = styled.div`
             border: 4px solid white;
             margin: auto;
 
-            @media (max-width: 768px) {
+            @media (max-width: 480px) {
                 width: 100px;
                 height: 100px;
             }
         }
     }
+    @media (max-width: 480px) {
+                /* width: 100px; */
+                height: 320px;
+            }
 `;
