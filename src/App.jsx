@@ -20,11 +20,11 @@ function App() {
 
   return (
     <>
-    <Edit/>
+    {/* <Edit/> */}
     <Profile/>
-    <Review/>
-    <Book/>
-    <Client/>
+    {/* <Review/> */}
+    {/* <Book/> */}
+    {/* <Client/> */}
     <BrowserRouter>
          <Header />
           <Routes>

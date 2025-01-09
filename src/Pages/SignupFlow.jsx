@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const SignupFlow = () => {
-    const userType = {user_type: "artisan",}
+   
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,7 +13,7 @@ const SignupFlow = () => {
     password: "",
     confirmPassword: "",
     LGA: "",
-    userType,
+    user_type: "artisan",
     state: "",
     officeAddress: "",
     dateOfBirth: "",
@@ -51,7 +51,7 @@ const SignupFlow = () => {
 
   const handleSubmit = async () => {
     
-   
+    console.log("Data being sent to the backend:", formData);
 
     try {
       const response = await axios.post(
