@@ -11,14 +11,14 @@ import Header from "../Components/Static/Header";
 
 const LandingPage = () => {
   return ( <div>
-    <Header/>
+    
     <Hero/>
     <Category/>
     <Why/>
     <Steps/>
     <Testimonial/>
     <Faq/>
-    <Footer/>
+    
   </div> );
 }
  

@@ -2,6 +2,7 @@ import React from "react";
 import { FaEye } from "react-icons/fa";
 import "./ArtisanSignup.css";
 import signInImg from "../assets/images/signin-img.jpg";
+import { Link } from 'react-router-dom';  // Import Link for routing
 
 const Signup = ({ formData, setFormData, onNext }) => {
   const [click, setClick] = React.useState(true);
@@ -21,7 +22,6 @@ const Signup = ({ formData, setFormData, onNext }) => {
         <form className="form-part">
           <h2>Create Service Account</h2>
 
-          
           <div className="label-tag">
             <label>Fullname</label>
             <input
@@ -100,7 +100,15 @@ const Signup = ({ formData, setFormData, onNext }) => {
           <p>
             Already a member?{" "}
             <span>
-              <a href="/signin">Signin</a>
+              <Link to="/signin">Signin</Link>
+            </span>
+          </p>
+          
+          {/* Link to User Signup Page */}
+          <p>
+            Not an Artisan?{" "}
+            <span>
+              <Link to="/signup-user">Signup as User</Link>
             </span>
           </p>
         </form>
