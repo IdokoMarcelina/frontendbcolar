@@ -1,10 +1,11 @@
+import axios from 'axios';
 import React from 'react'
 import { useState } from "react"
 import signInImg from '../assets/images/signin-img.jpg'
 import { FaEye } from "react-icons/fa";
 import './ArtisanSignup.css'
 import {Link, useNavigate} from 'react-router-dom'
-import axios from 'axios';
+
 
 
 const Siginin = () => {
