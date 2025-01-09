@@ -10,6 +10,7 @@ import Contact from './Pages/Contact'
 import Siginin from './Pages/Siginin'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
+import Chat from './Pages/Chat'
 import ProductPage from './Pages/ProductPage/ProductPage'
 import UserSignup from './Pages/UserSignup'
 import Verification from './Pages/Verification'
@@ -17,6 +18,7 @@ import SignupFlow from './Pages/SignupFlow'
 import ForgotPassword from './Pages/ForgotPassword'
 import ResetPassword from './Pages/ResetPassword'
 import FormComponent from './Components/CollaboComponents/FormComponent'
+
 
 
 
@@ -44,10 +46,12 @@ function App() {
             <Route path="/verification" element={< Verification />} />
 
             <Route path="/collabo" element={<Collabo/>} />
+            <Route path='/Chat' element={<Chat/>} />
 
             <Route path ="/forgotPassword" element={<ForgotPassword/>}/>
             <Route path ="/resetPassword" element={<ResetPassword/>}/>
             <Route path="/post-gig" element={<FormComponent />} />
+
           </Routes>
         {/* <Footer/> */}
         
