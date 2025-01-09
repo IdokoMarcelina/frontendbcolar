@@ -3,7 +3,7 @@ import './App.css'
 import Profile from './Pages/Profile'
 import Header from './Components/Static/Header'
 import Footer from './Components/Static/Footer'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route,RouterProvider} from 'react-router-dom'
 import Home from './Pages/Home'
 import Artisans from './Pages/Artisans'
 import Contact from './Pages/Contact'
@@ -12,16 +12,23 @@ import PageTwo from './Pages/PageTwo'
 import Signup from './Pages/Signup'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
+import Edit from './Components/Edit-profile/Edit'
+import Review from './Components/Review'
+import Book from './Components/Book'
+import Client from './Pages/Client'
+import UserSignup from './Pages/UserSignup'
+import router from "./router"
+
 
 function App() {
 
   return (
     <>
-    <Edit/>
-    <Profile/>
-    <Review/>
+    {/* <Edit/> */}
+    {/* <Profile/> */}
+    {/* <Review/>
     <Book/>
-    <Client/>
+    <Client/> */}
     <BrowserRouter>
          <Header />
           <Routes>
@@ -37,10 +44,10 @@ function App() {
             <Route path="/collabo" element={<Collabo/>} />
 
           </Routes>
-        {/* <Footer/> */}
+        <Footer/>
         
       </BrowserRouter>
-        
+         {/* <RouterProvider router={router} /> */}
     </>
   )
 }
