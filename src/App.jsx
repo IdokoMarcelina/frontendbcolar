@@ -3,13 +3,14 @@ import './App.css'
 import Profile from './Pages/Profile'
 import Header from './Components/Static/Header'
 import Footer from './Components/Static/Footer'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route,RouterProvider} from 'react-router-dom'
 import Home from './Pages/Home'
 import Artisans from './Pages/Artisans'
 import Contact from './Pages/Contact'
 import Siginin from './Pages/Siginin'
 import Collabo from './Pages/Collabo'
 import About from './Pages/About'
+
 import Chat from './Pages/Chat'
 import ProductPage from './Pages/ProductPage/ProductPage'
 import UserSignup from './Pages/UserSignup'
@@ -19,6 +20,12 @@ import ForgotPassword from './Pages/ForgotPassword'
 import ResetPassword from './Pages/ResetPassword'
 import FormComponent from './Components/CollaboComponents/FormComponent'
 
+import Edit from './Components/Edit-profile/Edit'
+import Review from './Components/Review'
+import Book from './Components/Book'
+import Client from './Pages/Client'
+import UserSignup from './Pages/UserSignup'
+import router from "./router"
 
 
 
@@ -28,9 +35,15 @@ function App() {
     <>
     {/* <Edit/> */}
     {/* <Profile/> */}
+
     {/* <Review/> */}
     {/* <Book/> */}
     {/* <Client/> */}
+
+    {/* <Review/>
+    <Book/>
+    <Client/> */}
+
     <BrowserRouter>
          <Header />
           <Routes>
@@ -53,10 +66,10 @@ function App() {
             <Route path="/post-gig" element={<FormComponent />} />
 
           </Routes>
-        {/* <Footer/> */}
+        <Footer/>
         
       </BrowserRouter>
-        
+         {/* <RouterProvider router={router} /> */}
     </>
   )
 }

@@ -1,149 +1,153 @@
-import "./Header.css";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+
+import './Header.css';
+import { useState } from 'react';
+import { Dropdown, Drawer } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isArtisansDropdownOpen, setIsArtisansDropdownOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  const artisanItems = [
+    {
+      key: '1',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          Plumbing Service
+        </a>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          Electrician Service
+        </a>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          HairStyling Service
+        </a>
+      ),
+    },
+    {
+      key: '4',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          Carpentry Service
+        </a>
+      ),
+    },
+    {
+      key: '5',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          Dispatch Service
+        </a>
+      ),
+    },
+    {
+      key: '6',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          Cleaning/Laundry
+        </a>
+      ),
+    },
+    {
+      key: '7',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          Fumigation Service
+        </a>
+      ),
+    },
+  ];
 
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-    setIsArtisansDropdownOpen(false);
-    setActiveCategory(null);
-  };
-
-  const toggleArtisansDropdown = () => {
-    setIsArtisansDropdownOpen(!isArtisansDropdownOpen);
-  };
-
-  const handleCategoryClick = (category) => {
-    setActiveCategory(category === activeCategory ? null : category);
-  };
-
-  const categories = [
-    { name: "Plumbers", jobs: ["Pipe Repair", "Leak Fixing"] },
-    { name: "Electricians", jobs: ["Wiring", "Lighting"] },
-    { name: "Carpenters", jobs: ["Furniture Repair", "Custom Builds"] },
+  const signupItems = [
+    {
+      key: '1',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#signup-user">
+          Signup as User
+        </a>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#signup-artisan">
+          Signup as Artisan
+        </a>
+      ),
+    },
   ];
 
   return (
     <div>
       <header className="header">
-        <div className="logo">{/* Add your logo here */}</div>
+        <div className="logo">
+          <h1>BCOLLAR</h1>
+        </div>
 
-        <nav className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <div
-            className="dropdown desktop-dropdown"
-            onMouseEnter={() => setIsArtisansDropdownOpen(true)}
-            onMouseLeave={() => setIsArtisansDropdownOpen(false)}
-          >
-            <span className="dropdown-title">Artisans</span>
-            {isArtisansDropdownOpen && (
-              <div className="dropdown-menu">
-                {categories.map((category) => (
-                  <div key={category.name}>
-                    <div
-                      className="dropdown-item"
-                      onClick={() => handleCategoryClick(category.name)}
-                    >
-                      {category.name}
-                    </div>
-                    {activeCategory === category.name && (
-                      <div className="nested-dropdown">
-                        {category.jobs.map((job) => (
-                          <div className="nested-dropdown-item" key={job}>
-                            {job}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-          <Link to="/collabo">Collabo</Link>
-          <Link to="/contact">Contact</Link>
+        <nav className="nav-linkw">
+          <Link to ="/">
+          <a>Home</a>
+          </Link>
+          <Link to ="/about">
+          <a>About</a>
+          </Link>
+          <Dropdown menu={{ items: artisanItems }}>
+            <a onClick={(e) => e.preventDefault()}>Services</a>
+          </Dropdown>
+          <Link to="/collabo">
+          <a href="#collabo">Collabo</a>
+          </Link>
+          <Link to ="/contact">
+          <a href="#contact">Contact</a>
+          </Link>
         </nav>
 
         <div className="sign-links">
-          <Link to="/signin">Signin</Link>
+          <Link to="/signin">
+          <a href="#signin">Signin</a>
+          </Link>
           <span className="divider">|</span>
-          <Link to="/usersignup">Signup</Link>
+          <Dropdown menu={{ items: signupItems }}>
+            <a onClick={(e) => e.preventDefault()} className="signup-dropdown">
+              Signup
+            </a>
+          </Dropdown>
         </div>
 
-        <FaBars className="hamburger-icon" onClick={toggleSidebar} />
+        <MenuOutlined className="hamburger-icon" onClick={() => setIsDrawerOpen(true)} />
       </header>
 
-      <nav className={`sidebar ${isSidebarOpen ? "active" : ""}`}>
-        <button className="close-btn" onClick={closeSidebar}>
-          <FaTimes />
-        </button>
-        <Link to="/" onClick={closeSidebar}>
-          Home
-        </Link>
-        <Link to="/about" onClick={closeSidebar}>
-          About
-        </Link>
-        <div className="dropdown">
-          <span
-            className="dropdown-title"
-            onClick={(e) => {
-              e.preventDefault();
-              toggleArtisansDropdown();
-            }}
-          >
-            Artisans
-          </span>
-          {isArtisansDropdownOpen && (
-            <div className="dropdown-menu">
-              {categories.map((category) => (
-                <div key={category.name}>
-                  <div
-                    className="dropdown-item"
-                    onClick={() => handleCategoryClick(category.name)}
-                  >
-                    {category.name}
-                  </div>
-                  {activeCategory === category.name && (
-                    <div className="nested-dropdown">
-                      {category.jobs.map((job) => (
-                        <div
-                          className="nested-dropdown-item"
-                          key={job}
-                          onClick={closeSidebar}
-                        >
-                          {job}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-        <Link to="/contact" onClick={closeSidebar}>
-          Contact
-        </Link>
-        <div className="sign-links">
-          <Link to="/signin" onClick={closeSidebar}>
-            Signin
-          </Link>
-          <span className="divider">|</span>
-          <Link to="/usersignup" onClick={closeSidebar}>
-            Signup
-          </Link>
-        </div>
-      </nav>
+
+      <Drawer
+        title="Menu"
+        placement="right"
+        onClose={() => setIsDrawerOpen(false)}
+        open={isDrawerOpen}
+        closable={true}
+      >
+        <a href="#home" className="drawer-link">Home</a>
+        <a href="#about" className="drawer-link">About</a>
+        <Dropdown menu={{ items: artisanItems }}>
+          <a onClick={(e) => e.preventDefault()} className="drawer-link">Artisans</a>
+        </Dropdown>
+        <a href="#collabo" className="drawer-link">Collabo</a>
+        <a href="#contact" className="drawer-link">Contact</a>
+        <hr />
+        <a href="#signin" className="drawer-link">Signin</a>
+        <Dropdown menu={{ items: signupItems }}>
+          <a onClick={(e) => e.preventDefault()} className="drawer-link">Signup</a>
+        </Dropdown>
+      </Drawer>
+
     </div>
   );
 };
