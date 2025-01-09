@@ -8,7 +8,7 @@ const AppContainer = styled.div`
     height: 100vh;
 
     @media (max-width: 768px) {
-        display: block; /* Stack the layout for mobile view */
+        display: block;
     }
 `;
 
@@ -34,26 +34,24 @@ const ChatAreaContainer = styled.div`
 `;
 
 const Chat = () => {
-    const [selectedChat, setSelectedChat] = useState(null); // Store the selected chat
-    const [showChatArea, setShowChatArea] = useState(false); // Control visibility of chat area on mobile
+    const [selectedChat, setSelectedChat] = useState(null); 
+    const [showChatArea, setShowChatArea] = useState(false); 
 
     const handleChatClick = (chat) => {
         setSelectedChat(chat);
-        setShowChatArea(true); // Show chat area on mobile
+        setShowChatArea(true); 
     };
 
     return (
         <AppContainer>
-            {/* Chat List */}
             <ChatListContainer show={!showChatArea}>
                 <ChatList onChatClick={handleChatClick} />
             </ChatListContainer>
 
-            {/* Chat Area */}
             <ChatAreaContainer show={showChatArea || selectedChat}>
                 <ChatArea
                     selectedChat={selectedChat}
-                    setShowChatArea={setShowChatArea} // To allow toggling back to chat list
+                    setShowChatArea={setShowChatArea} 
                 />
             </ChatAreaContainer>
         </AppContainer>
