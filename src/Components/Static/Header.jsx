@@ -1,12 +1,10 @@
-
 import "./Header.css";
-// import Bimage from "../assets/images/Bcolar.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const Header = () => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isArtisansDropdownOpen, setIsArtisansDropdownOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
 
@@ -29,45 +27,25 @@ const Header = () => {
   };
 
   const categories = [
-    {
-      name: "Plumbers"
-     
-    },
-    {
-      name: "Electricians"
-      
-    },
-    {
-      name: "Carpenters"
-      
-    },
+    { name: "Plumbers", jobs: ["Pipe Repair", "Leak Fixing"] },
+    { name: "Electricians", jobs: ["Wiring", "Lighting"] },
+    { name: "Carpenters", jobs: ["Furniture Repair", "Custom Builds"] },
   ];
+
   return (
     <div>
+      <header className="header">
+        <div className="logo">{/* Add your logo here */}</div>
 
-<header className="header">
-        <div className="logo">
-          {/* <img src={Bimage} alt="Logo" /> */}
-        </div>
-
-       
         <nav className="nav-links">
-          <Link to="/">
-          <a href="#home">Home</a>
-          </Link>
-          <Link to="about">
-          <a href="#about">About</a>
-          </Link>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
           <div
             className="dropdown desktop-dropdown"
             onMouseEnter={() => setIsArtisansDropdownOpen(true)}
             onMouseLeave={() => setIsArtisansDropdownOpen(false)}
           >
-            <Link to="artisans" >
-            <a href="#artisans">Artisans
-              <img src="" alt="" />
-            </a>
-            </Link>
+            <span className="dropdown-title">Artisans</span>
             {isArtisansDropdownOpen && (
               <div className="dropdown-menu">
                 {categories.map((category) => (
@@ -81,10 +59,7 @@ const Header = () => {
                     {activeCategory === category.name && (
                       <div className="nested-dropdown">
                         {category.jobs.map((job) => (
-                          <div
-                            className="nested-dropdown-item"
-                            key={job}
-                          >
+                          <div className="nested-dropdown-item" key={job}>
                             {job}
                           </div>
                         ))}
@@ -95,56 +70,39 @@ const Header = () => {
               </div>
             )}
           </div>
-          <Link to="collabo">
-          <a href="#about">Collabo</a>
-          </Link>
-          <Link to="contact">
-          <a href="#contact">Contact</a>
-          </Link>
+          <Link to="/collabo">Collabo</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
 
-       
         <div className="sign-links">
-        <Link to="signin">
-          <a href="#signin">Signin</a>
-          </Link>
+          <Link to="/signin">Signin</Link>
           <span className="divider">|</span>
-          <Link to="signup">
-          <a href="#signup">Signup</a>
-          </Link>
+          <Link to="/usersignup">Signup</Link>
         </div>
 
-        
         <FaBars className="hamburger-icon" onClick={toggleSidebar} />
       </header>
 
-      
       <nav className={`sidebar ${isSidebarOpen ? "active" : ""}`}>
         <button className="close-btn" onClick={closeSidebar}>
           <FaTimes />
         </button>
-        <Link to="/">
-        <a href="#home" onClick={closeSidebar}>
+        <Link to="/" onClick={closeSidebar}>
           Home
-        </a>
         </Link>
-        <Link to="about">
-        <a href="#about" onClick={closeSidebar}>
+        <Link to="/about" onClick={closeSidebar}>
           About
-        </a>
         </Link>
         <div className="dropdown">
-        <Link></Link>
-          <a
-            href="#artisans"
+          <span
+            className="dropdown-title"
             onClick={(e) => {
               e.preventDefault();
               toggleArtisansDropdown();
             }}
           >
             Artisans
-            <img src="" alt="" />
-          </a>
+          </span>
           {isArtisansDropdownOpen && (
             <div className="dropdown-menu">
               {categories.map((category) => (
@@ -173,22 +131,21 @@ const Header = () => {
             </div>
           )}
         </div>
-        <Link></Link>
-        <a href="#contact" onClick={closeSidebar}>
+        <Link to="/contact" onClick={closeSidebar}>
           Contact
-        </a>
+        </Link>
         <div className="sign-links">
-          <a href="#signin" onClick={closeSidebar}>
+          <Link to="/signin" onClick={closeSidebar}>
             Signin
-          </a>
+          </Link>
           <span className="divider">|</span>
-          <a href="#signup" onClick={closeSidebar}>
+          <Link to="/usersignup" onClick={closeSidebar}>
             Signup
-          </a>
+          </Link>
         </div>
-      </nav> 
+      </nav>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

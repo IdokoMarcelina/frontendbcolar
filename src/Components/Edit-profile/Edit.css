@@ -1,0 +1,172 @@
+/* General Styles */
+.info {
+    background-color: #ffffff; 
+    border-radius: 0.75rem; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem; 
+    margin-bottom: 1.5rem; 
+  }
+  
+  /* Header Styles */
+  .back {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 1rem; 
+  }
+  
+  .title {
+    font-size: 1.25rem; 
+    font-weight: 600; 
+    color: #374151; 
+    margin: 0; 
+  }
+  
+  .icon {
+    background: none;
+    border: none;
+    color: #3b82f6; 
+    font-size: 0.875rem; 
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .icon span {
+    margin-left: 0.5rem; 
+    font-size: 0.875rem; 
+  }
+  
+  /* Fields Section */
+  .index {
+    display: grid;
+    gap: 1rem; 
+  }
+  
+  @media (min-width: 768px) {
+    .index {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+  }
+  
+  .field {
+    font-size: 0.875rem; 
+    font-weight: 500; 
+    color: #6b7280; 
+    margin: 0; 
+  }
+  
+  .value {
+    font-size: 1rem; 
+    font-weight: 600; 
+    color: #374151; 
+    margin: 0.25rem 0 0; 
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .info {
+      padding: 1rem; 
+    }
+  
+    .title {
+      font-size: 1rem; 
+    }
+  
+    .icon {
+      font-size: 0.875rem; 
+    }
+  }
+  
+
+  /* Profile Card Container */
+.prof {
+  background-color: #ffffff; 
+  border-radius: 0.75rem; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 1.5rem; 
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  margin-bottom: 1.5rem; 
+}
+
+/* Card Content */
+.cad {
+  display: flex;
+  align-items: center; 
+  gap: 1rem; 
+}
+
+/* Profile Image */
+.detail {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; 
+  object-fit: cover; 
+}
+
+/* Profile Text */
+.name {
+  font-size: 1.25rem; 
+  font-weight: 600; 
+  color: #374151; 
+  margin: 0; 
+}
+
+.team {
+  font-size: 1rem; 
+  color: #6b7280; 
+  margin: 0.25rem 0; 
+}
+
+.location {
+  font-size: 0.875rem;
+  color: #9ca3af; 
+  margin: 0; 
+}
+
+/* Edit Button */
+.icn {
+  background: none;
+  border: none;
+  color: #3b82f6; 
+  font-size: 0.875rem; 
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icn span {
+  margin-left: 0.5rem; 
+  font-size: 0.875rem; 
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .prof {
+    flex-direction: column; 
+    align-items: flex-start; 
+    padding: 1rem; 
+  }
+
+  .cad {
+    flex-direction: column; 
+    align-items: center; 
+    gap: 0.5rem; 
+  }
+
+  .icn {
+    align-self: flex-end; 
+    margin-top: 1rem; 
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .team,
+  .location {
+    font-size: 0.875rem;
+  }
+}
