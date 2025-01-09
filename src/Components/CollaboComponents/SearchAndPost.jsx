@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { FaPlusCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
 
 function SearchAndPost() {
   return (
@@ -18,11 +20,13 @@ function SearchAndPost() {
           <input type="text" placeholder="Search..." />
         </SEARCH>
 
-        <POSTBUTTON>
-          
+        <Link to="/post-gig">
+          <POSTBUTTON>
             <FaPlusCircle className="icon" />
             <p>Post Gig</p>
-        </POSTBUTTON>
+          </POSTBUTTON>
+        </Link>
+        
       </WRAPPER>
     </SECTION>
   );
@@ -31,61 +35,64 @@ function SearchAndPost() {
 export default SearchAndPost;
 
 const SECTION = styled.div`
-  background-color: #0000ff; /* Blue background */
-  color: white; /* White text */
+  background-color: gainsboro; 
+  color: #0000ff; 
   padding-top: 100px;
   padding-left: 20px;
   padding-right: 20px;
   text-align: center;
-  height: 40vh;
+  height: 50vh;
 
   p {
-    margin: 0 0 20px; /* Add spacing below the text */
+    margin: 0 0 20px; 
     font-size: 18px;
     font-weight: 500;
     line-height: 1.5;
   }
 
+  
   @media (max-width: 768px) {
-    padding:50 20px;
-    height: 26vh;
+    padding:90px 20px;
+    height: 50vh;
 
     p {
       font-size: 16px;
     }
   }
 `;
+  
 
 const WRAPPER = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  width: 100%;
+  flex-wrap: wrap; 
 
   @media (max-width: 768px) {
     
-    flex-direction: row; /* Keep items in a row on smaller screens */
-    gap: 5px; /* Reduce gap between items */
+    flex-direction: row; 
+    gap: 5px; 
   }
 `;
 
 const SEARCH = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 5px;
   padding: 5px 10px;
   border-radius: 7px;
   border: 1px solid #ddd;
   max-width: 600px;
-  flex-grow: 1; /* Allow the search bar to take available space */
-  height: 70px; /* Set fixed height */
-  width: 100%; /* Ensure full width on smaller screens */
-  background-color: white; /* White background */
-  color: #000; /* Black text for input */
+  flex-grow: 1; 
+  height: 70px; 
+  width: 100%; 
+  background-color: white; 
+  color: #000; 
 
   .icon {
-    font-size: 24px; /* Increase icon size */
+    font-size: 24px; 
     margin-right: 10px;
     color: #888;
   }
@@ -94,10 +101,15 @@ const SEARCH = styled.div`
     border: none;
     outline: none;
     width: 100%;
-    height: 100%; /* Match the height */
+    height: 100%; 
     background: none;
-    color: #000; /* Black text inside input */
-    font-size: 16px; /* Font size for input */
+    color: #000; 
+    font-size: 16px; 
+  }
+
+  @media (max-width: 1300px) {
+    max-width: 500px; 
+    height: 60px;    
   }
 
   @media (max-width: 768px) {
@@ -110,7 +122,12 @@ const SEARCH = styled.div`
 
 const TEXT = styled.div`
   margin-bottom: 20px;
-  color: gainsboro;
+  color: #1212bb;
+
+  p{
+  font-size: 25px;
+
+  }
 
   @media (max-width: 768px) {
     margin: auto;
@@ -124,27 +141,42 @@ const POSTBUTTON = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0; /* Remove any gap */
-  padding: 10px;
-  margin-top: 40px;
-  background-color: #0505e9;
+  gap: 0; 
+  padding: 5px;
+  margin-top: 5px;
+  background-color: #1313aa;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 
   .icon {
-    font-size: 40px; /* Icon size */
+    font-size: 30px; 
   }
 
   p {
-    font-size: 18px; /* Smaller size for the text */
-    margin: 0; /* Remove margin around text */
+    font-size: 18px; 
+    margin: 0; 
   }
 
   &:hover {
-    background-color: #4444ff; /* Slightly lighter blue on hover */
+    background-color: #4444ff; 
   }
+
+
+  @media (max-width: 1300px) {
+    width: 120px; 
+    height: 50px; 
+
+    .icon {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
 
   @media (max-width: 768px) {
     display: flex;
@@ -154,11 +186,11 @@ const POSTBUTTON = styled.div`
     margin: auto;
 
     .icon {
-      font-size: 15px; /* Adjust icon size for smaller screens */
+      font-size: 15px; 
     }
 
     p {
-      font-size: 10px; /* Adjust text size for smaller screens */
+      font-size: 10px; 
     }
   }
 `;

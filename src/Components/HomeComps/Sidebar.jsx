@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { CiSearch } from "react-icons/ci";
 const Sidebar = () => {
     return ( <SidebarDiv>
 
     <CategorySearch>
 
-    <input type="search"  placeholder={`${<CiSearch />} Search` } />
+    <input type="search"  placeholder= "Search"/>
 
         <li>Barbers</li>
         <li>Bricklayers</li>

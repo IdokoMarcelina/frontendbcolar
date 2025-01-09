@@ -1,102 +1,152 @@
-import React from 'react'
-import './ArtisanSignup.css'
-import { useState } from "react"
-import signInImg from '../assets/images/signin-img.jpg'
-import './ArtisanSignup.css'
-import {Link} from 'react-router-dom'
-const PageTwo = ()=>{
+import React from "react";
+import "./ArtisanSignup.css";
+import signInImg from "../assets/images/signin-img.jpg";
+import { useNavigate } from "react-router-dom";
 
-    const [gender, setGender] = useState('');
+const PageTwo = ({ formData, setFormData, onSubmit, onBack }) => {
+  const navigate = useNavigate(); // For navigation
 
-  const handleGenderChange = (e) => {
-    setGender(e.target.value);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-    return(
-        <>
-           <div className="sign-Container">
-            <div className="sign-Wrapper">
-            
-            <form className='form-part'>
-                <h2>Create Service Account</h2>
-    
-                    <section className='name-section'>
-                       <div className='label-tag'>
-                       <label>State</label>
-                        <input type="text" id='nameInput' />
-                       </div>
-    
-                       <div className='label-tag'>
-                       <label >Region/LGA</label>
-                        <input type="text" id='nameInput' />
-                       </div>
-                    </section>
-                    
-                    <div className='label-tag'>
-                       <label>Office Address</label>
-                        <input type="text" />
-                    </div>
+  return (
+    <div className="sign-Container">
+      <div className="sign-Wrapper">
+        <form className="form-part" onSubmit={(e) => e.preventDefault()}>
+          <h2>Create Service Account</h2>
 
-                <div className='label-tag' >
-                    <label>Skill</label>
-                    <input type="text" list='options' placeholder="Your Skill"/>
-                     <datalist id='options'>
-                       <option value="Plumber"></option>
-                       <option value="Carpenter"></option>
-                       <option value="Electrician"></option>
-                       <option value="Painter"></option>
-                     </datalist>
-               </div>
+          <section className="name-section">
+            <div className="label-tag">
+              <label>State</label>
+              <input
+                type="text"
+                id="nameInput"
+                name="state"
+                value={formData.state || ""}
+                onChange={handleInputChange}
+                placeholder="State"
+                required
+              />
+            </div>
 
-               <section className='name-section'>
-                       <div className='label-tag'>
-                       <label>Date of Birth</label>
-                        <input type="date" id='nameInput' />
-                       </div>
-    
-                       <div className='label-tag'>
-                       <label >Gender</label>
-                       <select value={gender} onChange={handleGenderChange}  >
-                         <option value="">Select a gender</option>
-                         <option value="male">Male</option>
-                         <option value="female">Female</option>
-                         <option value="other">Other</option>
-                       </select>
+            <div className="label-tag">
+              <label>LGA</label>
+              <input
+                type="text"
+                id="nameInput"
+                name="LGA"
+                value={formData.LGA || ""}
+                onChange={handleInputChange}
+                placeholder="LGA"
+                required
+              />
+            </div>
+          </section>
 
-                       </div>
-                </section>
+          <div className="label-tag">
+            <label>Office Address</label>
+            <input
+              type="text"
+              name="officeAddress"
+              value={formData.officeAddress || ""}
+              onChange={handleInputChange}
+              placeholder="Office Address"
+              required
+            />
+          </div>
 
-                <div className='label-tag'>
-                       <label>ID Card</label>
-                       <nav id='upload-id'>
-                       <input type="file" accept="image/*" name= "image"/>
-                       </nav>
-                       
-                    </div>
-                
-    
-    
-                    <button>Create Account</button>
-    
-                    <p>Already a member? <span>
-                      <Link to="signin">
-                       <a href="/signin">Signin</a>
-                    </Link>
-                    </span> 
-                    </p>
-                </form>
-    
-                <div className='img-part'>
-                    <div className="img-text">
-                        <h1>Welcome to Blue Collar</h1>
-                        <h4>Easily connect with verified local artisans for your services</h4>
-                    </div>
-                        <  img src={signInImg} alt=""   id='page-twoImg' />
-                </div>
-    
-           </div>
-           </div>
-        </>
-    )
-}
-export default PageTwo
+          <div className="label-tag">
+            <label>Skill</label>
+            <input
+              type="text"
+              list="options"
+              name="skill"
+              value={formData.skill || ""}
+              onChange={handleInputChange}
+              placeholder="Your Skill"
+              required
+            />
+            <datalist id="options">
+              <option value="Plumber"></option>
+              <option value="Carpenter"></option>
+              <option value="Electrician"></option>
+              <option value="Painter"></option>
+            </datalist>
+          </div>
+
+          <section className="name-section">
+            <div className="label-tag">
+              <label>Date of Birth</label>
+              <input
+                type="date"
+                id="nameInput"
+                name="dateOfBirth"
+                value={formData.dateOfBirth || ""}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            <div className="label-tag">
+              <label>Gender</label>
+              <select
+                name="gender"
+                value={formData.gender || ""}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Select a gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </section>
+
+          <div className="label-tag">
+            <label>ID Card</label>
+            <nav id="upload-id">
+              <input
+                type="file"
+                accept="image/*"
+                name="idCard"
+                onChange={(e) =>
+                  setFormData({ ...formData, idCard: e.target.files[0] })
+                }
+                required
+              />
+            </nav>
+          </div>
+
+          <div className="button-group">
+            <button type="button" onClick={onBack}>
+              Back
+            </button>
+            <button type="button" onClick={onSubmit}>
+              Create Account
+            </button>
+          </div>
+
+          <p>
+            Already a member?{" "}
+            <span>
+              <a href="/signin">Signin</a>
+            </span>
+          </p>
+        </form>
+
+        <div className="img-part">
+          <div className="img-text">
+            <h1>Welcome to Blue Collar</h1>
+            <h4>Easily connect with verified local artisans for your services</h4>
+          </div>
+          <img src={signInImg} alt="" id="page-twoImg" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PageTwo;

@@ -1,132 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import painterOne from '../../assets/images/painterOne.jpg'
-import carpenterTwo from '../../assets/images/carpenterTwo.jpg'
-import chef from '../../assets/images/chef.jpg'
-import cooking from '../../assets/images/cooking.jpg'
-import fineArtist from '../../assets/images/fineArtist.jpg'
-import tailor from '../../assets/images/tailor.jpg'
-import furniture from '../../assets/images/furniture.jpg'
-import construction from '../../assets/images/construction.jpg'
+import axios from 'axios';
+
 function CardCollabo() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      try {
+        const token = localStorage.getItem('authToken'); 
+
+        if (!token) {
+          console.error('No token found. Please log in.');
+          setLoading(false);
+          return;
+        }
+
+        const response = await axios.get('https://backend-bcolar.onrender.com/api/collabo/getAllCollabo', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const postsWithState = response.data.map(post => ({
+          ...post,
+          isApplied: false,
+        }));
+        setPosts(postsWithState);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  const handleApplyClick = (id) => {
+    setPosts(posts.map((post) =>
+      post._id === id ? { ...post, isApplied: !post.isApplied } : post
+    ));
+  };
+
   return (
     <div>
-      <WRAPPER>
-        <COLLABOCARD>
-        <IMAGE>
-        <img src={painterOne} alt="" />
-
-        </IMAGE>
-            
-            <TEXT>
-
-                <p> <span><b>Description:</b></span> A painting gig for 
-                a 5-bedroom duplex. </p>
-
-                <div><span><b>Requirement:</b></span> Proficient in painting, design-creation.</div>
-            
-            </TEXT>
-
-          <button >Apply</button>
-        </COLLABOCARD>
-
-
-        <COLLABOCARD>
-        <IMAGE>
-        <img src={chef} alt="" />
-
-        </IMAGE>
-            
-            
-            <TEXT>
-
-                <p> <span><b>Description:</b></span> A painting gig for 
-                a 5-bedroom duplex. </p>
-
-                <div><span><b>Requirement:</b></span> Proficient in painting, design-creation.</div>
-            
-            </TEXT>
-
-          <button >Apply</button>
-        </COLLABOCARD>
-        <COLLABOCARD>
-        <IMAGE>
-        <img src={tailor} alt="" />
-
-        </IMAGE>
-            
-            
-            <TEXT>
-
-                <p> <span><b>Description:</b></span> A painting gig for 
-                a 5-bedroom duplex. </p>
-
-                <div><span><b>Requirement:</b></span> Proficient in painting, design-creation.</div>
-            
-            </TEXT>
-
-          <button >Apply</button>
-        </COLLABOCARD>
-      </WRAPPER>
-
-
-      <WRAPPER>
-        <COLLABOCARD>
-        <IMAGE>
-        <img src={carpenterTwo} alt="" />
-
-        </IMAGE>
-            
-            <TEXT>
-
-                <p> <span><b>Description:</b></span> A painting gig for 
-                a 5-bedroom duplex. </p>
-
-                <div><span><b>Requirement:</b></span> Proficient in painting, design-creation.</div>
-            
-            </TEXT>
-
-          <button >Apply</button>
-        </COLLABOCARD>
-
-
-        <COLLABOCARD>
-        <IMAGE>
-        <img src={fineArtist} alt="" />
-
-        </IMAGE>
-            
-            
-            <TEXT>
-
-                <p> <span><b>Description:</b></span> A painting gig for 
-                a 5-bedroom duplex. </p>
-
-                <div><span><b>Requirement:</b></span> Proficient in painting, design-creation.</div>
-            
-            </TEXT>
-
-          <button >Apply</button>
-        </COLLABOCARD>
-        <COLLABOCARD>
-        <IMAGE>
-        <img src={cooking} alt="" />
-
-        </IMAGE>
-            
-            
-            <TEXT>
-
-                <p> <span><b>Description:</b></span> A painting gig for 
-                a 5-bedroom duplex. </p>
-
-                <div><span><b>Requirement:</b></span> Proficient in painting, design-creation.</div>
-            
-            </TEXT>
-
-          <button >Apply</button>
-        </COLLABOCARD>
-      </WRAPPER>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        posts.length === 0 ? (
+          <p>No collaborations available. Please check back later!</p>
+        ) : (
+          <WRAPPER>
+            {posts.map((post) => (
+              <COLLABOCARD key={post._id}>
+                <IMAGE>
+                  <img src={post.collaboPic || 'default-placeholder.png'} alt={`Post ${post._id}`} />
+                </IMAGE>
+                <TEXT>
+                  <p><strong>Category:</strong> {post.category}</p>
+                  <p><strong>Description:</strong> {post.description}</p>
+                  <div><strong>Requirement:</strong> {post.requirements}</div>
+                </TEXT>
+                <button onClick={() => handleApplyClick(post._id)}>
+                  {post.isApplied ? 'Applied' : 'Apply'}
+                </button>
+              </COLLABOCARD>
+            ))}
+          </WRAPPER>
+        )
+      )}
     </div>
   );
 }
@@ -136,80 +81,90 @@ export default CardCollabo;
 const COLLABOCARD = styled.div`
   height: fit-content;
   max-width: 400px;
-  background-color: gainsboro;
-  margin-top: 20px;  
+  background-color: white;
+  margin-top: 20px;
   border: 1px solid gainsboro;
   border-radius: 9px;
 
-  
-
-  button{
+  button {
     background-color: #0000ff;
     border: 1px solid #0000ff;
     border-radius: 10px;
     height: 35px;
     color: white;
     width: 350px;
-   margin: 10px 20px;
+    margin: 10px 20px;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: #0000aa;
+    }
   }
 
- 
-
+  @media (max-width: 1300px) {
+    max-width: 350px; 
+    button {
+      width: 300px; 
+      margin: 10px auto; 
+    }
+  }
   @media (max-width: 768px) {
-    max-width: 100%; /* Take full width on smaller screens */
+    max-width: 90%;
     margin-top: 20px;
-    padding: 0px;
 
-    button{
-        width: 280px;
-         margin: 25px  10px 15px ;
-
+    button {
+      width: 90%;
+      margin: 25px 10px 15px;
     }
   }
 `;
 
 const WRAPPER = styled.div`
-  display: flex;
-  flex-direction: row; /* Horizontal layout by default */
-  gap: 10px;
-  justify-content: space-between; /* Center the cards */
+  display: grid;
+  margin-top: 2px;
+  background-color: gainsboro;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; 
+  justify-items: center;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   @media (max-width: 768px) {
-    flex-direction: column; /* Stack cards vertically on smaller screens */
-    gap: 1rem; /* Adjust gap for smaller screens */
+    grid-template-columns: 1fr; 
   }
 `;
+
 const TEXT = styled.div`
-width: 350px;
-text-align: justify;
-padding: 0 20px;
+  width: 350px;
+  text-align: justify;
+  padding: 0 20px;
 
   @media (max-width: 768px) {
-    width: 250px;
-    
+    width: 100%;
   }
 `;
+
 const IMAGE = styled.div`
-  width: 100%; /* Full width of the parent container */
-  height: 300px; /* Fixed height for uniformity */
+  width: 100%;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Crop any overflowing image parts */
+  overflow: hidden;
 
   img {
-    width: 100%; /* Cover full width of the div */
-    height: 100%; /* Cover full height of the div */
-    object-fit: cover; /* Ensure the image covers the div while maintaining aspect ratio */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   @media (max-width: 768px) {
-    height: 100%; /* Allow the image to expand and cover the full height of the div */
+    height: 100%;
 
     img {
-      object-fit: fill; /* Stretch to fully cover the container on smaller screens */
+      object-fit: fill;
     }
   }
 `;
-
-
