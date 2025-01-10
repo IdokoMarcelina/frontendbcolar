@@ -52,7 +52,7 @@ function App() {
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/artisandashboard" element={<Profile />} />
           <Route path="/admin" element={<Dashboard />} />
-          {/* <Route path="/userdashboard" element={<GrDashboard />} /> */}
+          <Route path="/userdashboard" element={<GrDashboard />} />
         </Routes>
         <Footer />
       </BrowserRouter>
