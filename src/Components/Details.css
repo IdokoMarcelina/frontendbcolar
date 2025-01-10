@@ -1,8 +1,8 @@
-.Container{
-    width: 22%;
+.Contain{
+    width: 20%;
     /* border: 1px solid black; */
 }
-@media (max-width: 768px) {
+@media (max-width: 868px) {
     .Container {
       width: 90%;
       /* align-items: center;
@@ -12,7 +12,7 @@
   }
 @media (max-width: 480px) {
     .Container {
-      width: 95%;
+      width: 90%;
       /* align-items: center;
       justify-content: center; */
       margin: auto;
@@ -21,11 +21,17 @@
 .Profile{
     border: 3px solid rgb(243, 241, 241);
     border-radius: 1rem;
-    height: 60%;
+    height: 40%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 90px;
+
 }
 .Profile h2{
     font-size: 1.3rem;
     font-weight: 500;
+    text-align: center;
+    margin-left: -100px;
 }
 .Profile img{
     width: 150px;
@@ -67,20 +73,24 @@ color: #599372;
    
 
 }
-@media (max-width: 768px) {
+@media (max-width: 868px) {
   .Profile h2{
     font-size: 0.9rem;
     font-weight: 500;
+    text-align: center;
+    margin-left: 1%;
 }
 .Profile img{
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    margin-left: 10px;
   
 }
-.Profile h3{
-   font-size: 0.9rem;
-   font-weight: 400;
+.Profile{
+ 
+  padding-left: 10px;
+  height: 30%;
 }
 .Profile p{
    font-size: 1rem;
@@ -106,12 +116,22 @@ align-items: center;
 }
 }
 @media (max-width: 480px) {
-  .Container {
+  .Contain {
     width: 95%;
     /* align-items: center;
     justify-content: center; */
     margin: auto;
   }
+  .Profile{
+ 
+    padding-left: 100px;
+  }
+  .Profile h2{
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    margin-left: -100px;
+}
 }
 
 /* contact */

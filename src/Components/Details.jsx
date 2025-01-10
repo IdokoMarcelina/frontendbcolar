@@ -2,6 +2,8 @@ import React,{ useState, useEffect } from 'react'
 import face from '../assets/images/face.jpg'
 // import ChangingProgressProvider from "./ChangingProgressProvider";
 import './Details.css'
+import Circularprogress from './Circularprogress';
+import CircularProgress from './progressprovider/CircularProgress';
 
 
 const percentage = 66;
@@ -9,7 +11,7 @@ const Details = () => {
   
  
   return (
-    <div className='Container'>
+    <div className='Contain'>
        <div className='Profile'>
         <h2>Profile information</h2>
         <img src={face} alt="" />
@@ -19,17 +21,8 @@ const Details = () => {
             {/* <li><img src={} alt="" /></li> */}
         </ul>
         <p>Member since 2024</p>
-        <p>Active 5mins ago</p>
-        {/* <div style={{ padding: "40px 40px 40px 40px" }}>  <div label="Default">
-      <CircularProgressbar value={percentage} text={`${percentage}%`} />
-    </div>
-    <div label="Stroke width">
-      <CircularProgressbar
-        value={percentage}
-        text={`${percentage}%`}
-        strokeWidth={5}
-      />
-    </div></div> */}
+        {/* <CircularProgress/> */}
+       
 
        </div>
 
