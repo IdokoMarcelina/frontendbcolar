@@ -4,6 +4,44 @@ import './Clients.css'
 import Userend from '../Components/Userend'
 
 const Client = () => {
+
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const fetchUser = async () => {
+    const url = "http://localhost:3300/api/profile/getuser"; // 
+
+    try {
+      const response = await fetch(url, {
+        method: "GET", 
+        headers: {
+          Authorization:  `Bearer ${{vault:authorization-secret}}`, 
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+
+      const userData = await response.json();
+      setUser(userData);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+
   return (
     <div>
         <div className='profile'>
