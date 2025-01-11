@@ -9,7 +9,7 @@ const AdminContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 50px;
 `;
 
 const SECTIONONE = styled.section`
@@ -19,7 +19,17 @@ const SECTIONONE = styled.section`
 
 const SECTIONTWO = styled.section`
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
+  margin-right: 95px;
+  margin-top: 30px;
+  /* gap: 30px; */
+
+  @media (max-width: 1300px) {
+    flex-direction: column; 
+  }
+  @media (max-width: 768px) {
+    flex-direction: column; 
+  }
 `;
 
 const SECTIONTHREE = styled.section`
@@ -42,9 +52,11 @@ function Main() {
         <Applications />
       </SECTIONTHREE>
 
-      {/* <Link to="/admin">Go to Admin Settings</Link> */}
     </AdminContainer>
   );
 }
 
 export default Main;
+
+
+
