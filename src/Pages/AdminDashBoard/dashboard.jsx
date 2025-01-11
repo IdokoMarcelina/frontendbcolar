@@ -28,7 +28,6 @@ function Dashboard() {
 
 export default Dashboard;
 
-// Styled Components
 
 const AdminDashboard = styled.div`
   display: flex;

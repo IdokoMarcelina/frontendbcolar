@@ -1,8 +1,7 @@
 import './App.css';
-import Profile from './Pages/Profile';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './Components/Static/Header';
 import Footer from './Components/Static/Footer';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import Artisans from './Pages/Artisans';
 import Contact from './Pages/Contact';
@@ -17,22 +16,32 @@ import SignupFlow from './Pages/SignupFlow';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
 import FormComponent from './Components/CollaboComponents/FormComponent';
-
-import Edit from './Components/Edit-profile/Edit';
-import Review from './Components/Review';
-import Book from './Components/Book';
-import Client from './Pages/Client';
-import { GrDashboard } from 'react-icons/gr';
-import Main from './Pages/AdminDashBoard/Main';
+import Profile from './Pages/Profile';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
+import ProfileCard from './Components/admindash/ProfileCard';
+
+const Layout = ({ children }) => {
+  const location = useLocation();
+
+  const hiddenRoutes = ['/admin', '/artisandashboard', '/userdashboard'];
+
+  const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
+
+  return (
+    <>
+      {!hideHeaderFooter && <Header />}
+      {children}
+      {!hideHeaderFooter && <Footer />}
+    </>
+  );
+};
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Header />
+    <BrowserRouter>
+      <Layout>
         <Routes>
-          {/* Public Routes */}
+
           <Route path="/" element={<Home />} />
           <Route path="/artisans" element={<Artisans />} />
           <Route path="/about" element={<About />} />
@@ -40,23 +49,25 @@ function App() {
           <Route path="/productpage" element={<ProductPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<Siginin />} />
-          <Route path="/signup-artisan" element={<SignupFlow />} /> {/* Generic signup route */}
-          <Route path="/signup-user" element={<UserSignup />} /> {/* User-specific signup */}
+          <Route path="/signup-artisan" element={<SignupFlow />} />
+          <Route path="/signup-user" element={<UserSignup />} />
           <Route path="/verification" element={<Verification />} />
 
-          {/* Other Routes */}
+
           <Route path="/collabo" element={<Collabo />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
+          <Route path="/admin-profile-edit" element={<ProfileCard />} />
+
+
           <Route path="/artisandashboard" element={<Profile />} />
           <Route path="/admin" element={<Dashboard />} />
-          <Route path="/userdashboard" element={<GrDashboard />} />
+          <Route path="/userdashboard" element={<Profile />} />
         </Routes>
-        <Footer />
-      </BrowserRouter>
-    </>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
