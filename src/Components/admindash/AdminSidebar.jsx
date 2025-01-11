@@ -32,25 +32,30 @@ function AdminSidebar() {
     </AvatarContainer>
     </div>
 
-      <hr />
-
+    <div className="line">
+    <hr />
       
-        <li><MdDashboard className="icons" /> Dashboard</li>
+    </div>
+
+      <div className="part-two">
+
+      <li><MdDashboard className="icons" /> Dashboard</li>
     
 
       
-        <li><FaUserAlt className="icons" /> User</li>
-        <li><FaUserSecret className="icons" /> Artisan</li>
-        <li><MdOutlineShoppingBasket className="icons" /> Ratings and Review</li>
+    <li><FaUserAlt className="icons" /> User</li>
+    <li><FaUserSecret className="icons" /> Artisan</li>
+    <li><MdOutlineShoppingBasket className="icons" /> Ratings and Review</li>
+  
+
+    <li><IoIosNotificationsOutline className="icons" /> Notifications</li>
+    <li><FaEnvelope className="icons" /> Messages</li>
+
+
+      </div>
       
 
-        <li><IoIosNotificationsOutline className="icons" /> Notifications</li>
-        <li><FaEnvelope className="icons" /> Messages</li>
-        <li><TbLogs className="icons" /> Reports</li>
   
-
-  
-        <li><IoSettings className="icons" /> Settings</li>
     
 
     
@@ -64,7 +69,6 @@ function AdminSidebar() {
 
 export default AdminSidebar;
 
-// Styled Components
 
 
 
@@ -73,6 +77,11 @@ const AvatarContainer = styled.div`
   align-items: center;
   margin-left: 1rem;
   margin-bottom: 1rem;
+  margin-top: 50px;
+  margin-top: 90px;
+    position: fixed; /* Fix sidebar */
+    top: 0;
+    left: 20;
 
   .avatar {
     position: relative;
@@ -146,9 +155,18 @@ const Sidebar = styled.div`
     }
   }
 
-  hr {
-    margin: 10px 0;
+  
+  /* .line {
+    position: fixed;
+    top: 110px;
+    left: 0;
+    height: 20px;
+    z-index: 7;
+    hr {
+    margin: 100px 0;
+    
   }
+  } */
 
   .avatar {
     width: 50px;
@@ -159,8 +177,17 @@ const Sidebar = styled.div`
   }
 
   .partone {
-    margin-top: 10px;
-
+    margin-top: 90px;
+    position: fixed; /* Fix sidebar */
+    top: 32rem;
+    left: 20;
+    
+  }
+  .part-two {
+    margin-top: 90px;
+    position: fixed; /* Fix sidebar */
+    top: 5rem;
+    left: 20;
     
   }
 

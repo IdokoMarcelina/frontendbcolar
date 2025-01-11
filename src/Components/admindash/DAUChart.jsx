@@ -28,10 +28,10 @@ const DAUChart = () => {
 
   const chartOptions = {
     responsive: true,
-    maintainAspectRatio: false, // Allow dynamic height and width
+    maintainAspectRatio: false, 
     plugins: {
       legend: {
-        display: false, // Hide legend
+        display: false, 
       },
       title: {
         display: true,
@@ -69,9 +69,8 @@ const styles = {
     borderRadius: "10px",
     padding: "10px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    width: "500px", // Adjust width as needed
-    height: "270px", // Adjust height as needed
-    margin: "0 auto", // Center chart horizontally
+    width: "450px", 
+    height: "270px", 
   
   
   },
