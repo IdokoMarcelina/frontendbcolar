@@ -1,0 +1,201 @@
+
+
+.ProductContainer {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 90%;
+    border-radius: 10px;
+}
+
+.ProductWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.mainTitle {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #0056b3;
+    margin-bottom: 20px;
+}
+
+.productNavbar {
+    background-color: #0056b3;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.searchForm {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+    flex-wrap: wrap;
+}
+
+.searchInput {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    color: #0056b3;
+}
+
+.searchButton {
+    background-color: #ffffff;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.searchButton:hover {
+    background-color: #0056b3;
+    color: white;
+    border: 1px solid white;
+}
+
+.addService{
+    background-color: #0056b3;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+    width: 37px;
+    height: 37px;
+    border-radius: 60%;
+    h1{
+        font-size: 25px;
+        font-weight: 600;
+        margin-top: 40%;
+    }
+}
+
+.productDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sponsoredSection {
+    margin-bottom: 20px;
+}
+
+.sponsoredHeader {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #0056b3;
+}
+
+.sponsoredCards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.separator {
+    border: 1px solid #ccc;
+    margin: 20px 0;
+    background-color: #0056b3;
+    height: 1rem;
+}
+
+.regularSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.filterByRegion {
+    margin: 20px 0;
+    text-align: left;
+    label{
+        color: #0056b3;
+        font-size: 17px;
+        font-weight: 600;
+    }
+}
+
+.regionSelect {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #0056b3;
+    cursor: pointer;
+}
+
+.regionSelect:focus {
+    outline: none;
+    border-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .productNavbar {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .searchForm {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .addService{
+        width: 30px;
+        height: 28px;
+        border-radius: 60%;
+        h1{
+            font-size: 20px;
+        }
+    }
+
+    .sponsoredCards,
+    .regularSection {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .ProductContainer {
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    .filterByRegion {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .regionSelect {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    label {
+        font-size: 15px;
+    }
+}

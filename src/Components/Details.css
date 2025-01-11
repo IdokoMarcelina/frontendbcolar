@@ -1,12 +1,21 @@
 .Container{
-    width: 30%;
+    width: 22%;
+    /* border: 1px solid black; */
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .Container {
-      width: 50%;
-      align-items: center;
-      justify-content: center;
-      margin-left: 2%;
+      width: 90%;
+      /* align-items: center;
+      justify-content: center; */
+      margin: auto;
+    }
+  }
+@media (max-width: 480px) {
+    .Container {
+      width: 95%;
+      /* align-items: center;
+      justify-content: center; */
+      margin: auto;
     }
   }
 .Profile{
@@ -58,6 +67,52 @@ color: #599372;
    
 
 }
+@media (max-width: 768px) {
+  .Profile h2{
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.Profile img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  
+}
+.Profile h3{
+   font-size: 0.9rem;
+   font-weight: 400;
+}
+.Profile p{
+   font-size: 1rem;
+   font-weight: 300;
+}
+
+.percentage div{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+   
+
+}
+.percentage div p{
+   font-size: 0.6rem;
+   text-align: center;
+   }
+.percentage {
+font-size: 1rem;
+align-items: center;
+   
+
+}
+}
+@media (max-width: 480px) {
+  .Container {
+    width: 95%;
+    /* align-items: center;
+    justify-content: center; */
+    margin: auto;
+  }
+}
 
 /* contact */
 .contact{
@@ -96,5 +151,110 @@ color: #599372;
 .job div p{
     font-size: 0.9rem;
 }
+@media (max-width: 768px) {
+.contact h2{
+    font-size: 1rem;
+    font-weight: 500;
+}
 
+.job p{
+    font-size: 1rem;
+    font-weight: 500;
+    
+}
+
+}
+
+
+/* rating */
+
+.rating-container {
+    margin-top:2%;
+    max-width: 600px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #ffff;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    border: 3px solid  rgb(243, 241, 241);
+  }
+  
+  .average-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .star-icon {
+    font-size: 40px;
+    color: gold;
+  }
+  
+  .rating-number {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .rating-text {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .rating-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .star-label {
+    min-width: 50px;
+    font-size: 14px;
+  }
+  
+  .bar-container {
+    flex: 1;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .bar {
+    height: 100%;
+    background-color: #ffd700;
+  }
+  
+  .rating-count {
+    font-size: 14px;
+    min-width: 50px;
+    text-align: right;
+  }
+  
+  @media (max-width: 480px) {
+    .rating-container {
+      padding: 10px;
+    }
+  
+    .average-rating {
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .rating-number {
+      font-size: 28px;
+    }
+  
+    .rating-bars {
+      gap: 5px;
+    }
+  }
+  
 

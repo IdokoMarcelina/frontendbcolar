@@ -1,194 +1,97 @@
-
-import "./Header.css";
-// import Bimage from "../assets/images/Bcolar.png";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { useState } from "react";
-import {Link} from 'react-router-dom'
+import './Header.css';
+import { useState } from 'react';
+import { Dropdown, Drawer, Menu } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isArtisansDropdownOpen, setIsArtisansDropdownOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-    setIsArtisansDropdownOpen(false);
-    setActiveCategory(null);
-  };
-
-  const toggleArtisansDropdown = () => {
-    setIsArtisansDropdownOpen(!isArtisansDropdownOpen);
-  };
-
-  const handleCategoryClick = (category) => {
-    setActiveCategory(category === activeCategory ? null : category);
-  };
-
-  const categories = [
+  // Items for Signup dropdown menu
+  const signupItems = [
     {
-      name: "Plumbers"
-     
+      label: <Link to="/signup-artisan">Signup as Artisan</Link>,
+      key: 'signup-artisan',
     },
     {
-      name: "Electricians"
-      
-    },
-    {
-      name: "Carpenters"
-      
+      label: <Link to="/signup-user">Signup as User</Link>,
+      key: 'signup-user',
     },
   ];
+
+  // Items for Dashboard dropdown menu
+  const dashboardItems = [
+    {
+      label: <Link to="/userdashboard">User Dashboard</Link>,
+      key: 'userdashboard',
+    },
+    {
+      label: <Link to="/admin">Admin Dashboard</Link>,
+      key: 'admindashboard',
+    },
+    {
+      label: <Link to="/artisandashboard">Artisan Dashboard</Link>,
+      key: 'artisandashboard',
+    },
+  ];
+
   return (
     <div>
-
-<header className="header">
+      <header className="header">
         <div className="logo">
-          {/* <img src={Bimage} alt="Logo" /> */}
+          <h1>BCOLAR</h1>
         </div>
 
-       
-        <nav className="nav-links">
-          <Link to="/">
-          <a href="#home">Home</a>
-          </Link>
-          <Link to="about">
-          <a href="#about">About</a>
-          </Link>
-          <div
-            className="dropdown desktop-dropdown"
-            onMouseEnter={() => setIsArtisansDropdownOpen(true)}
-            onMouseLeave={() => setIsArtisansDropdownOpen(false)}
-          >
-            <Link to="artisans" >
-            <a href="#artisans">Artisans
-              <img src="" alt="" />
-            </a>
-            </Link>
-            {isArtisansDropdownOpen && (
-              <div className="dropdown-menu">
-                {categories.map((category) => (
-                  <div key={category.name}>
-                    <div
-                      className="dropdown-item"
-                      onClick={() => handleCategoryClick(category.name)}
-                    >
-                      {category.name}
-                    </div>
-                    {activeCategory === category.name && (
-                      <div className="nested-dropdown">
-                        {category.jobs.map((job) => (
-                          <div
-                            className="nested-dropdown-item"
-                            key={job}
-                          >
-                            {job}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-          <Link to="collabo">
-          <a href="#about">Collabo</a>
-          </Link>
-          <Link to="contact">
-          <a href="#contact">Contact</a>
-          </Link>
+        <nav className="nav-linkw">
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/productPage">Services</Link>
+          <Link to="/collabo">Collabo</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
 
-       
         <div className="sign-links">
-        <Link to="signin">
-          <a href="#signin">Signin</a>
-          </Link>
+          <Link to="/signin">Signin</Link>
           <span className="divider">|</span>
-          <Link to="signup">
-          <a href="#signup">Signup</a>
-          </Link>
+          <Dropdown overlay={<Menu items={signupItems} />} trigger={['click']}>
+            <Link to="#" onClick={(e) => e.preventDefault()} className="signup-dropdown">
+              Signup
+            </Link>
+          </Dropdown>
+          <span className="divider">|</span>
+          <Dropdown overlay={<Menu items={dashboardItems} />} trigger={['click']}>
+            <Link to="#" onClick={(e) => e.preventDefault()} className="dashboard-dropdown">
+              Dashboard
+            </Link>
+          </Dropdown>
         </div>
 
-        
-        <FaBars className="hamburger-icon" onClick={toggleSidebar} />
+        <MenuOutlined className="hamburger-icon" onClick={() => setIsDrawerOpen(true)} />
       </header>
 
-      
-      <nav className={`sidebar ${isSidebarOpen ? "active" : ""}`}>
-        <button className="close-btn" onClick={closeSidebar}>
-          <FaTimes />
-        </button>
-        <Link to="/">
-        <a href="#home" onClick={closeSidebar}>
-          Home
-        </a>
-        </Link>
-        <Link to="about">
-        <a href="#about" onClick={closeSidebar}>
-          About
-        </a>
-        </Link>
-        <div className="dropdown">
-        <Link></Link>
-          <a
-            href="#artisans"
-            onClick={(e) => {
-              e.preventDefault();
-              toggleArtisansDropdown();
-            }}
-          >
-            Artisans
-            <img src="" alt="" />
-          </a>
-          {isArtisansDropdownOpen && (
-            <div className="dropdown-menu">
-              {categories.map((category) => (
-                <div key={category.name}>
-                  <div
-                    className="dropdown-item"
-                    onClick={() => handleCategoryClick(category.name)}
-                  >
-                    {category.name}
-                  </div>
-                  {activeCategory === category.name && (
-                    <div className="nested-dropdown">
-                      {category.jobs.map((job) => (
-                        <div
-                          className="nested-dropdown-item"
-                          key={job}
-                          onClick={closeSidebar}
-                        >
-                          {job}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-        <Link></Link>
-        <a href="#contact" onClick={closeSidebar}>
-          Contact
-        </a>
-        <div className="sign-links">
-          <a href="#signin" onClick={closeSidebar}>
-            Signin
-          </a>
-          <span className="divider">|</span>
-          <a href="#signup" onClick={closeSidebar}>
-            Signup
-          </a>
-        </div>
-      </nav> 
+      <Drawer
+        title="Menu"
+        placement="right"
+        onClose={() => setIsDrawerOpen(false)}
+        open={isDrawerOpen}
+        closable={true}
+      >
+        <Link to="/" className="drawer-link">Home</Link>
+        <Link to="/about" className="drawer-link">About</Link>
+        <Link to="/productPage" className="drawer-link">Services</Link>
+        <Link to="/collabo" className="drawer-link">Collabo</Link>
+        <Link to="/contact" className="drawer-link">Contact</Link>
+        <hr />
+        <Link to="/signin" className="drawer-link">Signin</Link>
+        <Dropdown overlay={<Menu items={signupItems} />} trigger={['click']}>
+          <Link to="#" className="drawer-link">Signup</Link>
+        </Dropdown>
+        <Dropdown overlay={<Menu items={dashboardItems} />} trigger={['click']}>
+          <Link to="#" className="drawer-link">Dashboard</Link>
+        </Dropdown>
+      </Drawer>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

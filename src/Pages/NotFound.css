@@ -1,0 +1,29 @@
+.not-found {
+    text-align: center;
+    margin-top: 50px;
+    color: #333;
+  }
+  
+  .not-found h1 {
+    font-size: 100px;
+    margin-bottom: 20px;
+    color: #ff6b6b;
+  }
+  
+  .not-found p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .not-found .back-home {
+    text-decoration: none;
+    background-color: #0000ff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  
+  .not-found .back-home:hover {
+    background-color: #0056b3;
+  }
+      
