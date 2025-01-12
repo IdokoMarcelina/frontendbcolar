@@ -12,7 +12,7 @@ import { TbLogs } from "react-icons/tb";
 import { IoSettings } from "react-icons/io5";
 import { FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import chef from '../../assets/images/chef.jpg'// Add other icons as needed
+import chef from '../../assets/images/chef.jpg'
 
 const NavBarAdmin = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -40,7 +40,7 @@ const NavBarAdmin = () => {
 
       {sidebarVisible && (
         <Sidebar>
-              <div className="title">
+              {/* <div className="title">
                     
                   <AvatarContainer>
                   <div className="avatar">
@@ -58,7 +58,7 @@ const NavBarAdmin = () => {
 
 
                   
-                          <li><MdDashboard className="icons" /> Dashboard</li>
+                          <li><MdDashboard className="icons" /> myyyDashboard</li>
                       
                   
                         
@@ -80,7 +80,7 @@ const NavBarAdmin = () => {
                         <div className="partone">
                           <li><CgProfile className="icons" /> Profile</li>
                           <li><GrLogout className="icons" /> Logout</li>
-                        </div>
+                        </div> */}
         </Sidebar>
       )}
     </>

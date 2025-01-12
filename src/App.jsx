@@ -18,14 +18,15 @@ import ResetPassword from './Pages/ResetPassword';
 import FormComponent from './Components/CollaboComponents/FormComponent';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
-import ServiceForm from './Components/serviceForm';  // Merged import
-import ProfileCard from './Components/admindash/ProfileCard';  // Merged import
-import DashboardRedirect from './Components/dashboardredirect';  // Merged import
+import ServiceForm from './Components/serviceForm';  
+import ProfileCard from './Components/admindash/ProfileCard'; 
+import UserProfileCard from './Components/UserProfileCard';
+import Test from './Components/Test';
 
 const Layout = ({ children }) => {
   const location = useLocation();
 
-  const hiddenRoutes = ['/admin', '/artisandashboard', '/userdashboard'];
+  const hiddenRoutes = ['/admin', '/artisandashboard', '/userdashboard,', '/signin','/signup-artisan', '/signup-user'];
 
   const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
 
@@ -59,14 +60,15 @@ function App() {
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
-          <Route path="/dashboardredirect" element={<DashboardRedirect />} />
           <Route path="/artisandashboard" element={<Profile />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />
           <Route path="/userdashboard" element={<Profile />} />
+          <Route path="/test" element={<Test />} />
+          {/* <Route path="/UserProfileCard" element={<UserProfileCard />} /> */}
         </Routes>
       </Layout>
-    </BrowserRouter>
+    </BrowserRouter>  
   );
 }
 

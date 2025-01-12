@@ -11,7 +11,7 @@ function FormComponent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2U1NjAzOWM3NGFhY2Y2ZGJmM2MxOCIsInVzZXJfdHlwZSI6ImFydGlzYW4iLCJpYXQiOjE3MzYzNDU2NzgsImV4cCI6MTczNjM0OTI3OH0.5y7bI1CrGyxkAyMp0PWg_kGJ7OasHcwb5JWb2DkYoV0'; 
+    const token = localStorage.getItem('token'); 
     if (!gigData.category || !gigData.description || !gigData.requirements || !gigData.collaboPic) {
       alert('Please fill in all fields!');
       return;
