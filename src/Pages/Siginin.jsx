@@ -36,7 +36,7 @@ const navigate = useNavigate()
             alert("Welcome to bluecolar");
 
         const token = login.data.token;
-         // Store the token
+
         localStorage.setItem('token', token);
 
             setTimeout(() => {navigate("/"); }, 2000);  
