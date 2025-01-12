@@ -18,8 +18,9 @@ import ResetPassword from './Pages/ResetPassword';
 import FormComponent from './Components/CollaboComponents/FormComponent';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
-import ProfileCard from './Components/admindash/ProfileCard';
-import DashboardRedirect from './Components/dashboardredirect';
+import ServiceForm from './Components/serviceForm';  // Merged import
+import ProfileCard from './Components/admindash/ProfileCard';  // Merged import
+import DashboardRedirect from './Components/dashboardredirect';  // Merged import
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -58,12 +59,10 @@ function App() {
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
-
-          {/* Add new route for dashboard redirection */}
           <Route path="/dashboardredirect" element={<DashboardRedirect />} />
-
           <Route path="/artisandashboard" element={<Profile />} />
           <Route path="/admin" element={<Dashboard />} />
+          <Route path="/addService" element={<ServiceForm />} />
           <Route path="/userdashboard" element={<Profile />} />
         </Routes>
       </Layout>
