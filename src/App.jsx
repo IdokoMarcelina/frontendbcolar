@@ -19,6 +19,7 @@ import FormComponent from './Components/CollaboComponents/FormComponent';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
 import ProfileCard from './Components/admindash/ProfileCard';
+import DashboardRedirect from './Components/dashboardredirect';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -41,7 +42,6 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-
           <Route path="/" element={<Home />} />
           <Route path="/artisans" element={<Artisans />} />
           <Route path="/about" element={<About />} />
@@ -52,8 +52,6 @@ function App() {
           <Route path="/signup-artisan" element={<SignupFlow />} />
           <Route path="/signup-user" element={<UserSignup />} />
           <Route path="/verification" element={<Verification />} />
-
-
           <Route path="/collabo" element={<Collabo />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
@@ -61,6 +59,8 @@ function App() {
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
 
+          {/* Add new route for dashboard redirection */}
+          <Route path="/dashboardredirect" element={<DashboardRedirect />} />
 
           <Route path="/artisandashboard" element={<Profile />} />
           <Route path="/admin" element={<Dashboard />} />

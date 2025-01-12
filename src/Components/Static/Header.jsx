@@ -1,6 +1,6 @@
 import './Header.css';
 import { useState } from 'react';
-import { Dropdown, Drawer, Menu } from 'antd';
+import { Drawer } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -16,22 +16,6 @@ const Header = () => {
     {
       label: <Link to="/signup-user">Signup as User</Link>,
       key: 'signup-user',
-    },
-  ];
-
-  // Items for Dashboard dropdown menu
-  const dashboardItems = [
-    {
-      label: <Link to="/userdashboard">User Dashboard</Link>,
-      key: 'userdashboard',
-    },
-    {
-      label: <Link to="/admin">Admin Dashboard</Link>,
-      key: 'admindashboard',
-    },
-    {
-      label: <Link to="/artisandashboard">Artisan Dashboard</Link>,
-      key: 'artisandashboard',
     },
   ];
 
@@ -53,17 +37,11 @@ const Header = () => {
         <div className="sign-links">
           <Link to="/signin">Signin</Link>
           <span className="divider">|</span>
-          <Dropdown overlay={<Menu items={signupItems} />} trigger={['click']}>
-            <Link to="#" onClick={(e) => e.preventDefault()} className="signup-dropdown">
-              Signup
-            </Link>
-          </Dropdown>
+          <Link to="#" onClick={(e) => e.preventDefault()} className="signup-dropdown">
+            Signup
+          </Link>
           <span className="divider">|</span>
-          <Dropdown overlay={<Menu items={dashboardItems} />} trigger={['click']}>
-            <Link to="#" onClick={(e) => e.preventDefault()} className="dashboard-dropdown">
-              Dashboard
-            </Link>
-          </Dropdown>
+          <Link to="/dashboardredirect">Dashboard</Link>
         </div>
 
         <MenuOutlined className="hamburger-icon" onClick={() => setIsDrawerOpen(true)} />
@@ -83,12 +61,9 @@ const Header = () => {
         <Link to="/contact" className="drawer-link">Contact</Link>
         <hr />
         <Link to="/signin" className="drawer-link">Signin</Link>
-        <Dropdown overlay={<Menu items={signupItems} />} trigger={['click']}>
-          <Link to="#" className="drawer-link">Signup</Link>
-        </Dropdown>
-        <Dropdown overlay={<Menu items={dashboardItems} />} trigger={['click']}>
-          <Link to="#" className="drawer-link">Dashboard</Link>
-        </Dropdown>
+        <Link to="/signup-artisan" className="drawer-link">Signup as Artisan</Link>
+        <Link to="/signup-user" className="drawer-link">Signup as User</Link>
+        <Link to="/dashboardredirect" className="drawer-link">Dashboard</Link>
       </Drawer>
     </div>
   );
