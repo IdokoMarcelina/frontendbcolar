@@ -25,6 +25,8 @@ import Client from './Pages/Client';
 import { GrDashboard } from 'react-icons/gr';
 import Main from './Pages/AdminDashBoard/Main';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
+import ServiceForm from './Components/serviceForm';
+
 
 function App() {
   return (
@@ -52,6 +54,7 @@ function App() {
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/artisandashboard" element={<Profile />} />
           <Route path="/admin" element={<Dashboard />} />
+          <Route path="/addService" element={<ServiceForm />} />
           {/* <Route path="/userdashboard" element={<GrDashboard />} /> */}
         </Routes>
         <Footer />
