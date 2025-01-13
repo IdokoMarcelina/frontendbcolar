@@ -25,6 +25,7 @@ import Client from './Pages/Client';
 import { GrDashboard } from 'react-icons/gr';
 import Main from './Pages/AdminDashBoard/Main';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
+import BookingHistory from './Pages/BookingHistory';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+      <Book/>
     </>
   );
 }
