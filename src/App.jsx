@@ -52,12 +52,14 @@ function App() {
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/artisandashboard" element={<Profile />} />
+          <Route path="/book" element={<Book />} />
           <Route path="/admin" element={<Dashboard />} />
           {/* <Route path="/userdashboard" element={<GrDashboard />} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>
-      <Book/>
+      <Client/>
+      <Edit/>
     </>
   );
 }

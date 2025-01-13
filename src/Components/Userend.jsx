@@ -1,12 +1,14 @@
 import React from 'react'
 import './Userend.css'
+import { Link } from 'react-router-dom'
 import Cards from './Cards'
 const Userend = () => {
   return (
     <div className='contain'>
        <div className='chat'>
-      <p> Booking
-       </p>
+        <Link to="/book">
+      <button>Booking</button>
+      </Link>
       <p>   Chat
        </p>
       </div>
