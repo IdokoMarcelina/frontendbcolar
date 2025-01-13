@@ -31,6 +31,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    h3{
+        color: white;
+    }
 }
 
 
@@ -77,14 +80,22 @@
     align-items: center;
     justify-content: center;
     border: 3px solid white;
-    width: 37px;
+    width: 38px;
     height: 37px;
     border-radius: 60%;
     h1{
         font-size: 25px;
         font-weight: 600;
-        margin-top: 40%;
+        margin-top: 70%;
     }
+    cursor: pointer;
+}
+
+.addServiceFlex{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .productDisplay {
@@ -166,11 +177,10 @@
     }
 
     .addService{
-        width: 30px;
-        height: 28px;
+      
         border-radius: 60%;
         h1{
-            font-size: 20px;
+            font-size: 25px;
         }
     }
 

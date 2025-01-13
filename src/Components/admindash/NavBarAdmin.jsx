@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaSearch, FaBars } from 'react-icons/fa';
-import { MdDashboard } from 'react-icons/md'; // Add other icons as needed
+import { FaUserSecret } from "react-icons/fa";
+import { MdDashboard } from 'react-icons/md'; 
+import { FaUserAlt } from "react-icons/fa";
+import { MdOutlineShoppingBasket } from "react-icons/md";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
+import { GrLogout } from "react-icons/gr";
+import { TbLogs } from "react-icons/tb";
+import { IoSettings } from "react-icons/io5";
+import { FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import chef from '../../assets/images/chef.jpg'
 
 const NavBarAdmin = () => {
-  // State to toggle sidebar visibility
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
-  // Function to handle the click on the hamburger icon
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
@@ -15,7 +24,11 @@ const NavBarAdmin = () => {
   return (
     <>
       <NavBar>
-        <Logo>Bcolar</Logo>
+      <Logo>
+        <Link to="/">
+          Bcolar
+        </Link>
+      </Logo>
         <SearchBar>
           <FaSearch style={searchIconStyles} />
           <input type="text" placeholder="Search..." />
@@ -27,44 +40,61 @@ const NavBarAdmin = () => {
 
       {sidebarVisible && (
         <Sidebar>
-          <div className="adminsidebar">
-            <div className="title">
-              <h4>Admin</h4>
-            </div>
-            <hr />
-            <span className="iconAndText">
-              <MdDashboard className="iconsitself" />
-              <li>Dashboard</li>
-            </span>
-            <div className="partone">
-              <li>User</li>
-              <li>Artisan</li>
-              <li>Ratings</li>
-            </div>
-            <div className="partone">
-              <li>Stats</li>
-              <li>Notifications</li>
-              <li>Messages</li>
-              <li>Reports</li>
-            </div>
-            <div className="partone">
-              <li>System Health</li>
-              <li>Settings</li>
-            </div>
-            <div className="partone">
-              <li>Profile</li>
-              <li>Logout</li>
-            </div>
-          </div>
+              {/* <div className="title">
+                    
+                  <AvatarContainer>
+                  <div className="avatar">
+                    <img src={chef} alt="Admin Avatar" />
+                    <div className="status"></div>
+                  </div>
+                  <div className="info">
+                    <h6>Mimi Idoko</h6>
+                    <span>Admin</span>
+                  </div>
+                </AvatarContainer>
+                </div>
+            
+                  <hr />
+
+
+                  
+                          <li><MdDashboard className="icons" /> myyyDashboard</li>
+                      
+                  
+                        
+                          <li><FaUserAlt className="icons" /> User</li>
+                          <li><FaUserSecret className="icons" /> Artisan</li>
+                          <li><MdOutlineShoppingBasket className="icons" /> Ratings and Review</li>
+                        
+                  
+                          <li><IoIosNotificationsOutline className="icons" /> Notifications</li>
+                          <li><FaEnvelope className="icons" /> Messages</li>
+                          <li><TbLogs className="icons" /> Reports</li>
+                    
+                  
+                    
+                          <li><IoSettings className="icons" /> Settings</li>
+                      
+                  
+                      
+                        <div className="partone">
+                          <li><CgProfile className="icons" /> Profile</li>
+                          <li><GrLogout className="icons" /> Logout</li>
+                        </div> */}
         </Sidebar>
       )}
     </>
   );
 };
 
-// Styled Components
 
 const NavBar = styled.nav`
+  position: fixed; /* Fix navbar */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -82,6 +112,11 @@ const Logo = styled.div`
   font-size: 20px;
   font-weight: bold;
   color: #007BFF;
+
+  a {
+    color: #007BFF;
+    text-decoration: none; /* Remove underline */
+  }
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -110,7 +145,7 @@ const SearchBar = styled.div`
 `;
 
 const Icons = styled.div`
-  display: flex;
+  display: none;
   align-items: center;
   gap: 15px;
 
@@ -121,24 +156,71 @@ const Icons = styled.div`
 `;
 
 const Sidebar = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100%;
-  background-color: #1818c9;
-  list-style: none;
-  color: white;
+  background-color: #F3F6F9;
+  color: black;
   padding: 20px;
-  z-index: 1000;
-  display: flex;
+  display: none;
+  height: 100vh;
   flex-direction: column;
-  align-items: flex-start;
+  position: fixed; /* Fixed position */
+  top: 50px;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  
 
-  span{
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  li {
+    list-style: none;
+    padding: 10px;
+    margin: 5px 0;
     display: flex;
-    gap: 2rem;
     align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, border-radius 0.3s;
+
+    &:hover {
+      background-color: gray;
+      border-radius: 50px;
+    }
+
+    &.active {
+      background-color: gray;
+      border-radius: 50px;
+    }
+
+    .icons {
+      margin-right: 10px;
+    }
+  }
+
+  hr {
+    margin: 10px 0;
+  }
+
+  .avatar {
+    width: 50px;
+
+    img {
+      width: 50px;
+    }
+  }
+
+  .partone {
+    margin-top: auto;
+
+    
+  }
+
+  @media (max-width: 1300px) {
+    display: block; 
+  }
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 
@@ -146,5 +228,47 @@ const searchIconStyles = {
   marginRight: '8px',
   color: '#888',
 };
+
+
+const AvatarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+
+  .avatar {
+    position: relative;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .status {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 10px;
+      height: 10px;
+      background: var(--success, green);
+      border: 2px solid white;
+      border-radius: 50%;
+    }
+  }
+
+  .info {
+    margin-left: 1rem;
+
+    h6 {
+      margin: 0;
+    }
+
+    span {
+      color: gray;
+      font-size: 0.9rem;
+    }
+  }
+`;
 
 export default NavBarAdmin;

@@ -19,19 +19,19 @@ const UserGrowthChart = () => {
     datasets: [
       {
         label: "User Growth",
-        data: [500, 800, 1200, 1800, 2500, 3200], // Example user growth numbers
-        borderColor: "#4CAF50", // Green line
-        backgroundColor: "rgba(76, 175, 80, 0.2)", // Transparent fill
-        tension: 0.4, // Smooth curve
-        pointBackgroundColor: "#4CAF50", // Point color
+        data: [500, 800, 1200, 1800, 2500, 3200], 
+        borderColor: "#4CAF50", 
+        backgroundColor: "rgba(76, 175, 80, 0.2)", 
+        tension: 0.4,
+        pointBackgroundColor: "#4CAF50",
         pointBorderColor: "#4CAF50",
       },
     ],
   };
 
   const chartOptions = {
-    responsive: true, // Enable responsive scaling
-    maintainAspectRatio: false, // Allow custom height and width
+    responsive: true, 
+    maintainAspectRatio: false, 
     plugins: {
       legend: {
         display: true,
@@ -48,7 +48,7 @@ const UserGrowthChart = () => {
     scales: {
       x: {
         grid: {
-          display: false, // Hide vertical gridlines
+          display: false, 
         },
       },
       y: {
@@ -73,9 +73,8 @@ const styles = {
     borderRadius: "10px",
     padding: "10px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    width: "380px", // Container width
-    height: "270px", // Container height
-    margin: "0 auto", // Center chart horizontally
+    width: "450px", 
+    height: "270px", 
   },
 };
 
