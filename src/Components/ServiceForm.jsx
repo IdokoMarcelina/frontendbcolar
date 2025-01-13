@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './../Pages/ArtisanSignup.css'
-import signInImg from '../assets/images/signin-img.jpg'
+import './../Pages/ArtisanSignup.css';
+import signInImg from '../assets/images/signin-img.jpg';
 import { useNavigate } from 'react-router-dom';
+
 const ServiceForm = () => {
   const [formData, setFormData] = useState({
     fullname: '',
@@ -11,48 +12,41 @@ const ServiceForm = () => {
     idCard: null,
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: type === 'file' ? files[0] : value,
     }));
-  };`
-  `
-  const [isLoading, setIsLoading] = useState(false);
-
-  const navigate = useNavigate()
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // Start loading
+    setIsLoading(true);
 
     if (!formData.fullname || !formData.skill || !formData.state || !formData.idCard) {
       alert("Please fill out all fields.");
+      setIsLoading(false);
       return;
     }
-    
+
     const formPayload = new FormData();
     formPayload.append('name', formData.fullname);
     formPayload.append('category', formData.skill);
     formPayload.append('region', formData.state);
-    if (formData.idCard) {
-      formPayload.append('productPic', formData.idCard);
-    }
-  
+    formPayload.append('productPic', formData.idCard);
+
     try {
       const token = localStorage.getItem("token");
-      console.log("Token:", token); // Debugging: Ensure token is retrieved
-      for (const [key, value] of formPayload.entries()) {
-        console.log(`${key}:`, value);
-      }
-      
-      
       if (!token) {
         alert("Please log in to add a service.");
+        setIsLoading(false);
         return;
       }
-  
+
       const response = await axios.post(
         'https://backend-bcolar.onrender.com/api/service/productPage',
         formPayload,
@@ -63,22 +57,26 @@ const ServiceForm = () => {
           },
         }
       );
-  
+
+      console.log('Backend response:', response.data);
+
       if (response.status === 200 || response.status === 201) {
         alert('Service added successfully!');
-
-        setTimeout(() => {navigate("/productPage"); }, 2000);  
+        navigate("/productPage");
       } else {
         alert('Failed to add service.');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('Error adding service. Please try again.');
+      if (error.response && error.response.data && error.response.data.message) {
+        alert(`Error: ${error.response.data.message}`);
+      } else {
+        alert('Error adding service. Please try again.');
+      }
     } finally {
-      setIsLoading(false); // End loading
+      setIsLoading(false);
     }
   };
-  
 
   return (
     <div className="sign-Container">
@@ -168,15 +166,13 @@ const ServiceForm = () => {
 
           <div className="label-tag">
             <label>ID Card</label>
-            <nav id="upload-id">
-              <input
-                type="file"
-                accept="image/*"
-                name="idCard"
-                onChange={handleChange}
-                required
-              />
-            </nav>
+            <input
+              type="file"
+              accept="image/*"
+              name="idCard"
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <button type="submit" disabled={isLoading} style={{ cursor: isLoading ? "not-allowed" : "pointer" }}>
@@ -184,13 +180,12 @@ const ServiceForm = () => {
           </button>
         </form>
 
-        
-        <div className='img-part' >
-                            <div className="img-text">
-                                <h1>Welcome to Blue Collar</h1>
-                                <h4>Easily connect with verified local artisans for your services</h4>
-                            </div>
-                                <img src={signInImg} alt=" " id='page-twoImg' />
+        <div className='img-part'>
+          <div className="img-text">
+            <h1>Welcome to Blue Collar</h1>
+            <h4>Easily connect with verified local artisans for your services</h4>
+          </div>
+          <img src={signInImg} alt=" " id='page-twoImg' />
         </div>
       </div>
     </div>
