@@ -18,14 +18,6 @@ import ResetPassword from './Pages/ResetPassword';
 import FormComponent from './Components/CollaboComponents/FormComponent';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
-import ProfileCard from './Components/admindash/ProfileCard';
-
-const Layout = ({ children }) => {
-  const location = useLocation();
-
-  const hiddenRoutes = ['/admin', '/artisandashboard', '/userdashboard'];
-
-  const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
 
   return (
     <>
@@ -66,8 +58,8 @@ function App() {
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/userdashboard" element={<Profile />} />
         </Routes>
-      </Layout>
-    </BrowserRouter>
+        <Footer />
+      </BrowserRouter>
   );
 }
 
