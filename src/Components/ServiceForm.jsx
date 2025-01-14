@@ -165,7 +165,7 @@ const ServiceForm = () => {
           </div>
 
           <div className="label-tag">
-            <label>ID Card</label>
+            <label>Product/Service Picture</label>
             <input
               type="file"
               accept="image/*"
