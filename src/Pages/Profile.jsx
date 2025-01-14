@@ -39,8 +39,8 @@ const Profile = () => {
 
       if (result) {
         // Assuming the response includes profile data
-        setName(result.profile.name);
-        setAvatar(result.profile.avatar);
+        // setName(result.profile.name);
+        // setAvatar(result.profile.avatar);
       } else {
         throw new Error("User not logged in");
       }
