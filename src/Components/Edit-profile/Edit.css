@@ -1,172 +1,95 @@
 /* General Styles */
-.info {
-    background-color: #ffffff; 
-    border-radius: 0.75rem; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem; 
-    margin-bottom: 1.5rem; 
-  }
-  
-  /* Header Styles */
-  .back {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    margin-bottom: 1rem; 
-  }
-  
-  .title {
-    font-size: 1.25rem; 
-    font-weight: 600; 
-    color: #374151; 
-    margin: 0; 
-  }
-  
-  .icon {
-    background: none;
-    border: none;
-    color: #3b82f6; 
-    font-size: 0.875rem; 
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .icon span {
-    margin-left: 0.5rem; 
-    font-size: 0.875rem; 
-  }
-  
-  /* Fields Section */
-  .index {
-    display: grid;
-    gap: 1rem; 
-  }
-  
-  @media (min-width: 768px) {
-    .index {
-      grid-template-columns: repeat(2, 1fr); 
-    }
-  }
-  
-  .field {
-    font-size: 0.875rem; 
-    font-weight: 500; 
-    color: #6b7280; 
-    margin: 0; 
-  }
-  
-  .value {
-    font-size: 1rem; 
-    font-weight: 600; 
-    color: #374151; 
-    margin: 0.25rem 0 0; 
-  }
-  
-  /* Responsive Styling */
-  @media (max-width: 768px) {
-    .info {
-      padding: 1rem; 
-    }
-  
-    .title {
-      font-size: 1rem; 
-    }
-  
-    .icon {
-      font-size: 0.875rem; 
-    }
-  }
-  
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  /* Profile Card Container */
-.prof {
-  background-color: #ffffff; 
-  border-radius: 0.75rem; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  padding: 1.5rem; 
+.edit-container {
+  min-height: 100vh;
   display: flex;
-  align-items: center; 
-  justify-content: space-between; 
-  margin-bottom: 1.5rem; 
-}
-
-/* Card Content */
-.cad {
-  display: flex;
-  align-items: center; 
-  gap: 1rem; 
-}
-
-/* Profile Image */
-.detail {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%; 
-  object-fit: cover; 
-}
-
-/* Profile Text */
-.name {
-  font-size: 1.25rem; 
-  font-weight: 600; 
-  color: #374151; 
-  margin: 0; 
-}
-
-.team {
-  font-size: 1rem; 
-  color: #6b7280; 
-  margin: 0.25rem 0; 
-}
-
-.location {
-  font-size: 0.875rem;
-  color: #9ca3af; 
-  margin: 0; 
-}
-
-/* Edit Button */
-.icn {
-  background: none;
-  border: none;
-  color: #3b82f6; 
-  font-size: 0.875rem; 
-  display: flex;
+  justify-content: center;
   align-items: center;
+  background-color: #f4f4f4;
+  
+}
+
+.edit-form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.edit-header {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.input-file {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+}
+
+.update-button {
+  width: 100%;
+  padding: 10px;
+  background-color: blue;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.icn span {
-  margin-left: 0.5rem; 
-  font-size: 0.875rem; 
+.update-button:hover {
+  background-color: #fff;
+  color: blue;
 }
 
-/* Responsive Styling */
+.update-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .prof {
-    flex-direction: column; 
-    align-items: flex-start; 
-    padding: 1rem; 
+  .edit-form {
+    padding: 15px;
   }
 
-  .cad {
-    flex-direction: column; 
-    align-items: center; 
-    gap: 0.5rem; 
+  .edit-header {
+    font-size: 1.25rem;
   }
 
-  .icn {
-    align-self: flex-end; 
-    margin-top: 1rem; 
-  }
-
-  .name {
-    font-size: 1rem;
-  }
-
-  .team,
-  .location {
-    font-size: 0.875rem;
+  .update-button {
+    font-size: 14px;
+    padding: 8px;
   }
 }

@@ -21,8 +21,10 @@ import Dashboard from './Pages/AdminDashBoard/dashboard';
 import ServiceForm from './Components/serviceForm';  
 import ProfileCard from './Components/admindash/ProfileCard'; 
 import Test from './Components/Test';
-import UserManagementCard from '../src/Components/UserManagementCard';
+// import UserManagementCard from '../src/Components/UserManagementCard';
 import DashboardLayout from './Layout/DashboardLayout';
+import Edit from './Components/Edit-profile/Edit';
+import Review from './Components/Review';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -57,12 +59,13 @@ function App() {
           <Route path="/verification" element={<Verification />} />
           <Route path="/collabo" element={<Collabo />} />
           <Route path="/chat" element={<Chat />} />
-          <Route path="/Usermanagement" element={<UserManagementCard />} />
+          {/* <Route path="/Usermanagement" element={<UserManagementCard />} /> */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
           <Route path="/artisandashboard" element={<Profile />} />
+          <Route path="/edit" element={<Edit />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />
           <Route path="/userdashboard" element={<DashboardLayout />} />
@@ -71,6 +74,7 @@ function App() {
         </Routes>
       </Layout>
     </BrowserRouter>  
+  
   );
 }
 
