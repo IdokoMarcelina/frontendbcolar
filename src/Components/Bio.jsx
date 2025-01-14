@@ -36,7 +36,9 @@ const Bio = () => {
         <li>Freelance</li>
         <li>Project</li>
         <li>Merchant</li>
+        <Link to="/collabo">
         <li>Collaborate</li>
+        </Link>
         </ul>
         
       </div>
