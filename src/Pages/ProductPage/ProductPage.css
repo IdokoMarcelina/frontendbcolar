@@ -101,8 +101,8 @@
 .productDisplay {
     display: flex;
     flex-wrap: wrap;
-    justify-content: left; 
-    gap: 20px;
+    justify-content: center; 
+    gap: 40px;
     margin-top: 20px;
     max-width: 100%; 
     margin-left: auto;

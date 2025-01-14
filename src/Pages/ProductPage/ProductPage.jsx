@@ -43,7 +43,7 @@ const ProductPage = () => {
   };
 
   const handleAddService = () => {
-    navigate('/addService'); // Route to /addService
+    navigate('/addService'); 
   };
 
   const filteredArtisans = artisans.filter((artisan) => {
@@ -134,7 +134,6 @@ const ProductPage = () => {
           </select>
         </div>
 
-        {/* Artisan Display */}
         <div className="productDisplay">
           {loading ? (
             <p>Loading services...</p>
@@ -147,7 +146,7 @@ const ProductPage = () => {
                 service={artisan.category || "N/A"}
                 name={artisan.name || artisan.title || "No Name Provided"}
                 region={artisan.region || "Unknown"}
-                image={artisan.productPic || 'default-image-url.jpg'} // Fallback for missing images
+                image={artisan.productPic || 'default-image-url.jpg'} 
               />
             ))
           ) : (
