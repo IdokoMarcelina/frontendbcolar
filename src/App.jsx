@@ -25,6 +25,9 @@ import Test from './Components/Test';
 import DashboardLayout from './Layout/DashboardLayout';
 import Edit from './Components/Edit-profile/Edit';
 import Review from './Components/Review';
+import Book from './Components/Book';
+import Client from './Pages/Client'
+import ViewBooking from './Components/view booking/ViewBooking';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -64,7 +67,7 @@ function App() {
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
-          <Route path="/artisandashboard" element={<Profile />} />
+          {/* <Route path="/artisandashboard" element={<Profile />} /> */}
           <Route path="/edit" element={<Edit />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />
@@ -73,7 +76,10 @@ function App() {
           {/* <Route path="/UserProfileCard" element={<UserProfileCard />} /> */}
         </Routes>
       </Layout>
+      <ViewBooking/>
     </BrowserRouter>  
+     
+    
   
   );
 }

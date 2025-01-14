@@ -1,0 +1,154 @@
+/* General styles */
+
+  
+  .Apps {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Header {
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .Header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  
+  .tab {
+    margin: 0 16px;
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #999;
+  }
+  
+  .tab.active {
+    color: blue;
+    border-bottom: 2px solid blue;
+  }
+  
+  .appointments {
+    margin-top: 16px;
+  }
+  
+  .appointment-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  
+  .date {
+    text-align: center;
+    margin-right: 16px;
+  }
+  
+  .date h2 {
+    font-size: 24px;
+    color: blue;
+    margin: 0;
+  }
+  
+  .date p {
+    margin: 0;
+    color: #555;
+  }
+  
+  .details {
+    flex: 1;
+  }
+  
+  .details p {
+    margin: 4px 0;
+    color: #333;
+  }
+  
+  .options-btn {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .options-btn:hover {
+    background-color: #b71c1c;
+  }
+  
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    right: 16px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .dropdown button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    text-align: left;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .dropdown button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .new-appointment-btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 16px;
+  }
+  
+  .new-appointment-btn:hover {
+    background-color: blue;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .appointment-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .date {
+      margin-bottom: 8px;
+    }
+  
+    .details {
+      width: 100%;
+    }
+  }
+  
