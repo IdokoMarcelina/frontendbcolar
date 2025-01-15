@@ -52,6 +52,7 @@ const navigate = useNavigate()
         const token = login.data.token;
 
         localStorage.setItem('token', token);
+        localStroage.setItem('user', JSON.stringify(login.data.user))
 
             setTimeout(() => {navigate("/"); }, 2000);  
 

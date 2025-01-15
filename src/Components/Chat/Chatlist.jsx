@@ -32,19 +32,35 @@ const ChatList = ({ userId, onChatClick }) => {
     const [chats, setChats] = useState([]);
 
     useEffect(() => {
+        const token = localStorage.getItem('token'); 
+
+        if (!token) {
+          console.error('No token found. Please log in.');
+          setLoading(false);
+          return;
+        }
+
+        console.log(userId, token)
+
         const fetchChats = async () => {
             try {
-                const response = await axios.get(`https://backend-bcolar.onrender.com/findUserChats/${userId}`);
-                console.log(response)
+                const response = await axios.get(`https://backend-bcolar.onrender.com/findUserChats/${userId}`,
+                    {
+                        headers: {
+                          Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                console.log(response, 'heloooo')
                 setChats(response.data);
             } catch (error) {
                 console.error('Error fetching chats:', error);
             }
         };
 
-        if (userId) {
+
             fetchChats();
-        }
+        
     }, [userId]);
 
     return (
