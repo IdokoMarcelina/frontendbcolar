@@ -1,6 +1,6 @@
-// components/MessageInput.jsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { FaPaperPlane, FaImage } from 'react-icons/fa';
 
 const MessageInputContainer = styled.div`
@@ -43,21 +43,33 @@ const HiddenFileInput = styled.input`
     display: none;
 `;
 
-const MessageInput = ({ onSendMessage }) => {
+const MessageInput = ({ chatId, onNewMessage }) => {
     const [message, setMessage] = useState('');
     const [image, setImage] = useState(null);
 
-    const handleSend = () => {
+    const handleSend = async () => {
         if (message.trim() || image) {
-            onSendMessage({ text: message, image });
-            setMessage('');
-            setImage(null);
+            const formData = new FormData();
+            formData.append('text', message);
+            formData.append('chatId', chatId);
+            if (image) {
+                formData.append('image', image);
+            }
+
+            try {
+                const response = await axios.post('https://backend-bcolar.onrender.com/createMessage', formData);
+                onNewMessage(response.data);
+                setMessage('');
+                setImage(null);
+            } catch (error) {
+                console.error('Error sending message:', error);
+            }
         }
     };
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
-        setImage(URL.createObjectURL(file));  // Preview the image
+        setImage(file);
     };
 
     return (
@@ -68,12 +80,11 @@ const MessageInput = ({ onSendMessage }) => {
                 placeholder="Type a message..."
             />
 
-            {/* Image Upload Button */}
-            <HiddenFileInput 
-                type="file" 
-                accept="image/*" 
-                id="imageUpload" 
-                onChange={handleImageUpload} 
+            <HiddenFileInput
+                type="file"
+                accept="image/*"
+                id="imageUpload"
+                onChange={handleImageUpload}
             />
             <label htmlFor="imageUpload">
                 <IconButton bgColor="#3b82f6">
@@ -81,7 +92,6 @@ const MessageInput = ({ onSendMessage }) => {
                 </IconButton>
             </label>
 
-            {/* Send Button */}
             <IconButton onClick={handleSend}>
                 <FaPaperPlane />
             </IconButton>

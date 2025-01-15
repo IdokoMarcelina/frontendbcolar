@@ -1,6 +1,6 @@
-// ChatList.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const ChatListWrapper = styled.div`
     height: 100%;
@@ -28,12 +28,24 @@ const ProfilePicture = styled.img`
     object-fit: cover;
 `;
 
-const ChatList = ({ onChatClick }) => {
-    const chats = [
-        { id: 1, name: 'John Doe', profilePic: 'https://randomuser.me/api/portraits/men/1.jpg' },
-        { id: 2, name: 'Jane Smith', profilePic: 'https://randomuser.me/api/portraits/women/2.jpg' },
-        { id: 3, name: 'Alice Brown', profilePic: 'https://randomuser.me/api/portraits/women/3.jpg' },
-    ];
+const ChatList = ({ userId, onChatClick }) => {
+    const [chats, setChats] = useState([]);
+
+    useEffect(() => {
+        const fetchChats = async () => {
+            try {
+                const response = await axios.get(`https://backend-bcolar.onrender.com/findUserChats/${userId}`);
+                console.log(response)
+                setChats(response.data);
+            } catch (error) {
+                console.error('Error fetching chats:', error);
+            }
+        };
+
+        if (userId) {
+            fetchChats();
+        }
+    }, [userId]);
 
     return (
         <ChatListWrapper>
