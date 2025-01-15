@@ -5,6 +5,8 @@ import signInImg from '../assets/images/signin-img.jpg'
 import { FaEye } from "react-icons/fa";
 import './ArtisanSignup.css'
 import {Link, useNavigate} from 'react-router-dom'
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css"; 
 
 
 
@@ -33,15 +35,40 @@ const navigate = useNavigate()
         const login = await axios.post("https://backend-bcolar.onrender.com/api/auth/login", payload);
             console.log(login);
 
-            alert("Welcome to bluecolar");
+            Toastify({
+              text: "Welcome to BlueColar!",
+              duration: 3000, 
+              gravity: "top", 
+              position: "center", 
+              style: {
+                background: "linear-gradient(to right, #0000ff, #0000ff)", 
+                color: "#fff",
+                fontSize: "16px",
+                borderRadius: "8px",
+                padding: "10px 20px",
+              },
+            }).showToast();
 
         const token = login.data.token;
-         // Store the token
+
         localStorage.setItem('token', token);
 
             setTimeout(() => {navigate("/"); }, 2000);  
 
-    } catch (err) { alert("invalid email or password");
+    } catch (err) { 
+      Toastify({
+        text: "invalid email or password",
+        duration: 5000, 
+        gravity: "top", 
+        position: "center", 
+        style: {
+          background: "linear-gradient(to right, #0000ff, #0000ff)", 
+          color: "#fff",
+          fontSize: "16px",
+          borderRadius: "8px",
+          padding: "10px 20px",
+        },
+      }).showToast();;
         console.log(err);
        
       }

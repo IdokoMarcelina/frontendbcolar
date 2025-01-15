@@ -1,69 +1,79 @@
 import React from 'react'
+import { FaEdit } from "react-icons/fa";
 import Profilecard from './Profilecard'
 import Infosections from './Infosections';
+import{ useState, useEffect } from 'react'
 import './Edit.css'
 const Edit = () => {
-
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleUpdate = async () => {
-    const url = "http://localhost:3000/api/profile/updateuser"; // Replace with your API URL
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    const url = "https://backend-bcolar.onrender.com/api/profile/updateuser"; // API URL
     const formData = new FormData();
 
     formData.append("name", name);
     formData.append("avatar", avatar);
 
     try {
+      setLoading(true);
       const response = await fetch(url, {
-        method: "PATCH",
+        method: "POST",
         body: formData,
       });
 
       if (!response.ok) {
-        throw new Error("Failed to update");
+        throw new Error("Failed to update profile");
       }
 
       const result = await response.json();
-      console.log("Update successful:", result);
       alert("Profile updated successfully!");
+      console.log("Update successful:", result);
     } catch (error) {
       console.error("Error updating profile:", error);
       alert("Failed to update profile.");
+    } finally {
+      setLoading(false);
     }
   };
 
-  const personalInfo = [
-    { label: "First Name", value: "Rafiqul" },
-    { label: "Last Name", value: "Rahman" },
-    { label: "Email address", value: "rafiqulrahman51@gmail.com" },
-    { label: "Phone", value: "+09 345 346 46" },
-    { label: "Bio", value: "Team Manager" },
-  ];
-
-  const addressInfo = [
-    { label: "Country", value: "United Kingdom" },
-    { label: "City/State", value: "Leeds, East London" },
-    { label: "Postal Code", value: "ERT 2354" },
-    { label: "TAX ID", value: "AS454645756" },
-  ];
   return (
-    <div className="min-h-screen bg-gray-100 p-5 md:p-10"   onSubmit={(e) => {
-      e.preventDefault();
-      handleUpdate();
-    }}>
-    <div className="max-w-4xl mx-auto space-y-5">
-      <Profilecard  type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}/>
-      <Infosections title="Personal Information" fields={personalInfo}  type="file"
-              accept="image/*"
-              onChange={(e) => setAvatar(e.target.files[0])} />
-      <Infosections title="Address" fields={addressInfo} />
+    <div className="edit-container">
+      <form className="edit-form" onSubmit={handleUpdate}>
+        <h2 className="edit-header">Edit Profile</h2>
+
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
+            className="input-field"
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="avatar">Profile Picture</label>
+          <input
+            type="file"
+            id="avatar"
+            accept="image/*"
+            onChange={(e) => setAvatar(e.target.files[0])}
+            className="input-file"
+          />
+        </div>
+
+        <button type="submit" className="update-button" disabled={loading}>
+          {loading ? "Updating..." : "Update Profile"}
+        </button>
+      </form>
     </div>
-    <button type="submit">Update</button>
-  </div>
-  )
-}
+  );
+};
 
 export default Edit

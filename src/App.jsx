@@ -19,6 +19,7 @@ import FormComponent from './Components/CollaboComponents/FormComponent';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
 
+
   return (
     <>
       {!hideHeaderFooter && <Header />}
@@ -37,7 +38,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/artisans" element={<Artisans />} />
           <Route path="/about" element={<About />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Client />} />
           <Route path="/productpage" element={<ProductPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<Siginin />} />
@@ -45,21 +46,34 @@ function App() {
           <Route path="/signup-user" element={<UserSignup />} />
           <Route path="/verification" element={<Verification />} />
 
-
           <Route path="/collabo" element={<Collabo />} />
           <Route path="/chat" element={<Chat />} />
+          {/* <Route path="/Usermanagement" element={<UserManagementCard />} /> */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
 
-
           <Route path="/artisandashboard" element={<Profile />} />
+          <Route path="/edit" element={<Edit />} />
           <Route path="/admin" element={<Dashboard />} />
+
+          <Route path="/addService" element={<ServiceForm />} />
+          <Route path="/userdashboard" element={<DashboardLayout />} />
+          
+          {/* <Route path="/UserProfileCard" element={<UserProfileCard />} /> */}
+        </Routes>
+      </Layout>
+    </BrowserRouter>  
+     
+    
+  
+
           <Route path="/userdashboard" element={<Profile />} />
         </Routes>
         <Footer />
       </BrowserRouter>
+
   );
 }
 

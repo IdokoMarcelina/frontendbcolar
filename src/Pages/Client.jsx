@@ -2,21 +2,27 @@ import React from 'react'
 import Userenddetails from '../Components/Userenddetails'
 import './Clients.css'
 import Userend from '../Components/Userend'
+import {useState,useEffect} from 'react'
 
 const Client = () => {
-
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const fetchUser = async () => {
-    const url = "http://localhost:3300/api/profile/getuser"; // 
+    const url = "https://backend-bcolar.onrender.com/api/profile/getuser";
 
     try {
+      const token = localStorage.getItem("authToken");
+
+      if (!token) {
+        throw new Error("Authentication token not found. Please log in.");
+      }
+
       const response = await fetch(url, {
-        method: "GET", 
+        method: "GET",
         headers: {
-          Authorization:  `Bearer ${{vault:authorization-secret}}`, 
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
@@ -41,15 +47,14 @@ const Client = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-
   return (
     <div>
-        <div className='profile'>
-        <Userenddetails/>
-    <Userend/>
+      <div className="profile">
+        <Userenddetails />
+        <Userend />
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
 export default Client

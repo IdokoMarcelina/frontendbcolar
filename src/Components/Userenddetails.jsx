@@ -29,7 +29,6 @@ const Userenddetails = () => {
         </ul>
         <p>Member since 2024</p>
         <p>Active 5mins ago</p>
-        <div className='percentag'><div><p>75%</p></div><p>Complete your profile</p></div>
 
        </div>
 

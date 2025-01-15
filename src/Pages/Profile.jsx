@@ -12,30 +12,35 @@ const Profile = () => {
 
   const getLoggedInStatus = async () => {
     const url = "https://backend-bcolar.onrender.com/api/profile/loginstatus"; 
-    const body = {
-      email: "aitmacelina@gmail.com", 
-      password: "@Mimi1234",   
-    };
+    // const body = {
+    //   email: "aitmacelina@gmail.com", 
+    //   password: "@Mimi1234",   
+    // };
 
     try {
       const response = await fetch(url, {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(body),
+        // body: JSON.stringify(body),
+  
       });
-
+      console.log("response",response)
       if (!response.ok) {
         throw new Error("Failed to authenticate");
       }
 
-      const result = await response.json();
+      // const result = await response.json();
+      const result = await response.ok;
+      // const neww = await response.ok
+      // console.log("result",result)
+      // console.log("new",neww)
 
-      if (result.isLoggedIn) {
+      if (result) {
         // Assuming the response includes profile data
-        setName(result.profile.name);
-        setAvatar(result.profile.avatar);
+        // setName(result.profile.name);
+        // setAvatar(result.profile.avatar);
       } else {
         throw new Error("User not logged in");
       }

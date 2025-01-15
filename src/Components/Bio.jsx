@@ -1,22 +1,44 @@
-import React from 'react'
+import React, { useState } from "react";
 import capenter from '../assets/images/capenter.jpg'
 import './Bio.css'
 import Cards from './Cards'
+import { Link } from 'react-router-dom'
+import ClickButton from "./chat-button/ClickButton";
+import EditButton from "./chat-button/EditButton";
 const Bio = () => {
+
+    // State to track unread messages
+    const [unreadMessages, setUnreadMessages] = useState(0);
+
+    
+    const receiveMessage = () => {
+      setUnreadMessages(prev => prev + 1);
+    };
+  
+    // Function to mark messages as read
+    const markAsRead = () => {
+      setUnreadMessages(0);
+    };
   return (
     <div className='contains'>
       <div className='chats'>
-      <p> Edit profile
-       </p>
-      <p>   Message
-       </p>
+       
+        <Link to="/edit">
+      <EditButton/>
+      </Link>
+        <Link to="/chat">
+        <ClickButton/>
+      </Link>
+      
       </div>
       <div className='freelance'>
         <ul>
         <li>Freelance</li>
         <li>Project</li>
         <li>Merchant</li>
+        <Link to="/collabo">
         <li>Collaborate</li>
+        </Link>
         </ul>
         
       </div>
