@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-section">
-        <h3 className="footer-heading">BCOLLAR</h3>
+        <h3 className="footer-heading">BCOLAR</h3>
         <p>
           The Artisan App aims to connect skilled artisans with clients in need
           of their services. The platform offers a streamlined process for

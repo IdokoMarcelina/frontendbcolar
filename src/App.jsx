@@ -53,7 +53,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/artisans" element={<Artisans />} />
           <Route path="/about" element={<About />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Client />} />
           <Route path="/productpage" element={<ProductPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<Siginin />} />
@@ -67,7 +67,7 @@ function App() {
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
-          {/* <Route path="/artisandashboard" element={<Profile />} /> */}
+          <Route path="/artisandashboard" element={<Profile />} />
           <Route path="/edit" element={<Edit />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />
@@ -76,7 +76,6 @@ function App() {
           {/* <Route path="/UserProfileCard" element={<UserProfileCard />} /> */}
         </Routes>
       </Layout>
-      <ViewBooking/>
     </BrowserRouter>  
      
     
