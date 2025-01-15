@@ -76,6 +76,31 @@ function AdminSidebar() {
           <FaEnvelope className="icons" /> Messages
         </li>
       </div>
+    </AvatarContainer>
+    </div>
+
+    <div className="line">
+    <hr />
+      
+    </div>
+
+      <div className="part-two">
+
+      <li><MdDashboard className="icons" /> Dashboard</li>
+    
+
+      
+    <li><FaUserAlt className="icons" /> User</li>
+    <li><FaUserSecret className="icons" /> Artisan</li>
+    <li><MdOutlineShoppingBasket className="icons" /> Ratings and Review</li>
+  
+
+    <li><IoIosNotificationsOutline className="icons" /> Notifications</li>
+    <li><FaEnvelope className="icons" /> Messages</li>
+
+
+      </div>
+     
 
       <div className="partone">
         <li onClick={fetchUserDetails}>
@@ -103,6 +128,7 @@ function AdminSidebar() {
 
 export default AdminSidebar;
 
+
 const AvatarContainer = styled.div`
   display: flex;
   align-items: center;
@@ -112,6 +138,12 @@ const AvatarContainer = styled.div`
   position: fixed; /* Fix sidebar */
   top: 0;
   left: 20;
+
+  margin-top: 50px;
+  margin-top: 90px;
+    position: fixed; /* Fix sidebar */
+    top: 0;
+    left: 20;
 
   .avatar {
     position: relative;
@@ -185,17 +217,41 @@ const Sidebar = styled.div`
     }
   }
 
+
+  
+  /* .line {
+    position: fixed;
+    top: 110px;
+    left: 0;
+    height: 20px;
+    z-index: 7;
+    hr {
+    margin: 100px 0;
+    
+  }
+  } */
+
+  .avatar {
+    width: 50px;
+
+    img {
+      width: 50px;
+    }
+  }
+
   .partone {
     margin-top: 90px;
     position: fixed; /* Fix sidebar */
     top: 32rem;
     left: 20;
+
   }
   .part-two {
     margin-top: 90px;
     position: fixed; /* Fix sidebar */
     top: 5rem;
     left: 20;
+
   }
 
   @media (max-width: 768px) {

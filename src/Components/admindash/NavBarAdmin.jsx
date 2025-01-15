@@ -14,6 +14,9 @@ import { FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import chef from '../../assets/images/chef.jpg'
 
+import chef from '../../assets/images/chef.jpg'// Add other icons as needed
+
+
 const NavBarAdmin = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
@@ -40,7 +43,11 @@ const NavBarAdmin = () => {
 
       {sidebarVisible && (
         <Sidebar>
+
               {/* <div className="title">
+
+              <div className="title">
+
                     
                   <AvatarContainer>
                   <div className="avatar">
@@ -57,8 +64,10 @@ const NavBarAdmin = () => {
                   <hr />
 
 
-                  
                           <li><MdDashboard className="icons" /> myyyDashboard</li>
+
+                          <li><MdDashboard className="icons" /> Dashboard</li>
+
                       
                   
                         
@@ -81,6 +90,7 @@ const NavBarAdmin = () => {
                           <li><CgProfile className="icons" /> Profile</li>
                           <li><GrLogout className="icons" /> Logout</li>
                         </div> */}
+                        </div>
         </Sidebar>
       )}
     </>
