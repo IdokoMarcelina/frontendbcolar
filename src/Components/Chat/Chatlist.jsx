@@ -28,47 +28,42 @@ const ProfilePicture = styled.img`
     object-fit: cover;
 `;
 
-const ChatList = ({ userId, onChatClick }) => {
+const ChatList = ({ onChatClick }) => {
     const [chats, setChats] = useState([]);
 
     useEffect(() => {
         const token = localStorage.getItem('token'); 
 
+        const user = JSON.parse(localStorage.getItem('user'));
+
         if (!token) {
           console.error('No token found. Please log in.');
-          setLoading(false);
-          return;
         }
-
-        console.log(userId, token)
 
         const fetchChats = async () => {
             try {
-                const response = await axios.get(`https://backend-bcolar.onrender.com/findUserChats/${userId}`,
+                const response = await axios.get(`https://backend-bcolar.onrender.com/findUserChats/${user._id}`,
                     {
                         headers: {
                           Authorization: `Bearer ${token}`,
                         },
                     }
                 );
-                console.log(response, 'heloooo')
+
                 setChats(response.data);
             } catch (error) {
                 console.error('Error fetching chats:', error);
             }
         };
-
-
-            fetchChats();
-        
-    }, [userId]);
+        fetchChats()
+    }, []);
 
     return (
         <ChatListWrapper>
             {chats.map((chat) => (
                 <ChatItem key={chat.id} onClick={() => onChatClick(chat)}>
-                    <ProfilePicture src={chat.profilePic} alt={`${chat.name}'s profile`} />
-                    {chat.name}
+                    <ProfilePicture src={chat.otherMember.profilePic ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4YreOWfDX3kK-QLAbAL4ufCPc84ol2MA8Xg&s'} alt={`${chat.otherMember.name}'s profile`} />
+                    {chat.otherMember.name}
                 </ChatItem>
             ))}
         </ChatListWrapper>

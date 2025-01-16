@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { FaPaperPlane } from 'react-icons/fa';
+import { io } from 'socket.io-client';
 import axios from 'axios';
-import { FaPaperPlane, FaImage } from 'react-icons/fa';
+
+const socket = io('https://backend-bcolar.onrender.com');
 
 const MessageInputContainer = styled.div`
     display: flex;
@@ -23,12 +26,12 @@ const TextArea = styled.textarea`
 `;
 
 const IconButton = styled.button`
-    background: ${(props) => (props.bgColor ? props.bgColor : "#4caf50")};
+    background: #4caf50;
     border: none;
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
-    margin-right: 10px;
+    margin-left: 10px;
     color: white;
     display: flex;
     align-items: center;
@@ -39,37 +42,47 @@ const IconButton = styled.button`
     }
 `;
 
-const HiddenFileInput = styled.input`
-    display: none;
-`;
-
-const MessageInput = ({ chatId, onNewMessage }) => {
+const MessageInput = ({ chatId, userId, receiverId, onNewMessage }) => {
     const [message, setMessage] = useState('');
-    const [image, setImage] = useState(null);
+
+    console.log("Received chatId:", chatId);
+    console.log("Received userId:", userId);
+    console.log("Received receiverId:", receiverId);
 
     const handleSend = async () => {
-        if (message.trim() || image) {
-            const formData = new FormData();
-            formData.append('text', message);
-            formData.append('chatId', chatId);
-            if (image) {
-                formData.append('image', image);
-            }
-
-            try {
-                const response = await axios.post('https://backend-bcolar.onrender.com/createMessage', formData);
-                onNewMessage(response.data);
-                setMessage('');
-                setImage(null);
-            } catch (error) {
-                console.error('Error sending message:', error);
-            }
+        if (!message.trim()) {
+            console.error("Error: Message text is empty");
+            return;
         }
-    };
-
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        setImage(file);
+    
+        if (!chatId || !userId || !receiverId) {
+            console.error("Error: Missing chatId, userId, or receiverId");
+            return;
+        }
+    
+        console.log("Sending message with payload:", {
+            text: message,
+            chatId: chatId,
+            senderId: userId,
+            receiverId: receiverId
+        });
+    
+        try {
+            const response = await axios.post(
+                'https://backend-bcolar.onrender.com/createMessage',
+                { text: message, chatId, senderId: userId, receiverId }, 
+                { headers: { 'Content-Type': 'application/json' } }
+            );
+    
+            socket.emit('new_message', response.data);
+    
+            console.log('Message sent successfully:', response.data);
+            onNewMessage(response.data);
+    
+            setMessage('');
+        } catch (error) {
+            console.error('Error sending message:', error.response?.data || error.message);
+        }
     };
 
     return (
@@ -80,18 +93,6 @@ const MessageInput = ({ chatId, onNewMessage }) => {
                 placeholder="Type a message..."
             />
 
-            <HiddenFileInput
-                type="file"
-                accept="image/*"
-                id="imageUpload"
-                onChange={handleImageUpload}
-            />
-            <label htmlFor="imageUpload">
-                <IconButton bgColor="#3b82f6">
-                    <FaImage />
-                </IconButton>
-            </label>
-
             <IconButton onClick={handleSend}>
                 <FaPaperPlane />
             </IconButton>
@@ -100,3 +101,5 @@ const MessageInput = ({ chatId, onNewMessage }) => {
 };
 
 export default MessageInput;
+
+

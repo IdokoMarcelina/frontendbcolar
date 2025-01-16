@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MessageInput from './MeassageInput';
 import axios from 'axios';
+import { io } from 'socket.io-client';
 
 const ChatAreaWrapper = styled.div`
     height: 100%;
@@ -48,7 +49,10 @@ const MessagesContainer = styled.div`
 `;
 
 const ChatArea = ({ selectedChat }) => {
+  
     const [messages, setMessages] = useState([]);
+
+    const user = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
         if (!selectedChat) return;
@@ -64,21 +68,22 @@ const ChatArea = ({ selectedChat }) => {
 
         fetchMessages();
 
-        const socket = new WebSocket('wss://backend-bcolar.onrender.com');
-        socket.onmessage = (event) => {
-            const newMessage = JSON.parse(event.data);
-            if (newMessage.chatId === selectedChat.id) {
-                setMessages((prevMessages) => [...prevMessages, newMessage]);
-            }
-        };
+        const socket = io('https://backend-bcolar.onrender.com');
+        const eventName = `chat_message_${user._id}`; 
 
+        socket.on(eventName, (data) => {
+            if (data.chatId === selectedChat.id) {
+                setMessages((messages) => [...messages, data]);
+            }
+        });
         return () => {
-            socket.close();
+            socket.off(eventName); 
+            socket.disconnect();
         };
     }, [selectedChat]);
 
     const handleNewMessage = (newMessage) => {
-        setMessages((prevMessages) => [...prevMessages, newMessage]);
+        setMessages((messages) => [...messages, newMessage]);
     };
 
     if (!selectedChat) {
@@ -94,23 +99,47 @@ const ChatArea = ({ selectedChat }) => {
     return (
         <ChatAreaWrapper>
             <ChatHeader>
-                {selectedChat.profilePic ? (
-                    <ProfilePicture src={selectedChat.profilePic} alt={selectedChat.name || 'User'} />
+                {selectedChat.otherMember.profilePic ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4YreOWfDX3kK-QLAbAL4ufCPc84ol2MA8Xg&s' ? (
+                    <ProfilePicture src={selectedChat.otherMember.profilePic ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4YreOWfDX3kK-QLAbAL4ufCPc84ol2MA8Xg&s'} alt={selectedChat.otherMember.name} />
                 ) : (
                     <PlaceholderProfilePicture>No Image</PlaceholderProfilePicture>
                 )}
-                <h2>{selectedChat.name || 'Unknown User'}</h2>
+                <h2>{selectedChat.otherMember.name || 'Unknown User'}</h2>
             </ChatHeader>
 
             <MessagesContainer>
-                {messages.length > 0 ? (
-                    messages.map((msg, index) => <p key={index} style={{ color: '#ddd' }}>{msg.text}</p>)
-                ) : (
-                    <p style={{ textAlign: 'center', color: '#777' }}>No messages yet.</p>
-                )}
-            </MessagesContainer>
+    {messages.length > 0 ? (
+        messages.map((msg, index) => (
+            <div
+                key={index}
+                style={{
+                    marginBottom: '10px',  
+                    padding: '10px',
+                    borderRadius: '8px',
+                    backgroundColor: '#2c2f34',
+                    maxWidth: '60%',
+                    float: msg.senderId === user._id ? 'right' : 'left',
+                    clear: 'both',
+                }}
+            >
+                <p style={{ color: '#ddd', margin: 0 }}>{msg.text}</p>
+            </div>
+        ))
+    ) : (
+        <p style={{ textAlign: 'center', color: '#777' }}>No messages yet.</p>
+    )}
+</MessagesContainer>
 
-            <MessageInput chatId={selectedChat.id} onNewMessage={handleNewMessage} />
+
+
+
+            <MessageInput 
+                chatId={selectedChat.id} 
+                userId={user._id} 
+                receiverId={selectedChat.otherMember.id }  
+                onNewMessage={handleNewMessage} 
+            />
+
         </ChatAreaWrapper>
     );
 };

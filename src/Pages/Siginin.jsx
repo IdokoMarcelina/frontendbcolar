@@ -52,11 +52,12 @@ const navigate = useNavigate()
         const token = login.data.token;
 
         localStorage.setItem('token', token);
-        localStroage.setItem('user', JSON.stringify(login.data.user))
+        localStorage.setItem('user', JSON.stringify(login.data.user));
 
             setTimeout(() => {navigate("/"); }, 2000);  
 
     } catch (err) { 
+      console.log(err)
       Toastify({
         text: "invalid email or password",
         duration: 5000, 
