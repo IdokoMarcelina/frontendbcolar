@@ -37,7 +37,7 @@ const HeroDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin:  auto;
+    margin:  75px 0px;
 
     .buttons{
         max-width: 350px;

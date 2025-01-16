@@ -1,10 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios"; // Import axios for API requests
 
 function Applications() {
+  // State to store the fetched applications
+  const [applications, setApplications] = useState([]);
+
+  // Fetch applications from the API
+  useEffect(() => {
+    const fetchApplications = async () => {
+      try {
+        const response = await axios.get("http://backend-bcolar.onrender.com/api/service/getallService");
+        setApplications(response.data); // Assuming the response is an array of applications
+      } catch (error) {
+        console.error("Error fetching applications:", error);
+      }
+    };
+
+    fetchApplications();
+  }, []); // Empty dependency array to fetch data only once on mount
+
+  // Handle the deletion of an application (artisan post)
+  const handleDecline = async (id) => {
+    try {
+      const response = await axios.delete(`https://backend-bcolar.onrender.com/api/service/deleteartisanpost/${id}`);
+      if (response.status === 200) {
+        // Remove the deleted application from the state
+        setApplications(applications.filter((app) => app.id !== id));
+        alert(`Deleted application with ID: ${id}`);
+      }
+    } catch (error) {
+      console.error("Error deleting application:", error);
+      alert("Error deleting application.");
+    }
+  };
+
+  const handleView = (id) => {
+    alert(`Viewing application with ID: ${id}`);
+  };
+
   return (
     <Container>
-      <Title>Pending Applications</Title>
+      <Title>Artisan posts</Title>
       <StyledTable>
         <thead>
           <tr>
@@ -21,7 +58,6 @@ function Applications() {
               <td>{app.email}</td>
               <td>{app.date}</td>
               <td>
-               
                 <DeclineButton onClick={() => handleDecline(app.id)}>
                   Delete
                 </DeclineButton>
@@ -37,35 +73,17 @@ function Applications() {
   );
 }
 
-const applications = [
-  { id: 1, name: "John Doe", email: "john.doe@example.com", date: "2024-12-20" },
-  { id: 2, name: "Jane Smith", email: "jane.smith@example.com", date: "2024-12-19" },
-  { id: 3, name: "Mark Johnson", email: "mark.johnson@example.com", date: "2024-12-18" },
-];
-
-const handleAccept = (id) => {
-  alert(`Accepted application with ID: ${id}`);
-};
-
-const handleDecline = (id) => {
-  alert(`Declined application with ID: ${id}`);
-};
-
-const handleView = (id) => {
-  alert(`Viewing application with ID: ${id}`);
-};
-
 const Container = styled.div`
   padding: 0px;
   max-width: 800px;
-  margin: 0 ;
+  margin: 0;
   font-family: Arial, sans-serif;
 `;
 
 const Title = styled.h2`
   text-align: justify;
 
-  @media(max-width: 800px){
+  @media(max-width: 800px) {
     font-size: 20px;
   }
 `;
@@ -109,16 +127,14 @@ const StyledTable = styled.table`
     }
     th:first-child,
     td:first-child {
-      width: 140px; 
+      width: 140px;
     }
     th:last-child,
     td:last-child {
-      width: 500px; 
+      width: 500px;
     }
   }
 `;
-
-
 
 const DeclineButton = styled.button`
   background-color: #f44336;
@@ -131,8 +147,6 @@ const DeclineButton = styled.button`
 
   &:hover {
     background-color: #e41e2d;
-  }
-  @media(max-width:800px){
   }
 `;
 
