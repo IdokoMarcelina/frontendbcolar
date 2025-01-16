@@ -14,7 +14,6 @@ import { FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import chef from '../../assets/images/chef.jpg'
 
-import chef from '../../assets/images/chef.jpg'// Add other icons as needed
 
 
 const NavBarAdmin = () => {
@@ -90,7 +89,7 @@ const NavBarAdmin = () => {
                           <li><CgProfile className="icons" /> Profile</li>
                           <li><GrLogout className="icons" /> Logout</li>
                         </div> */}
-                        </div>
+                        {/* </div> */}
         </Sidebar>
       )}
     </>

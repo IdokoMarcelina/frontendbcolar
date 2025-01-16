@@ -10,10 +10,10 @@ const MainDashboard = () => {
   const [showArtisans, setShowArtisans] = useState(false);   // Modal toggle state
 
   const cards = [
-    { title: "Users", icon: <FaUsers />, value: 500, color: "#4CAF50" },
-    { title: "Artisans", icon: <FaHammer />, value: 120, color: "#2196F3" },
-    { title: "Most-Used", icon: <FaTools />, value: 200, color: "#2196F3" },
-    { title: "Least-Used", icon: <FaChartBar />, value: 30, color: "#F44336" },
+    { title: "Users", icon: <FaUsers />, value: users.length, color: "#4CAF50" },
+    { title: "Artisans", icon: <FaHammer />, value: artisans.length, color: "#2196F3" },
+    { title: "Most-rated", icon: <FaTools />, value: 0, color: "#2196F3" },
+    { title: "Least-rated", icon: <FaChartBar />, value: 30, color: "#F44336" },
   ];
 
   // Function to handle fetching data based on card title
