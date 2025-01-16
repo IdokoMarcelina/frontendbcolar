@@ -1,66 +1,111 @@
 .review-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .review-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    transition: transform 0.2s;
-  }
-  
-  .review-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .review-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
-  }
-  
-  .review-content {
-    text-align: center;
-  }
-  
-  .review-name {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .star-rating {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  
-  .review-text {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  @media (min-width: 768px) {
-    .review-container {
-      justify-content: flex-start;
-     
-      
-    }
-  
-    .review-card {
-      flex: 1 1 calc(33.333% - 20px);
-      max-width: calc(33.333% - 20px);
-    }
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.existing-reviews {
+  margin-bottom: 30px;
+}
+
+.review-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.review-card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.review-card p {
+  margin: 5px 0 10px;
+  color: #666;
+}
+
+.review-card span {
+  font-size: 14px;
+  color: #ff9800;
+}
+
+.review-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-form h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group textarea {
+  resize: none;
+  height: 100px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: blue;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #fff;
+  color: blue;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

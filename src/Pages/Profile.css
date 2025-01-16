@@ -1,10 +1,23 @@
-.profile{
+.profil{
     display: flex;
     gap: 30px;
+    margin-top: 4%;
 }
 @media (max-width: 767px) {
-    .profile {
+    .profil {
      align-items: center;
+     display: grid;
+     margin-top: 20%;
     }
 
     }
+    @media (max-width: 868px) {
+        .profil {
+            margin-top: 10%;
+           }
+      }
+      @media (max-width: 480px) {
+        .profil {
+            margin-top: 28%;
+           }
+      }
