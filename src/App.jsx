@@ -18,6 +18,19 @@ import ResetPassword from './Pages/ResetPassword';
 import FormComponent from './Components/CollaboComponents/FormComponent';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
+import ServiceForm from './Components/serviceForm';  
+import ProfileCard from './Components/admindash/ProfileCard'; 
+import Test from './Components/Test';
+import UserManagementCard from '../src/Components/UserManagementCard';
+import DashboardLayout from './Layout/DashboardLayout';
+import Bio from './Components/Bio';
+
+const Layout = ({ children }) => {
+  const location = useLocation();
+
+  const hiddenRoutes = ['/admin', '/artisandashboard', '/userdashboard,', '/signin','/signup-artisan', '/signup-user', '/verification', '/chat'];
+
+  const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
 
 
   return (
@@ -48,14 +61,19 @@ function App() {
 
           <Route path="/collabo" element={<Collabo />} />
           <Route path="/chat" element={<Chat />} />
-          {/* <Route path="/Usermanagement" element={<UserManagementCard />} /> */}
+
+          <Route path="/Usermanagement" element={<UserManagementCard />} />
+
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
 
           <Route path="/artisandashboard" element={<Profile />} />
+
           <Route path="/edit" element={<Edit />} />
+          <Route path="/artisan/:artisanId" element={<Bio />} />
+
           <Route path="/admin" element={<Dashboard />} />
 
           <Route path="/addService" element={<ServiceForm />} />

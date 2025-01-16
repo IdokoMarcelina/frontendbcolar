@@ -1,13 +1,15 @@
-// ChatArea.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MessageInput from './MeassageInput';
+import axios from 'axios';
+import { io } from 'socket.io-client';
 
 const ChatAreaWrapper = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
     color: white;
+    background-color: #1e1e1e;
 `;
 
 const ChatHeader = styled.div`
@@ -26,46 +28,118 @@ const ProfilePicture = styled.img`
     object-fit: cover;
 `;
 
+const PlaceholderProfilePicture = styled.div`
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #ddd;
+`;
+
 const MessagesContainer = styled.div`
     flex: 1;
     overflow-y: auto;
     padding: 15px;
+    background-color: #202020;
 `;
 
-const BackButton = styled.button`
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
+const ChatArea = ({ selectedChat }) => {
+  
+    const [messages, setMessages] = useState([]);
 
-    @media (max-width: 768px) {
-        display: inline-block;
-    }
-`;
+    const user = JSON.parse(localStorage.getItem('user'));
 
-const ChatArea = ({ selectedChat, setShowChatArea }) => {
+    useEffect(() => {
+        if (!selectedChat) return;
+
+        const fetchMessages = async () => {
+            try {
+                const response = await axios.get(`https://backend-bcolar.onrender.com/getMessages/${selectedChat.id}`);
+                setMessages(response.data);
+            } catch (error) {
+                console.error('Error fetching messages:', error);
+            }
+        };
+
+        fetchMessages();
+
+        const socket = io('https://backend-bcolar.onrender.com');
+        const eventName = `chat_message_${user._id}`; 
+
+        socket.on(eventName, (data) => {
+            if (data.chatId === selectedChat.id) {
+                setMessages((messages) => [...messages, data]);
+            }
+        });
+        return () => {
+            socket.off(eventName); 
+            socket.disconnect();
+        };
+    }, [selectedChat]);
+
+    const handleNewMessage = (newMessage) => {
+        setMessages((messages) => [...messages, newMessage]);
+    };
+
     if (!selectedChat) {
-        return <ChatAreaWrapper>Select a chat to start messaging</ChatAreaWrapper>;
+        return (
+            <ChatAreaWrapper>
+                <p style={{ textAlign: 'center', marginTop: '50px', color: '#bbb' }}>
+                    Select a chat to start messaging.
+                </p>
+            </ChatAreaWrapper>
+        );
     }
 
     return (
         <ChatAreaWrapper>
-            {/* Header with Profile Picture and Back Button */}
             <ChatHeader>
-                <BackButton onClick={() => setShowChatArea(false)}>&larr; Back</BackButton>
-                <ProfilePicture src={selectedChat.profilePic} alt={selectedChat.name} />
-                <h2>{selectedChat.name}</h2>
+                {selectedChat.otherMember.profilePic ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4YreOWfDX3kK-QLAbAL4ufCPc84ol2MA8Xg&s' ? (
+                    <ProfilePicture src={selectedChat.otherMember.profilePic ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4YreOWfDX3kK-QLAbAL4ufCPc84ol2MA8Xg&s'} alt={selectedChat.otherMember.name} />
+                ) : (
+                    <PlaceholderProfilePicture>No Image</PlaceholderProfilePicture>
+                )}
+                <h2>{selectedChat.otherMember.name || 'Unknown User'}</h2>
             </ChatHeader>
 
-            {/* Messages */}
             <MessagesContainer>
-                <p>Messages with {selectedChat.name} go here...</p>
-            </MessagesContainer>
+    {messages.length > 0 ? (
+        messages.map((msg, index) => (
+            <div
+                key={index}
+                style={{
+                    marginBottom: '10px',  
+                    padding: '10px',
+                    borderRadius: '8px',
+                    backgroundColor: '#2c2f34',
+                    maxWidth: '60%',
+                    float: msg.senderId === user._id ? 'right' : 'left',
+                    clear: 'both',
+                }}
+            >
+                <p style={{ color: '#ddd', margin: 0 }}>{msg.text}</p>
+            </div>
+        ))
+    ) : (
+        <p style={{ textAlign: 'center', color: '#777' }}>No messages yet.</p>
+    )}
+</MessagesContainer>
 
-            {/* Message Input */}
-            <MessageInput />
+
+
+
+            <MessageInput 
+                chatId={selectedChat.id} 
+                userId={user._id} 
+                receiverId={selectedChat.otherMember.id }  
+                onNewMessage={handleNewMessage} 
+            />
+
         </ChatAreaWrapper>
     );
 };

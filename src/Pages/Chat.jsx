@@ -19,7 +19,7 @@ const ChatListContainer = styled.div`
 
     @media (max-width: 768px) {
         width: 100%;
-        display: ${(props) => (props.show ? 'block' : 'none')};
+        display: ${({ $show }) => ($show ? 'block' : 'none')};
     }
 `;
 
@@ -29,29 +29,29 @@ const ChatAreaContainer = styled.div`
 
     @media (max-width: 768px) {
         width: 100%;
-        display: ${(props) => (props.show ? 'block' : 'none')};
+        display: ${({ $show }) => ($show ? 'block' : 'none')};
     }
 `;
 
 const Chat = () => {
-    const [selectedChat, setSelectedChat] = useState(null); 
-    const [showChatArea, setShowChatArea] = useState(false); 
+    const [selectedChat, setSelectedChat] = useState(null);
+    const [showChatArea, setShowChatArea] = useState(false);
 
     const handleChatClick = (chat) => {
         setSelectedChat(chat);
-        setShowChatArea(true); 
+        setShowChatArea(true);
     };
 
     return (
         <AppContainer>
-            <ChatListContainer show={!showChatArea}>
+            <ChatListContainer $show={!showChatArea}>
                 <ChatList onChatClick={handleChatClick} />
             </ChatListContainer>
 
-            <ChatAreaContainer show={showChatArea || selectedChat}>
+            <ChatAreaContainer $show={showChatArea || selectedChat}>
                 <ChatArea
                     selectedChat={selectedChat}
-                    setShowChatArea={setShowChatArea} 
+                    setShowChatArea={setShowChatArea}
                 />
             </ChatAreaContainer>
         </AppContainer>
