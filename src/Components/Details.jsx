@@ -2,8 +2,8 @@ import React,{ useState, useEffect } from 'react'
 import face from '../assets/images/face.jpg'
 // import ChangingProgressProvider from "./ChangingProgressProvider";
 import './Details.css'
-import Circularprogress from './Circularprogress';
-import CircularProgress from './progressprovider/CircularProgress';
+// import Circularprogress from './Circularprogress';
+// import CircularProgress from './progressprovider/CircularProgress';
 
 
 const percentage = 66;
