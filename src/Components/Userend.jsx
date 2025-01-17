@@ -2,15 +2,18 @@ import React from 'react'
 import './Userend.css'
 import { Link } from 'react-router-dom'
 import Cards from './Cards'
+import Message from './message button/Message'
+import BookingButton from './message button/BookingButton'
 const Userend = () => {
   return (
     <div className='contain'>
        <div className='chat'>
         <Link to="/book">
-      <button>Booking</button>
+      <BookingButton/>
       </Link>
-      <p>   Chat
-       </p>
+      <Link to="/chat">
+      <Message/>
+      </Link>
       </div>
       <div className='freelanc'>
         <ul>

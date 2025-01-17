@@ -32,7 +32,7 @@ import ViewBooking from './Components/view booking/ViewBooking';
 const Layout = ({ children }) => {
   const location = useLocation();
 
-  const hiddenRoutes = ['/admin', '/artisandashboard', '/userdashboard,', '/signin','/signup-artisan', '/signup-user', '/verification'];
+  const hiddenRoutes = ['/admin', '/artisandashboard', '/userdashboard,', '/signin','/signup-artisan', '/signup-user', '/verification', '/book', '/chat'];
 
   const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
 
@@ -72,10 +72,12 @@ function App() {
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />
           <Route path="/userdashboard" element={<DashboardLayout />} />
+          <Route path="/book" element={<Book />} />
           
           {/* <Route path="/UserProfileCard" element={<UserProfileCard />} /> */}
         </Routes>
       </Layout>
+      <Client/>
     </BrowserRouter>  
      
     

@@ -5,47 +5,47 @@ import Userend from '../Components/Userend'
 import {useState,useEffect} from 'react'
 
 const Client = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  // const [user, setUser] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState("");
 
-  const fetchUser = async () => {
-    const url = "https://backend-bcolar.onrender.com/api/profile/getuser";
+  // const fetchUser = async () => {
+  //   const url = "https://backend-bcolar.onrender.com/api/profile/getuser";
 
-    try {
-      const token = localStorage.getItem("authToken");
+  //   try {
+  //     const token = localStorage.getItem("authToken");
 
-      if (!token) {
-        throw new Error("Authentication token not found. Please log in.");
-      }
+  //     if (!token) {
+  //       throw new Error("Authentication token not found. Please log in.");
+  //     }
 
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+  //     const response = await fetch(url, {
+  //       method: "GET",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch user data");
-      }
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fetch user data");
+  //     }
 
-      const userData = await response.json();
-      setUser(userData);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     const userData = await response.json();
+  //     setUser(userData);
+  //   } catch (err) {
+  //     setError(err.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error: {error}</p>;
 
   return (
     <div>
