@@ -30,14 +30,12 @@ import Category from './Components/HomeComps/Category';
 
 const Layout = ({ children }) => {
   const location = useLocation();
-
   
   const hiddenRoutes = [
     '/admin', '/artisandashboard', '/userdashboard', '/signin',
     '/signup-artisan', '/signup-user', '/verification', '/chat',
     '/editProfile', '/booking-history'
   ];
-
 
   const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
 
@@ -77,16 +75,6 @@ function App() {
           <Route path="/artisan/:artisanId" element={<Bio />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />
-
-          <Route path="/userdashboard" element={<DashboardLayout />} />
-          <Route path="/book" element={<Book />} />
-          
-          {/* <Route path="/UserProfileCard" element={<UserProfileCard />} /> */}
-     
-     
-    
-  
-
           <Route path="/*" element={<UserDashRoutes />} />
 
           <Route path="/category" element={<Category/>} />
@@ -94,9 +82,7 @@ function App() {
          
         </Routes>
       </Layout>
-        <Client/>
     </BrowserRouter>
-
   );
 }
 
