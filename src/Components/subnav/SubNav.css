@@ -16,6 +16,8 @@
     top: 0;
     width: 100vw;
     margin: 0 auto ;
+    height: 80px;
+   
   }
   
   
@@ -23,6 +25,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    border: 1px solid red;
     
   }
   .header-right{
