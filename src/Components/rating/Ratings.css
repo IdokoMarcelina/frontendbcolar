@@ -1,0 +1,110 @@
+/* Main Container */
+.customer-reviews {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Header */
+  .customer-reviews h2 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Average Rating */
+  .average-rating {
+    margin-bottom: 20px;
+  }
+  
+  .stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+    border: none;
+  }
+  
+  .stars span {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .total-ratings {
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
+  /* Rating Bars */
+  .rating-bars {
+    margin-top: 20px;
+  }
+  
+  .rating-bar-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  
+  .star-label {
+    flex: 0 0 50px;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: left;
+  }
+  
+  .bar-container {
+    flex: 1;
+    background-color: #eee;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .bar {
+    height: 100%;
+    background-color: yellow;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .percentage {
+    flex: 0 0 40px;
+    font-size: 0.9rem;
+    color: #777;
+    text-align: right;
+  }
+  
+  /* Info Text */
+  .info-text {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #555;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .customer-reviews {
+      padding: 15px;
+    }
+  
+    .star-label {
+      flex: 0 0 40px;
+      font-size: 0.8rem;
+    }
+  
+    .percentage {
+      flex: 0 0 30px;
+      font-size: 0.8rem;
+    }
+  }
+  

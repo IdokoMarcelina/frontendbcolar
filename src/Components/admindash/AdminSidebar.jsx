@@ -33,7 +33,7 @@ function AdminSidebar() {
     } catch (error) {
       console.error("Error fetching users:", error);
     }
-  };
+  }
 
   const fetchArtisans = async () => {
     try {

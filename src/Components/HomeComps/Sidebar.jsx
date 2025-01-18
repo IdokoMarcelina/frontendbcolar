@@ -32,6 +32,7 @@ const SidebarDiv = styled.div`
         border-radius: 10px;
         border: none;
         background-color: #e7e7e7;
+        padding: 10px;
 
     }
 `

@@ -1,6 +1,8 @@
 import React from 'react'
 import './Userenddetails.css'
 import face from '../assets/images/face.jpg'
+import LastSeen from './last-seen-time/LastSeen';
+import ParentRating from './rating/ParentRating';
 
 
 
@@ -28,7 +30,7 @@ const Userenddetails = () => {
             {/* <li><img src={} alt="" /></li> */}
         </ul>
         <p>Member since 2024</p>
-        <p>Active 5mins ago</p>
+        <LastSeen/>
 
        </div>
 
@@ -47,7 +49,7 @@ const Userenddetails = () => {
        </div>
 
        {/* rating  */}
-       <div className="rating-containe">
+       {/* <div className="rating-containe">
       <div className="average-ratin">
         <div className="star-iconn">⭐</div>
         <div className="rating-numba">{ratings.averageRating}</div>
@@ -75,7 +77,8 @@ const Userenddetails = () => {
           </div>
         ))}
       </div>
-    </div>
+    </div> */}
+    <ParentRating/>
     </div>
     </div>
   )
