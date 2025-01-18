@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaAsterisk } from "react-icons/fa6";
-import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icons/md";
+import { IoMdArrowDropdownCircle, IoMdArrowDropupCircle } from "react-icons/io";
 
 const FaqProps = ({ head, content }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,13 +16,13 @@ const FaqProps = ({ head, content }) => {
                         <FaAsterisk /> {head}
                     </h4>
                     {isOpen ? (
-                        <p>
-                            <MdOutlineKeyboardArrowUp />
-                        </p>
+                        <h3>
+                            <IoMdArrowDropupCircle />
+                        </h3>
                     ) : (
-                        <p>
-                            <MdOutlineKeyboardArrowDown />
-                        </p>
+                        <h3>
+                            <IoMdArrowDropdownCircle />
+                        </h3>
                     )}
                 </div>
                 {isOpen && (
