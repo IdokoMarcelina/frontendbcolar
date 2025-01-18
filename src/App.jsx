@@ -27,6 +27,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import UserDashRoutes from './Components/UserDash/UserDashRoutes';
 import CategoryDetails from './Components/HomeComps/CategoryDetails';
 import Category from './Components/HomeComps/Category';
+import Edit from './Components/Edit-profile/Edit';
+import Client from './Pages/Client';
 
 
 
@@ -36,7 +38,7 @@ const Layout = ({ children }) => {
   const hiddenRoutes = [
     '/admin', '/artisandashboard', '/userdashboard', '/signin',
     '/signup-artisan', '/signup-user', '/verification', '/chat',
-    '/editProfile', '/booking-history'
+    '/editProfile', '/booking-history', '/edit'
   ];
 
   const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
@@ -73,6 +75,8 @@ function App() {
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
           <Route path="/artisandashboard" element={<Profile />} />
+          <Route path="/edit" element={<Edit />} />
+          <Route path="/client" element={<Client />} />
           <Route path="/artisan/:artisanId" element={<Bio />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />

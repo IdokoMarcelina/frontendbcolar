@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import UserSidebar from "./UserSidebar";
-import SubNav from "../subnav/SubNav";
+// import SubNav from "../subnav/SubNav";
 
 const UserDashLayout = ({ children }) => {
     const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -12,7 +12,7 @@ const UserDashLayout = ({ children }) => {
   
     return (
       <LayoutContainer>
-        <SubNav toggleSidebar={toggleSidebar} />
+        {/* <SubNav toggleSidebar={toggleSidebar} /> */}
   
         <SidebarWrapper isVisible={isSidebarVisible}>
           <CloseButton onClick={toggleSidebar}>&times;</CloseButton>

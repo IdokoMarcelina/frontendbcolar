@@ -1,48 +1,26 @@
-import React,{ useState, useEffect } from 'react'
-import face from '../assets/images/face.jpg'
-// import ChangingProgressProvider from "./ChangingProgressProvider";
-import './Details.css'
-// import Circularprogress from './Circularprogress';
-// import CircularProgress from './progressprovider/CircularProgress';
+import React from 'react';
+import './Details.css';
 
-
-const percentage = 66;
-const Details = () => {
-  
- 
+const Details = ({ name, avatar, skills, memberSince, email, phone, location }) => {
   return (
     <div className='Contain'>
-       <div className='Profile'>
-        <h2>Profile information</h2>
-        <img src={face} alt="" />
-        <h3>Mohamend kamel</h3>
-        <p>Capenter</p>
-        <ul>
-            {/* <li><img src={} alt="" /></li> */}
-        </ul>
-        <p>Member since 2024</p>
-        {/* <CircularProgress/> */}
-       
+      <div className='Profile'>
+        <h2>Profile Information</h2>
+        <img src={avatar || 'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black-thumbnail.png'} alt="Profile" />  {/* Display avatar if available */}
+        <h3>{name || 'No name provided'}</h3>  {/* Display user name */}
+        <p>{skills && skills.length > 0 ? ` ${skills.join(', ')}` : 'No skills provided'}</p>  {/* Display skills as a comma-separated list */}
+        <p>Member since {new Date(memberSince).getFullYear() || 'Unknown'}</p>  {/* Display membership year */}
+      </div>
 
-       </div>
-
-       {/* contact */}
-       <div className='contact'>
-        <h2>Conctact information</h2>
-        <p>moh@gmail.com</p>
-        <p>070368029348</p>
-        <p>lagos</p>
-       </div>
-
-       {/* total numbers of jobs completed */}
-       <div className='job'>
-       <p>Total job completed</p>
-       <div><p>30</p></div>
-       </div>
-
-       {/* rating  */}
+      {/* Contact Information */}
+      <div className='contact'>
+        <h2>Contact Information</h2>
+        <p>{email || 'No email provided'}</p>
+        <p>{phone || 'No phone number provided'}</p>
+        <p>{location || 'No location provided'}</p>  {/* Display LGA as location */}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Details
+export default Details;

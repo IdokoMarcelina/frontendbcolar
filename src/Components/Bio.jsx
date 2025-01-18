@@ -31,47 +31,41 @@ const Bio = () => {
       </Link>
       
       </div>
-      <div className='freelance'>
-        <ul>
-        <li>Freelance</li>
-        <li>Project</li>
-        <li>Merchant</li>
-        <Link to="/collabo">
-        <li>Collaborate</li>
-        </Link>
-        </ul>
-        
-      </div>
+  
 
       {/* statics */}
 
       <div className='statics'>
-        <h3>Statics</h3>
+        <h3>Pages</h3>
        <div className='Cards'>
+
        <div className='card-1'>
-          <h4>12</h4>
-          <p>completed projects</p>
+          <Link to="/collabo">
+          <p>Collabo</p>
+          
+          </Link>
         </div>
+
         <div className='card-2'>
-          <h4>02</h4>
-          <p>projects in progress</p>
+        <Link to="/productpage">
+          <p>Services</p>
+          
+          </Link>
         </div>
+
         <div className='card-3'>
-          <h4>12</h4>
-          <p>Total reviews</p>
+          <p>collabo Applications</p>
         </div>
+
         <div className='card-4'>
-          <h4>12</h4>
-          <p>total points gain</p>
+          <p>My service post</p>
         </div>
-        <div className='rate'>
-          <div><p>66%</p></div>
-          <p>Project completed rate</p>
+
+        <div className='card-4'>
+          <p>My collabo post</p>
         </div>
-        <div className='response'>
-          <div><p>76%</p></div>
-          <p>Response rate</p>
-        </div>
+       
+       
        </div>
       </div>
 
@@ -83,42 +77,12 @@ const Bio = () => {
           maiores laborum minima 
           obcaecati quo iusto, quia, fugit adipisci dolore distinctio consectetur?</p>
       </div>
-      <div className='skills'>
-        <h3>core skill</h3>
-        <div className='core'>
-          <p>Furniture</p>
-          <p>Roofing</p>
-          <p>Art work</p>
-        </div>
-      </div>
       
-      {/* portfolios and reviews */}
-      <div className='porfolios'>
-       <div className='reviews'>
-       <p>Porfolios</p>
-       <p>Reviews</p>
-       </div>
-        <hr />
-      </div>
-      <div className='add'>
-        <button>Add work</button>
-      </div>
-     {/* cards */}
-     <Cards/>
-     <div className='exper'>
-      <div className='work'>
-        <h3>Work experience</h3>
-        <p> quasi, consequuntur tempora quisquam tempore!</p>
-      </div>
-      <div className='edu'>
-        <h3>Education</h3>
-        <p> quasi, consequuntur tempora quisquam tempore!</p>
-      </div>
-      <div className='qualif'>
-        <h3>Qualification</h3>
-        <p> quasi, consequuntur tempora quisquam tempore!</p>
-      </div>
-     </div>
+      
+      
+     
+     {/* <Cards/> */}
+  
     </div>
   )
 }

@@ -1,9 +1,15 @@
 import React from 'react'
 import './ChatButton.css'
+import {Link} from 'react-router-dom'
+import Edit from '../Edit-profile/Edit'
+
 const EditButton = () => {
   return (
     <div className='edit-profile-btn'>
-     <button>Edit Profile</button>
+     <Link to='/edit'>
+        <button> Edit Profile</button>
+     </Link>
+    
     </div>
   )
 }

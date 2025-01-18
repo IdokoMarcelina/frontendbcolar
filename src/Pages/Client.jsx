@@ -13,7 +13,7 @@ const Client = () => {
     const url = "https://backend-bcolar.onrender.com/api/profile/getuser";
 
     try {
-      const token = localStorage.getItem("authToken");
+      const token = localStorage.getItem("token");
 
       if (!token) {
         throw new Error("Authentication token not found. Please log in.");
