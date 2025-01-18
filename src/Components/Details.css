@@ -188,14 +188,14 @@ align-items: center;
 
 /* rating */
 
-.rating-container {
+/* .rating-container {
     margin-top:2%;
     max-width: 600px;
     padding: 20px;
     font-family: Arial, sans-serif;
     background-color: #ffff;
     border-radius: 8px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 3px solid  rgb(243, 241, 241);
   }
   
@@ -276,5 +276,5 @@ align-items: center;
       gap: 5px;
     }
   }
-  
+   */
 
