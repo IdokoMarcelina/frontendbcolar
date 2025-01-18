@@ -1,93 +1,109 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  padding: 20px;
+  h1{
+    color: black;
+  }
+`;
+
+const PostContainer = styled.div`
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  color: black;
+  font-size: 16px;
+  width: 50%;
+`;
+
+const PostImage = styled.img`
+  max-width: 200px;
+  height: auto;
+`;
 
 const ServicePosts = () => {
-    const user = localStorage.getItem('user');
-    const artisanId = user._id
-//   const { artisanId } = useParams(); 
+  const user = JSON.parse(localStorage.getItem('user'));
+  const artisanId = user?.name;
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const token = localStorage.getItem('token');
   
-  console.log(artisanId);
-  
-//   console.log('Token from localStorage:', token); 
-
   useEffect(() => {
-    console.log('Component mounted or artisanId/token changed');
+    if (!artisanId) {
+      setError('Artisan ID not found.');
+      setLoading(false);
+      return;
+    }
 
-    const apiUrl = `https://backend-bcolar.onrender.com/api/service/getartisanpost`;
-    console.log('API URL:', apiUrl);
+    const apiUrl = `https://backend-bcolar.onrender.com/api/service/getartisanpost?artisanId=${artisanId}`;
 
     const fetchServicePosts = async () => {
       try {
         if (!token) {
-          console.error('No authentication token found.');
           setError('No authentication token found.');
           setLoading(false);
           return;
         }
 
-        console.log('Fetching service posts...');
         const response = await fetch(apiUrl, {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${token}`, // Attach the token in headers for authentication
-            'Content-Type': 'application/json'
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
           }
         });
 
-        console.log( response); // Log the response status
-
         if (!response.ok) {
-          console.error('Failed to fetch service posts');
-          throw new Error('Failed to fetch service posts');
+          throw new Error(`Error: ${response.status} - ${response.statusText}`);
         }
 
         const data = await response.json();
-        console.log('Fetched data:', data); 
+
+        if (!data) {
+          throw new Error('Failed to fetch service posts');
+        }
+
         setPosts(data); 
       } catch (err) {
-        console.error('Error fetching service posts:', err.message); 
         setError(err.message); 
       } finally {
-        console.log('Fetch operation completed');
         setLoading(false); 
       }
     };
 
     fetchServicePosts(); 
-  }, []);
+  }, [artisanId, token]);
 
   if (loading) {
-    console.log('Loading posts...');
     return <p>Loading...</p>;
   }
 
   if (error) {
-    console.error('Error:', error); 
     return <p>Error: {error}</p>;
   }
 
-  console.log('Rendering posts...');
   return (
-    <div>
+    <Container>
       <h1>Service Posts by Artisan {artisanId}</h1>
       <div>
         {posts.length > 0 ? (
           posts.map((post, index) => (
-            <div key={index}>
-              <h3>{post.title}</h3>
-              <p>{post.description}</p>
-            </div>
+            <PostContainer key={index}>
+              <h3>{post.name}</h3>
+              <p><strong>Category:</strong> {post.category}</p>
+              <p><strong>Region:</strong> {post.region}</p>
+              <p><strong>Date:</strong> {new Date(post.date).toLocaleDateString()}</p>
+              {post.productPic && <PostImage src={post.productPic} alt={post.name} />}
+            </PostContainer>
           ))
         ) : (
           <p>No service posts available.</p>
         )}
       </div>
-    </div>
+    </Container>
   );
 };
 
