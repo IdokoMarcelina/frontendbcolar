@@ -15,17 +15,19 @@ import Verification from './Pages/Verification';
 import SignupFlow from './Pages/SignupFlow';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
+import ChangePassword from './Pages/ChangePassword';
 import FormComponent from './Components/CollaboComponents/FormComponent';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
 import ServiceForm from './Components/serviceForm';  
 import ProfileCard from './Components/admindash/ProfileCard'; 
 import UserManagementCard from '../src/Components/UserManagementCard';
-import DashboardLayout from './Layout/DashboardLayout';
 import Bio from './Components/Bio';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import UserDashRoutes from './Components/UserDash/UserDashRoutes';
+import CategoryDetails from './Components/HomeComps/CategoryDetails';
+import Category from './Components/HomeComps/Category';
 
 
 
@@ -34,7 +36,8 @@ const Layout = ({ children }) => {
   
   const hiddenRoutes = [
     '/admin', '/artisandashboard', '/userdashboard', '/signin',
-    '/signup-artisan', '/signup-user', '/verification', '/chat'
+    '/signup-artisan', '/signup-user', '/verification', '/chat',
+    '/editProfile', '/booking-history'
   ];
 
   const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
@@ -68,13 +71,18 @@ function App() {
           <Route path="/Usermanagement" element={<UserManagementCard />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route path="/changePassword" element={<ChangePassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
           <Route path="/artisandashboard" element={<Profile />} />
           <Route path="/artisan/:artisanId" element={<Bio />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />
-          <Route path="/userdashboard" element={<DashboardLayout />} />
+          <Route path="/*" element={<UserDashRoutes />} />
+
+          <Route path="/category" element={<Category/>} />
+          <Route path="/categories/:category" element={<CategoryDetails/>} />
+         
         </Routes>
         <ToastContainer />
       </Layout>
