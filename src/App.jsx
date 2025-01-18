@@ -23,6 +23,11 @@ import ProfileCard from './Components/admindash/ProfileCard';
 import UserManagementCard from '../src/Components/UserManagementCard';
 import DashboardLayout from './Layout/DashboardLayout';
 import Bio from './Components/Bio';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -71,6 +76,7 @@ function App() {
           <Route path="/addService" element={<ServiceForm />} />
           <Route path="/userdashboard" element={<DashboardLayout />} />
         </Routes>
+        <ToastContainer />
       </Layout>
     </BrowserRouter>
   );

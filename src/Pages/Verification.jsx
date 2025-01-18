@@ -3,6 +3,7 @@ import "./ArtisanSignup.css";
 import signInImg from "../assets/images/signin-img.jpg";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Verification = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const Verification = () => {
     e.preventDefault();
 
     if (!email || !otp) {
-      alert("Please fill out all fields!");
+      toast.error("Please fill out all fields!");
       return;
     }
 
@@ -31,10 +32,10 @@ const Verification = () => {
       );
       console.log(verify);
 
-      alert("Your account has been verified successfully!");
+      toast.info("Your account has been verified successfully!");
       navigate("/signin"); // Navigate immediately after success
     } catch (err) {
-      alert("Verification failed. Please try again.");
+      toast.error("Verification failed. Please try again.");
       console.error(err);
     }
   };
@@ -43,7 +44,7 @@ const Verification = () => {
     e.preventDefault(); // Prevent default link behavior
 
     if (!email) {
-      alert("Please enter your email to resend the OTP.");
+      toast.error("Please enter your email to resend the OTP.");
       return;
     }
 
@@ -57,9 +58,9 @@ const Verification = () => {
         "https://backend-bcolar.onrender.com/api/otp/resend-otp",
         payload
       );
-      alert("OTP has been resent to your email!");
+      toast.error("OTP has been resent to your email!");
     } catch (err) {
-      alert("Failed to resend OTP. Please try again.");
+      toast.error("Failed to resend OTP. Please try again.");
       console.error(err);
     } finally {
       setIsResending(false);

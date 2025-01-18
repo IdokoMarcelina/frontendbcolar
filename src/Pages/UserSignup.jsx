@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import signInImg from "../assets/images/signin-img.jpg";
 import "./ArtisanSignup.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const UserSignup = () => {
   const [click, setClick] = useState(true);
@@ -30,18 +33,18 @@ const UserSignup = () => {
 
     // Basic validation
     if (!name || !email || !phone || !state || !LGA || !password || !confirmPassword) {
-      alert("Please fill out all fields.");
+      toast.error("Please fill out all fields.");
       return;
     }
 
     // Check if passwords match
     if (password !== confirmPassword) {
-      alert("Passwords do not match.");
+      toast.error("Passwords do not match.");
       return;
     }
 
     if (!/^\d+$/.test(phone)) {
-      alert("Phone number must contain only numbers.");
+      toast.error("Phone number must contain only numbers.");
       return;
     }
 
@@ -61,15 +64,15 @@ const UserSignup = () => {
       const result = await axios.post("https://backend-bcolar.onrender.com/api/auth/register", payload);
       console.log(result);
 
-      alert("Your account has been created successfully");
+      toast.info("Your account has been created successfully");
 
       // Add a delay before navigating
       setTimeout(() => {
         navigate("/verification");
       }, 2000); // 2-second delay
     } catch (err) {
-      alert("An error occurred during signup. Please try again.");
-      console.log(err);
+      toast.error(err.response.data.message);
+      console.log(err.response.data.message);
     }
   };
 
