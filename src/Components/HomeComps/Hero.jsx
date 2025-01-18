@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Hero2 from "../../assets/herooo.png"
 import SignButton from "../../Reuseables/SignButton";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
     return ( <HeroDiv>   
@@ -13,8 +14,12 @@ const Hero = () => {
         </div>
 
         <div className="buttons">
+        <Link to="/signup-artisan">
             <SignButton Title="Sign Up as Artisan"/>
+        </Link>
+        <Link to="/signup-user">
             <SignButton Title="Sign Up as User" btnClass="whiteBtn"/>
+        </Link>
         </div>
         
     </HeroLeft>
@@ -29,7 +34,7 @@ export default Hero;
 
 const HeroDiv = styled.div`
     background-color: #F5F5F7 ;
-    max-width: 100vw;
+    max-width: 1440px;
     padding: 50px;
     color: #181444;
     height: calc(100vh - 80px);
@@ -50,8 +55,13 @@ const HeroDiv = styled.div`
     }
     .whiteBtn{
         background-color: transparent;
-        color: #181444;
+        color: #0000ff;
         border: 1px solid;
+        &:hover{   
+        background-color: #0000ff;
+        color: white;
+        
+    }
     }
     @media (max-width: 1030px) {
      #heroimg{

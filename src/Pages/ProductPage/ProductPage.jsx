@@ -1,33 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ArtisanCard from '../../Components/ArtisanCard/ArtisanCard';
 import './ProductPage.css';
-import image from '../../assets/images/capenter.jpg';
 
 const ProductPage = () => {
   const navigate = useNavigate();
-
-  const artisans = [
-    { service: "Plumbering", name: "Wasiu Tolani", region: "Lagos", image },
-    { service: "Dry Cleaning / Laundry", name: "Paul Okoye", region: "Abuja", image },
-    { service: "HairStyling", name: "Joke Badmus", region: "Kano", image },
-    { service: "Painting", name: "Princewill Ekong", region: "Lagos", image },
-    { service: "House Keeping", name: "Umar Shefiu", region: "Abuja", image },
-    { service: "Electrical Jobs", name: "Ridwan Kazeem", region: "Lagos", image },
-    { service: "AC / Refrigeration", name: "Victor Nnamdi", region: "Kano", image },
-    { service: "Gardening", name: "Oladare Babalola", region: "Abuja", image },
-    { service: "Plumbering", name: "Wasiu Tolani", region: "Lagos", image },
-    { service: "Dry Cleaning / Laundry", name: "Paul Okoye", region: "Abuja", image },
-    { service: "HairStyling", name: "Joke Badmus", region: "Kano", image },
-    { service: "Painting", name: "Princewill Ekong", region: "Lagos", image },
-    { service: "House Keeping", name: "Umar Shefiu", region: "Abuja", image },
-    { service: "Electrical Jobs", name: "Ridwan Kazeem", region: "Lagos", image },
-    { service: "AC / Refrigeration", name: "Victor Nnamdi", region: "Kano", image },
-    { service: "Gardening", name: "Oladare Babalola", region: "Abuja", image },
-  ];
-
+  const [artisans, setArtisans] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // For better error handling
+
+  useEffect(() => {
+    // Fetch artisans from the backend
+    const fetchArtisans = async () => {
+      try {
+        const response = await fetch("https://backend-bcolar.onrender.com/api/service/getallService");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        // Assuming the data is an array of services
+        setArtisans(data || []);
+      } catch (error) {
+        console.error("Error fetching services:", error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArtisans();
+  }, []);
 
   const handleRegionChange = (event) => {
     setSelectedRegion(event.target.value);
@@ -38,20 +43,17 @@ const ProductPage = () => {
   };
 
   const handleAddService = () => {
-    navigate('/addService'); // Route to /addService
+    navigate('/addService'); 
   };
 
   const filteredArtisans = artisans.filter((artisan) => {
     const matchesRegion =
-      selectedRegion === "All" || artisan.region === selectedRegion;
+      selectedRegion === "All" || (artisan.region || "").toLowerCase() === selectedRegion.toLowerCase();
     const matchesSearch =
-      artisan.service.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      artisan.name.toLowerCase().includes(searchTerm.toLowerCase());
+      (artisan.name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (artisan.category || "").toLowerCase().includes(searchTerm.toLowerCase());
     return matchesRegion && matchesSearch;
   });
-
-  const sponsoredAds = filteredArtisans.slice(0, 8);
-  const regularArtisans = filteredArtisans.slice(8);
 
   return (
     <div className="ProductContainer">
@@ -85,42 +87,71 @@ const ProductPage = () => {
             className="regionSelect"
           >
             <option value="All">All</option>
-            <option value="Lagos">Lagos</option>
-            <option value="Abuja">Abuja</option>
-            <option value="Kano">Kano</option>
+            {/* Add Nigerian states */}
+            {[
+              "Abia",
+              "Adamawa",
+              "Akwa Ibom",
+              "Anambra",
+              "Bauchi",
+              "Bayelsa",
+              "Benue",
+              "Borno",
+              "Cross River",
+              "Delta",
+              "Ebonyi",
+              "Edo",
+              "Ekiti",
+              "Enugu",
+              "Gombe",
+              "Imo",
+              "Jigawa",
+              "Kaduna",
+              "Kano",
+              "Katsina",
+              "Kebbi",
+              "Kogi",
+              "Kwara",
+              "Lagos",
+              "Nasarawa",
+              "Niger",
+              "Ogun",
+              "Ondo",
+              "Osun",
+              "Oyo",
+              "Plateau",
+              "Rivers",
+              "Sokoto",
+              "Taraba",
+              "Yobe",
+              "Zamfara",
+              "Abuja",
+            ].map((state) => (
+              <option key={state} value={state}>
+                {state}
+              </option>
+            ))}
           </select>
         </div>
 
         <div className="productDisplay">
-          {/* Sponsored Ads Section */}
-          <div className="sponsoredSection">
-            <h3 className="sponsoredHeader">Sponsored Ads</h3>
-            <div className="sponsoredCards">
-              {sponsoredAds.map((artisan, index) => (
-                <ArtisanCard
-                  key={index}
-                  service={artisan.service}
-                  name={artisan.name}
-                  image={artisan.image}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Separator */}
-          <hr className="separator" />
-
-          {/* Regular Artisans Section */}
-          <div className="regularSection">
-            {regularArtisans.map((artisan, index) => (
+          {loading ? (
+            <p>Loading services...</p>
+          ) : error ? (
+            <p className="error">Error: {error}</p>
+          ) : filteredArtisans.length > 0 ? (
+            filteredArtisans.map((artisan, index) => (
               <ArtisanCard
-                key={index + sponsoredAds.length}
-                service={artisan.service}
-                name={artisan.name}
-                image={artisan.image}
+                key={index}
+                service={artisan.category || "N/A"}
+                name={artisan.name || artisan.title || "No Name Provided"}
+                region={artisan.region || "Unknown"}
+                image={artisan.productPic || 'default-image-url.jpg'} 
               />
-            ))}
-          </div>
+            ))
+          ) : (
+            <p>No services found matching your criteria.</p>
+          )}
         </div>
       </div>
     </div>

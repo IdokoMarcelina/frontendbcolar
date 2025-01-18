@@ -1,6 +1,6 @@
-// ChatList.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const ChatListWrapper = styled.div`
     height: 100%;
@@ -29,18 +29,41 @@ const ProfilePicture = styled.img`
 `;
 
 const ChatList = ({ onChatClick }) => {
-    const chats = [
-        { id: 1, name: 'John Doe', profilePic: 'https://randomuser.me/api/portraits/men/1.jpg' },
-        { id: 2, name: 'Jane Smith', profilePic: 'https://randomuser.me/api/portraits/women/2.jpg' },
-        { id: 3, name: 'Alice Brown', profilePic: 'https://randomuser.me/api/portraits/women/3.jpg' },
-    ];
+    const [chats, setChats] = useState([]);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token'); 
+
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        if (!token) {
+          console.error('No token found. Please log in.');
+        }
+
+        const fetchChats = async () => {
+            try {
+                const response = await axios.get(`https://backend-bcolar.onrender.com/findUserChats/${user._id}`,
+                    {
+                        headers: {
+                          Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+
+                setChats(response.data);
+            } catch (error) {
+                console.error('Error fetching chats:', error);
+            }
+        };
+        fetchChats()
+    }, []);
 
     return (
         <ChatListWrapper>
             {chats.map((chat) => (
                 <ChatItem key={chat.id} onClick={() => onChatClick(chat)}>
-                    <ProfilePicture src={chat.profilePic} alt={`${chat.name}'s profile`} />
-                    {chat.name}
+                    <ProfilePicture src={chat.otherMember.profilePic ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4YreOWfDX3kK-QLAbAL4ufCPc84ol2MA8Xg&s'} alt={`${chat.otherMember.name}'s profile`} />
+                    {chat.otherMember.name}
                 </ChatItem>
             ))}
         </ChatListWrapper>

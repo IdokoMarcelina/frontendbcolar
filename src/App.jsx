@@ -1,4 +1,4 @@
-import './App.css';
+import './App.css'; 
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './Components/Static/Header';
 import Footer from './Components/Static/Footer';
@@ -15,24 +15,29 @@ import Verification from './Pages/Verification';
 import SignupFlow from './Pages/SignupFlow';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
+import ChangePassword from './Pages/ChangePassword';
 import FormComponent from './Components/CollaboComponents/FormComponent';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
 import ServiceForm from './Components/serviceForm';  
 import ProfileCard from './Components/admindash/ProfileCard'; 
-import Test from './Components/Test';
-// import UserManagementCard from '../src/Components/UserManagementCard';
-import DashboardLayout from './Layout/DashboardLayout';
-import Edit from './Components/Edit-profile/Edit';
-import Review from './Components/Review';
-import Book from './Components/Book';
-import Client from './Pages/Client'
-import ViewBooking from './Components/view booking/ViewBooking';
+import UserManagementCard from '../src/Components/UserManagementCard';
+import Bio from './Components/Bio';
+import UserDashRoutes from './Components/UserDash/UserDashRoutes';
+import CategoryDetails from './Components/HomeComps/CategoryDetails';
+import Category from './Components/HomeComps/Category';
+
 
 const Layout = ({ children }) => {
   const location = useLocation();
 
-  const hiddenRoutes = ['/admin', '/artisandashboard', '/userdashboard,', '/signin','/signup-artisan', '/signup-user', '/verification', '/book', '/chat'];
+  
+  const hiddenRoutes = [
+    '/admin', '/artisandashboard', '/userdashboard', '/signin',
+    '/signup-artisan', '/signup-user', '/verification', '/chat',
+    '/editProfile', '/booking-history'
+  ];
+
 
   const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
 
@@ -53,7 +58,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/artisans" element={<Artisans />} />
           <Route path="/about" element={<About />} />
-          <Route path="/profile" element={<Client />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/productpage" element={<ProductPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<Siginin />} />
@@ -62,26 +67,36 @@ function App() {
           <Route path="/verification" element={<Verification />} />
           <Route path="/collabo" element={<Collabo />} />
           <Route path="/chat" element={<Chat />} />
-          {/* <Route path="/Usermanagement" element={<UserManagementCard />} /> */}
+          <Route path="/Usermanagement" element={<UserManagementCard />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route path="/changePassword" element={<ChangePassword />} />
           <Route path="/post-gig" element={<FormComponent />} />
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
           <Route path="/artisandashboard" element={<Profile />} />
-          <Route path="/edit" element={<Edit />} />
+          <Route path="/artisan/:artisanId" element={<Bio />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />
+
           <Route path="/userdashboard" element={<DashboardLayout />} />
           <Route path="/book" element={<Book />} />
           
           {/* <Route path="/UserProfileCard" element={<UserProfileCard />} /> */}
-        </Routes>
-      </Layout>
-      <Client/>
-    </BrowserRouter>  
+     
      
     
   
+
+          <Route path="/*" element={<UserDashRoutes />} />
+
+          <Route path="/category" element={<Category/>} />
+          <Route path="/categories/:category" element={<CategoryDetails/>} />
+         
+        </Routes>
+      </Layout>
+        <Client/>
+    </BrowserRouter>
+
   );
 }
 

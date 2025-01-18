@@ -16,7 +16,12 @@ const SignButtonDiv = styled.button`
     color: white;
     font-weight: 100;
     margin-right: 20px;
+    transition: all 0.3s ease;
     &:hover{   
-        background-color: #4b4bf9;
+        background-color: white;
+        color: #0000ff;
+        border: 1px solid;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
     }
 `
