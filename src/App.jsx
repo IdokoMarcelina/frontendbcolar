@@ -4,7 +4,6 @@ import Header from './Components/Static/Header';
 import Footer from './Components/Static/Footer';
 import Home from './Pages/Home';
 import Artisans from './Pages/Artisans';
-import Contact from './Pages/Contact';
 import Siginin from './Pages/Siginin';
 import Collabo from './Pages/Collabo';
 import About from './Pages/About';
@@ -29,7 +28,8 @@ const Layout = ({ children }) => {
   
   const hiddenRoutes = [
     '/admin', '/artisandashboard', '/userdashboard', '/signin',
-    '/signup-artisan', '/signup-user', '/verification', '/chat'
+    '/signup-artisan', '/signup-user', '/verification', '/chat',
+    '/productpage','/collabo','/post-gig',
   ];
 
   const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
@@ -53,7 +53,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/productpage" element={<ProductPage />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<Siginin />} />
           <Route path="/signup-artisan" element={<SignupFlow />} />
           <Route path="/signup-user" element={<UserSignup />} />

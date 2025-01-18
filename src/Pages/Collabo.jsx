@@ -20,5 +20,5 @@ const Collabo = () => {
 export default Collabo
 
 const WRAPPER = styled.div`
-  padding: 10px;
+  padding: 0px;
 `

@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { FaPlusCircle } from 'react-icons/fa';
 
 function CardCollabo() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const token = localStorage.getItem('token'); 
+        const token = localStorage.getItem('token');
 
         if (!token) {
           console.error('No token found. Please log in.');
@@ -45,16 +48,42 @@ function CardCollabo() {
     ));
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredPosts = posts.filter((post) => {
+    const matchesSearch =
+      (post.category || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (post.description || "").toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesSearch;
+  });
+
   return (
     <div>
+      <SearchWrapper>
+        <SearchInput
+          type="text"
+          placeholder="Search by category..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+        <Link to="/post-gig">
+          <PostGigButton>
+            <FaPlusCircle className="icon" />
+            <p>Post Gig</p>
+          </PostGigButton>
+        </Link>
+      </SearchWrapper>
+
       {loading ? (
         <p>Loading...</p>
       ) : (
-        posts.length === 0 ? (
-          <p>No collaborations available. Please check back later!</p>
+        filteredPosts.length === 0 ? (
+          <p>No collaborations found matching your search.</p>
         ) : (
           <WRAPPER>
-            {posts.map((post) => (
+            {filteredPosts.map((post) => (
               <COLLABOCARD key={post._id}>
                 <IMAGE>
                   <img src={post.collaboPic || 'default-placeholder.png'} alt={`Post ${post._id}`} />
@@ -77,6 +106,52 @@ function CardCollabo() {
 }
 
 export default CardCollabo;
+
+const SearchWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0px;
+  text-align: center;
+`;
+
+const SearchInput = styled.input`
+  padding: 10px;
+  width: 70%;
+  max-width: 500px;
+  font-size: 16px;
+  border: 3px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+
+  &:focus {
+    border-color: #0000ff;
+  }
+`;
+
+const PostGigButton = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #1313aa;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  .icon {
+    font-size: 20px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: #4444ff;
+  }
+`;
 
 const COLLABOCARD = styled.div`
   height: fit-content;
@@ -102,12 +177,13 @@ const COLLABOCARD = styled.div`
   }
 
   @media (max-width: 1300px) {
-    max-width: 350px; 
+    max-width: 350px;
     button {
-      width: 300px; 
-      margin: 10px auto; 
+      width: 300px;
+      margin: 10px auto;
     }
   }
+
   @media (max-width: 768px) {
     max-width: 90%;
     margin-top: 20px;
@@ -122,9 +198,9 @@ const COLLABOCARD = styled.div`
 const WRAPPER = styled.div`
   display: grid;
   margin-top: 2px;
-  background-color: gainsboro;
+  /* background-color: gainsboro; */
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px; 
+  gap: 20px;
   justify-items: center;
 
   @media (max-width: 1024px) {
@@ -132,7 +208,7 @@ const WRAPPER = styled.div`
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 `;
 

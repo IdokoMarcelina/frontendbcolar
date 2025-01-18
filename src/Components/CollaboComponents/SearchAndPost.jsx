@@ -1,31 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { FaPlusCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import connect2 from '../../assets/images/connect2.png';  
 
+function SearchAndPost({ onSearch }) {
+  const [searchTerm, setSearchTerm] = useState('');
 
-function SearchAndPost() {
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    onSearch(e.target.value); // Trigger the search when the search term changes
+  };
+
   return (
     <SECTION>
-      <TEXT>
-        <p>
-          Connect with fellow artisans <br />
-          to bring ideas to life, share expertise, and deliver outstanding projects
-        </p>
-      </TEXT>
       <WRAPPER>
-        <SEARCH>
-          <FaSearch className="icon" />
-          <input type="text" placeholder="Search..." />
-        </SEARCH>
 
-        <Link to="/post-gig">
-          <POSTBUTTON>
-            <FaPlusCircle className="icon" />
-            <p>Post Gig</p>
-          </POSTBUTTON>
-        </Link>
+
+      <TEXT>
+          <p>
+            Connect with fellow artisans <br />
+            to bring ideas to life, share expertise <br/>
+             and deliver outstanding projects
+          </p>
+
+          {/* <Link to="/post-gig">
+            <POSTBUTTON>
+              <FaPlusCircle className="icon" />
+              <p>Post Gig</p>
+            </POSTBUTTON>
+          </Link> */}
+        </TEXT>
+        {/* Image on the left */}
+        <IMAGE>
+          <img src={connect2} alt="Connect" />
+        </IMAGE>
+
+        {/* Text and Post Button on the right */}
         
       </WRAPPER>
     </SECTION>
@@ -35,8 +47,8 @@ function SearchAndPost() {
 export default SearchAndPost;
 
 const SECTION = styled.div`
-  background-color: gainsboro; 
-  color: #0000ff; 
+  background-color: #0808a8;
+  color: gainsboro;
   padding-top: 100px;
   padding-left: 20px;
   padding-right: 20px;
@@ -44,15 +56,14 @@ const SECTION = styled.div`
   height: 50vh;
 
   p {
-    margin: 0 0 20px; 
+    margin: 0 0 20px;
     font-size: 18px;
     font-weight: 500;
     line-height: 1.5;
   }
 
-  
   @media (max-width: 768px) {
-    padding:90px 20px;
+    padding: 90px 20px;
     height: 50vh;
 
     p {
@@ -60,79 +71,52 @@ const SECTION = styled.div`
     }
   }
 `;
-  
 
 const WRAPPER = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 2rem;
   width: 100%;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    
-    flex-direction: row; 
-    gap: 5px; 
+    flex-direction: column;  // Stack image and text vertically on small screens
+    text-align: center;
   }
 `;
 
-const SEARCH = styled.div`
+const IMAGE = styled.div`
+  width: 12%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin-top: 5px;
-  padding: 5px 10px;
-  border-radius: 7px;
-  border: 1px solid #ddd;
-  max-width: 600px;
-  flex-grow: 1; 
-  height: 70px; 
-  width: 100%; 
-  background-color: white; 
-  color: #000; 
 
-  .icon {
-    font-size: 24px; 
-    margin-right: 10px;
-    color: #888;
-  }
-
-  input {
-    border: none;
-    outline: none;
+  img {
     width: 100%;
-    height: 100%; 
-    background: none;
-    color: #000; 
-    font-size: 16px; 
-  }
-
-  @media (max-width: 1300px) {
-    max-width: 500px; 
-    height: 60px;    
+    height: auto;
+    object-fit: contain;
   }
 
   @media (max-width: 768px) {
-    text-align: center;
-    margin: auto;
-    max-width: 65%;
-    height: 30px; 
+    width: 100%;  // Full width on small screens
+    margin-bottom: 20px;  // Space between image and text
   }
 `;
 
 const TEXT = styled.div`
-  margin-bottom: 20px;
-  color: #1212bb;
+  width: 50%;
+  text-align: left;
 
-  p{
-  font-size: 25px;
-
+  p {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 20px;
   }
 
   @media (max-width: 768px) {
-    margin: auto;
-    max-width: 100%; 
-    
+    width: 100%;  // Full width on small screens
   }
 `;
 
@@ -141,7 +125,7 @@ const POSTBUTTON = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0; 
+  gap: 0;
   padding: 5px;
   margin-top: 5px;
   background-color: #1313aa;
@@ -151,22 +135,21 @@ const POSTBUTTON = styled.div`
   cursor: pointer;
 
   .icon {
-    font-size: 30px; 
+    font-size: 30px;
   }
 
   p {
-    font-size: 18px; 
-    margin: 0; 
+    font-size: 18px;
+    margin: 0;
   }
 
   &:hover {
-    background-color: #4444ff; 
+    background-color: #4444ff;
   }
 
-
   @media (max-width: 1300px) {
-    width: 120px; 
-    height: 50px; 
+    width: 120px;
+    height: 50px;
 
     .icon {
       font-size: 20px;
@@ -177,21 +160,17 @@ const POSTBUTTON = styled.div`
     }
   }
 
-
   @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
     width: auto;
     height: 25px;
     margin: auto;
 
     .icon {
-      font-size: 15px; 
+      font-size: 15px;
     }
 
     p {
-      font-size: 10px; 
+      font-size: 10px;
     }
   }
 `;
-

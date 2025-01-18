@@ -71,9 +71,8 @@ const navigate = useNavigate()
           <Link to="/about">About</Link>
           <Link to="/productPage">Services</Link>
           <Link to="/collabo">Collabo</Link>
-          <Link to="/contact">Contact</Link>
         </nav>
-
+    
         <div className="sign-links">
           <Link to="/signin">Signin</Link>
           <span className="divider">|</span>

@@ -48,7 +48,7 @@ const Footer = () => {
           State, Nigeria. 930272
         </address>
         <p className="b-link">
-          <a href="Bcollar507@gmail.com">Bcollar507@gmail.com</a>
+          <a href="Bcollar507@gmail.com">Bcolar507@gmail.com</a>
         </p>
         <p>
           +2348134963534, +2349012130382
@@ -57,7 +57,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <hr />
-        <p>© 2024 BCOLLAR. All rights reserved.</p>
+        <p>© 2024 BCOLAR. All rights reserved.</p>
       </div>
     </footer>
   );
