@@ -7,6 +7,7 @@ import './ArtisanSignup.css'
 import {Link, useNavigate} from 'react-router-dom'
 import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css"; 
+import { toast } from 'react-toastify';
 
 
 
@@ -25,7 +26,7 @@ const navigate = useNavigate()
     e.preventDefault();
 
     if (!email || !password){
-      alert("please fill out all fields")
+      toast.error("please fill out all fields")
       return;
     }
 
