@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './Edit.css';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
-const Edit = ({ onClose = () => {} }) => {  // Set default value for onClose as a noop function
+const Edit = ({ onClose = () => {} }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [Lga, setLga] = useState("");
   const [bio, setBio] = useState("");
+  const [about, setAbout] = useState(""); // New state for about field
   const [state, setState] = useState("");
   const [officeAddress, setOfficeAddress] = useState("");
   const [skill, setSkill] = useState("");
@@ -38,6 +39,7 @@ const Edit = ({ onClose = () => {} }) => {  // Set default value for onClose as 
         setPhone(data.phone || "");
         setLga(data.regionLGA || "");
         setBio(data.bio || "");
+        setAbout(data.about || ""); // Populate about field
         setState(data.state || "");
         setOfficeAddress(data.officeAddress || "");
         setSkill(data.skill || "");
@@ -61,6 +63,7 @@ const Edit = ({ onClose = () => {} }) => {  // Set default value for onClose as 
     if (phone) formData.append("phone", phone);
     if (Lga) formData.append("LGA", Lga);
     if (bio) formData.append("bio", bio);
+    if (about) formData.append("about", about); // Include about field
     if (state) formData.append("state", state);
     if (officeAddress) formData.append("officeAddress", officeAddress);
     if (skill) formData.append("skill", skill);
@@ -165,6 +168,18 @@ const Edit = ({ onClose = () => {} }) => {  // Set default value for onClose as 
               value={bio}
               onChange={(e) => setBio(e.target.value)}
               placeholder="Enter your bio"
+              className="input-field"
+            />
+          </div>
+
+          {/* About */}
+          <div className="form-group">
+            <label htmlFor="about">About</label>
+            <textarea
+              id="about"
+              value={about}
+              onChange={(e) => setAbout(e.target.value)} // Handle about field change
+              placeholder="Enter a brief description about yourself"
               className="input-field"
             />
           </div>
