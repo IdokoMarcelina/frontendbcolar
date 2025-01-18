@@ -23,9 +23,12 @@ import ServiceForm from './Components/serviceForm';
 import ProfileCard from './Components/admindash/ProfileCard'; 
 import UserManagementCard from '../src/Components/UserManagementCard';
 import Bio from './Components/Bio';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import UserDashRoutes from './Components/UserDash/UserDashRoutes';
 import CategoryDetails from './Components/HomeComps/CategoryDetails';
 import Category from './Components/HomeComps/Category';
+
 
 
 const Layout = ({ children }) => {
@@ -81,6 +84,7 @@ function App() {
           <Route path="/categories/:category" element={<CategoryDetails/>} />
          
         </Routes>
+        <ToastContainer />
       </Layout>
     </BrowserRouter>
   );
