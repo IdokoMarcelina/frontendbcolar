@@ -130,7 +130,7 @@ const SidebarContainer = styled.div`
 const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   padding-bottom: 20px;
   border-bottom: 1px solid #ddd;
   flex-direction: column;
@@ -154,7 +154,7 @@ const DefaultAvatar = styled.div`
   justify-content: center;
   border-radius: 50%;
   font-size: 32px;  // Increased font size for the default avatar
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 `;
 
 const ProfileName = styled.h3`
