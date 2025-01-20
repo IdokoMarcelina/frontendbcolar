@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import signInImg from "../assets/images/signin-img.jpg";
+import signInImg from "../assets/images/signIn-img.jpg";
 import "./ArtisanSignup.css";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
