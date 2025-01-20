@@ -32,6 +32,7 @@ import CollaboPosts from './Components/Posts/CollaboPost';
 import ServicePosts from './Components/Posts/ServicePost';
 import ArtisanCard from './Components/ArtisanCard/ArtisanCard';
 import Book from './Components/Book';
+import ChatArea from './Components/Chat/ChatArea';
 
 
 
@@ -40,7 +41,7 @@ const Layout = ({ children }) => {
   
   const hiddenRoutes = [
     '/admin', '/artisandashboard', '/userdashboard', '/signin',
-    '/signup-artisan', '/signup-user', '/verification', '/chat',
+    '/signup-artisan', '/signup-user', '/verification', '/chat','chatarea',
     '/editProfile', '/booking-history', '/edit', '/collaboposts', '/servicepost',
     '/artisancard','/collabo','/productpage'
 
@@ -72,7 +73,7 @@ function App() {
           <Route path="/signup-user" element={<UserSignup />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/collabo" element={<Collabo />} />
-          <Route path="/chat/:artisanId" element={<Chat />} />
+          <Route path="/chat" element={<Chat />} />
           <Route path="/Usermanagement" element={<UserManagementCard />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
@@ -84,11 +85,12 @@ function App() {
           <Route path="/artisan/:artisanId" element={<Bio />} />
           <Route path="/collaboposts" element={<CollaboPosts />} />
           <Route path="/servicepost" element={<ServicePosts />} />
-          <Route path="/book" element={<Book />} />
+          <Route path="/book/:artisanId" element={<Book />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />
           <Route path="/*" element={<UserDashRoutes />} />
-          <Route path="/artisancard" element={<ArtisanCard />} />
+          <Route path="/artisancard/:artisanId" element={<ArtisanCard />} />
+          {/* <Route path="/chatarea" element={<ChatArea />} /> */}
 
           <Route path="/category" element={<Category/>} />
           <Route path="/categories/:category" element={<CategoryDetails/>} />

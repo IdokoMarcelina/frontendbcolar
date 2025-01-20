@@ -2,22 +2,22 @@
 import './Card.css';
 import {Link} from 'react-router-dom'
 
-const ArtisanCard = ({ service, name, image, region}) => {
+const ArtisanCard = ({artisan}) => {
     return (
         <article className="cardContainer">
             <section className="imageSection">
-                <img src={image} alt={`${service} service`} />
+                <img src={artisan.productPic} alt={`${artisan.category} service`} />
             </section>
-            <h2 className="serviceTitle">{service}</h2>
-            <p className="artisanName">{name}</p>
-            <p className="artisanName">Region: {region}</p>
+            <h2 className="serviceTitle">{artisan.category}</h2>
+            <p className="artisanName">{artisan.name}</p>
+            <p className="artisanName">Region: {artisan.region}</p>
             <div className="buttonDiv">
-               <Link to='/artisancard'>
-                 <button className="profileButton">View Profile</button>
-               </Link>
-               <Link to='/book'>
-                <button className="bookService">Book Service</button>
-               </Link>
+            <Link to={`/artisancard/${artisan.userId}`}>
+                    <button className="profileButton">View Profile</button>
+                </Link>
+                <Link to={`/book/${artisan.userId}`}>
+                    <button className="bookService">Book Service</button>
+                </Link>
             </div>
         </article>
     );

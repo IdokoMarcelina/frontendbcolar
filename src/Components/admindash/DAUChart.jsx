@@ -163,6 +163,7 @@ const styles = {
     backgroundColor: "#F3F6F9",
     borderRadius: "10px",
     padding: "20px",
+    marginBottom: "200px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     width: "100%",
     display: "flex",

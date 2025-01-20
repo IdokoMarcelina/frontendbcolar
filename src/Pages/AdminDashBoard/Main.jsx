@@ -45,12 +45,12 @@ function Main() {
 
       <SECTIONTWO>
         <DAUChart />
-        <UserGrowthChart />
+        {/* <UserGrowthChart /> */}
       </SECTIONTWO>
 
-      <SECTIONTHREE>
+      {/* <SECTIONTHREE>
         <Applications />
-      </SECTIONTHREE>
+      </SECTIONTHREE> */}
 
     </AdminContainer>
   );

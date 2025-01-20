@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './ArtisanCard.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ArtisanCard = () => {
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [skills, setSkills] = useState([]);
-  const [memberSince, setMemberSince] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [location, setLocation] = useState("");
-  const [officeAddress, setOfficeAddress] = useState("");
-  const [about, setAbout] = useState("");
+  const { artisanId } = useParams();
+
+  const [artisan, setArtisan] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -19,7 +13,7 @@ const ArtisanCard = () => {
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      const url = "https://backend-bcolar.onrender.com/api/profile/getuser";
+      const url = `https://backend-bcolar.onrender.com/api/auth/getuserid?userId=${artisanId}`;
       const token = localStorage.getItem('token');
 
       if (!token) {
@@ -49,15 +43,7 @@ const ArtisanCard = () => {
         console.log("API Response:", result);
 
         if (result && result.user) {
-          setName(result.user.name);
-          setAvatar(result.user.avatar);
-          setSkills(result.user.skill);
-          setMemberSince(result.user.created_at);
-          setEmail(result.user.email);
-          setPhone(result.user.phone);
-          setLocation(result.user.LGA);
-          setOfficeAddress(result.user.officeAddress);
-          setAbout(result.user.about);
+          setArtisan(result.user);
         } else {
           throw new Error("User not logged in");
         }
@@ -75,7 +61,7 @@ const ArtisanCard = () => {
   if (loading) return <p className="loading">Loading...</p>;
   if (error) return <p className="error">Error: {error}</p>;
 
-  const handleMessageButtonClick = async (artisan) => {
+  const handleMessageButtonClick = async () => {
     const loggedInUser = JSON.parse(localStorage.getItem("user")); 
     const token = localStorage.getItem("token"); 
   
@@ -109,7 +95,13 @@ const ArtisanCard = () => {
       }
   
       const result = await response.json();
-      console.log("Chat created successfully:", result);
+
+      if (result.data._id) {
+        navigate('/chat')
+      }else{
+        throw new Error("An error occured");        
+      }
+      
     } catch (err) {
       console.error("Error creating chat:", err.message);
       alert("Error creating chat: " + err.message);
@@ -123,28 +115,28 @@ const ArtisanCard = () => {
       <div className="profile-card">
         <div className="profile-header">
           <img
-            src={avatar || 'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black-thumbnail.png'}
+            src={artisan.avatar || 'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black-thumbnail.png'}
             alt="Profile"
             className="profile-avatar"
           />
-          <h2>{name || 'No name provided'}</h2>
+          <h2>{artisan.name || 'No name provided'}</h2>
           <p className="skills">
-            {skills && skills.length > 0 ? skills.join(', ') : 'No skills provided'}
+            {artisan.skills && artisan.skills.length > 0 ? artisan.skills.join(', ') : 'No skills provided'}
           </p>
-          <p className="member-since">Member since {new Date(memberSince).getFullYear() || 'Unknown'}</p>
+          <p className="member-since">Member since {new Date(artisan.memberSince).getFullYear() || 'Unknown'}</p>
         </div>
 
         <div className="profile-body">
           <h3>About</h3>
-          <p className="about-text">{about || 'No about information provided'}</p>
+          <p className="about-text">{artisan.about || 'No about information provided'}</p>
         </div>
 
         <div className="contact-info">
           <h3>Contact Information</h3>
-          <p><strong>Email:</strong> {email || 'No email provided'}</p>
-          <p><strong>Phone:</strong> {phone || 'No phone number provided'}</p>
-          <p><strong>Location:</strong> {location || 'No location provided'}</p>
-          <p><strong>Office Address:</strong> {officeAddress || 'No office address provided'}</p>
+          <p><strong>Email:</strong> {artisan.email || 'No email provided'}</p>
+          <p><strong>Phone:</strong> {artisan.phone || 'No phone number provided'}</p>
+          <p><strong>Location:</strong> {artisan.location || 'No location provided'}</p>
+          <p><strong>Office Address:</strong> {artisan.officeAddress || 'No office address provided'}</p>
         </div>
 
         <button className='message-btn ' onClick={handleMessageButtonClick}>Message</button>

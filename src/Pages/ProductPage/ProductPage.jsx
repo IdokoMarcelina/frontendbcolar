@@ -142,11 +142,8 @@ const ProductPage = () => {
           ) : filteredArtisans.length > 0 ? (
             filteredArtisans.map((artisan, index) => (
               <Card
-                key={index}
-                service={artisan.category || "N/A"}
-                name={artisan.name || artisan.title || "No Name Provided"}
-                region={artisan.region || "Unknown"}
-                image={artisan.productPic || 'default-image-url.jpg'} 
+              key={index}
+              artisan={artisan}
               />
             ))
           ) : (

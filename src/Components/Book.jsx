@@ -25,8 +25,9 @@ const Book = () => {
     }
 
     const url = 'https://backend-bcolar.onrender.com/api/service/bookservice';
+
     const bookingDate = `${selectedDate} ${selectedTimeSlot}`;
-    
+
     const payload = {
       artisanId, 
       description,
