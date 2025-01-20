@@ -18,7 +18,6 @@ import ChangePassword from './Pages/ChangePassword';
 import FormComponent from './Components/CollaboComponents/FormComponent';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/AdminDashBoard/dashboard';
-import ServiceForm from './Components/serviceForm';  
 import ProfileCard from './Components/admindash/ProfileCard'; 
 import UserManagementCard from '../src/Components/UserManagementCard';
 import Bio from './Components/Bio';
@@ -33,6 +32,7 @@ import ServicePosts from './Components/Posts/ServicePost';
 import ArtisanCard from './Components/ArtisanCard/ArtisanCard';
 import Book from './Components/Book';
 import ChatArea from './Components/Chat/ChatArea';
+import ServiceForm from './Components/ServiceForm';
 
 
 
