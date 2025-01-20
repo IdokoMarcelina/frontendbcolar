@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import FaqProps from "../../Reuseables/Faqprops";
+import FaqProps from "../../Reuseables/FaqProps";
+
 
 const Faq = () => {
 
