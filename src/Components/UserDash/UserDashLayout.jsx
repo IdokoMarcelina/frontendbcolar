@@ -14,10 +14,10 @@ const UserDashLayout = ({ children }) => {
       <LayoutContainer>
         {/* <SubNav toggleSidebar={toggleSidebar} /> */}
   
-        {/* <SidebarWrapper isVisible={isSidebarVisible}>
-          <CloseButton onClick={toggleSidebar}>&times;</CloseButton>
+        <SidebarWrapper isVisible={isSidebarVisible}>
+          {/* <CloseButton onClick={toggleSidebar}>&times;</CloseButton> */}
           <UserSidebar />
-        </SidebarWrapper> */}
+        </SidebarWrapper>
   
         <MainContent isVisible={isSidebarVisible}>{children}</MainContent>
       </LayoutContainer>
