@@ -1,6 +1,6 @@
 import React from "react";
 import "./ArtisanSignup.css";
-import signInImg from "../assets/images/signin-img.jpg";
+import signInImg from "../assets/images/signIn-img.jpg";
 import { useNavigate } from "react-router-dom";
 
 const PageTwo = ({ formData, setFormData, onSubmit, onBack }) => {
