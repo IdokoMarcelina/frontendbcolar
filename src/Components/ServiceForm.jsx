@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './../Pages/ArtisanSignup.css';
-import signInImg from '../assets/images/signin-img.jpg';
+import signInImg from '../assets/images/signIn-img.jpg';
 import { useNavigate } from 'react-router-dom';
 
 const ServiceForm = () => {
