@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ArtisanSignup.css";
-import signInImg from "../assets/images/signin-img.jpg";
+import signInImg from "../assets/images/signIn-img.jpg";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
