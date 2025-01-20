@@ -14,11 +14,11 @@ const UserDashLayout = ({ children }) => {
       <LayoutContainer>
         {/* <SubNav toggleSidebar={toggleSidebar} /> */}
   
-        {/* <SidebarWrapper isVisible={isSidebarVisible}> */}
-          {/* <CloseButton onClick={toggleSidebar}>&times;</CloseButton> */}
-        {/* </SidebarWrapper> */}
-        <UserSidebar />
-
+        <SidebarWrapper isVisible={isSidebarVisible}>
+          {/* <CloseButton>&times;</CloseButton> */}
+          <UserSidebar />
+        </SidebarWrapper>
+  
         <MainContent isVisible={isSidebarVisible}>{children}</MainContent>
       </LayoutContainer>
     );
@@ -62,9 +62,9 @@ const CloseButton = styled.button`
 
 const MainContent = styled.div`
   flex: 1;
-  /* margin-left: ${({ isVisible }) => (isVisible ? "250px" : "0")}; */
+  margin-left: ${({ isVisible }) => (isVisible ? "250px" : "0")};
   transition: margin-left 0.3s ease-in-out;
-  padding: 0px; 
+  padding:  20px 20px 0px; 
   overflow-y: auto;
 `;
 
