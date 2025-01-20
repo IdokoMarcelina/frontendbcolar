@@ -31,7 +31,7 @@ import CollaboPosts from './Components/Posts/CollaboPost';
 import ServicePosts from './Components/Posts/ServicePost';
 import ArtisanCard from './Components/ArtisanCard/ArtisanCard';
 import Book from './Components/Book';
-import ServiceForm from './Components/ServiceForm';
+// import ServiceForm from './Components/ServiceForm';
 
 
 
@@ -86,7 +86,7 @@ function App() {
           <Route path="/servicepost" element={<ServicePosts />} />
           <Route path="/book/:artisanId" element={<Book />} />
           <Route path="/admin" element={<Dashboard />} />
-          <Route path="/addService" element={<ServiceForm />} />
+          {/* <Route path="/addService" element={<ServiceForm />} /> */}
           <Route path="/*" element={<UserDashRoutes />} />
           <Route path="/artisancard/:artisanId" element={<ArtisanCard />} />
           {/* <Route path="/chatarea" element={<ChatArea />} /> */}
