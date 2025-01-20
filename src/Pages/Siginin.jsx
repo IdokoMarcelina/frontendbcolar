@@ -6,7 +6,7 @@ import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css"; 
 import { toast } from 'react-toastify';
 import { FaEye } from "react-icons/fa";
-import signInImg from '../assets/images/signin-img.jpg';
+import signInImg from '../assets/images/signIn-img.jpg';
 import {Link} from 'react-router-dom'
 
 const Signin = () => {
