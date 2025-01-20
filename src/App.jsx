@@ -31,7 +31,6 @@ import CollaboPosts from './Components/Posts/CollaboPost';
 import ServicePosts from './Components/Posts/ServicePost';
 import ArtisanCard from './Components/ArtisanCard/ArtisanCard';
 import Book from './Components/Book';
-import ChatArea from './Components/Chat/ChatArea';
 import ServiceForm from './Components/ServiceForm';
 
 
