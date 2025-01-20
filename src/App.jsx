@@ -54,7 +54,7 @@ const Layout = ({ children }) => {
       {children}
       {!hideHeaderFooter && <Footer />}
     </>
-  );
+  )
 };
 
 function App() {
