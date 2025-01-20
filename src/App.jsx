@@ -98,7 +98,7 @@ function App() {
         <ToastContainer />
       </Layout>
     </BrowserRouter>
-  );
+  )
 }
 
 export default App;
