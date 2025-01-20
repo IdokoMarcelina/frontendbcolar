@@ -1,7 +1,7 @@
 import React from "react";
 import { FaEye } from "react-icons/fa";
 import "./ArtisanSignup.css";
-import signInImg from "../assets/images/signin-img.jpg";
+import signInImg from "../assets/images/signIn-img.jpg";
 import { Link } from 'react-router-dom';  // Import Link for routing
 
 const Signup = ({ formData, setFormData, onNext }) => {
