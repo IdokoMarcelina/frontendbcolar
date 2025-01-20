@@ -14,9 +14,10 @@ function CardCollabo() {
       setLoading(true);
       try {
         const token = localStorage.getItem('token');
+        const user = JSON.parse(localStorage.getItem('user')); // Get user from localStorage
 
-        if (!token) {
-          console.error('No token found. Please log in.');
+        if (!token || !user) {
+          console.error('No token or user found. Please log in.');
           setLoading(false);
           return;
         }
@@ -42,10 +43,33 @@ function CardCollabo() {
     fetchPosts();
   }, []);
 
-  const handleApplyClick = (id) => {
-    setPosts(posts.map((post) =>
-      post._id === id ? { ...post, isApplied: !post.isApplied } : post
-    ));
+  const handleApplyClick = async (id) => {
+    const user = JSON.parse(localStorage.getItem('user')); // Get user from localStorage
+    if (!user) {
+      console.error('No user found in localStorage');
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        `https://backend-bcolar.onrender.com/api/collabo/applyForCollabo/${id}/apply`,
+        { userId: user._id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 201) {
+        setPosts(posts.map((post) =>
+          post._id === id ? { ...post, isApplied: true } : post
+        ));
+        alert('Application submitted successfully');
+      }
+    } catch (error) {
+      console.error('Error applying for collabo:', error);
+    }
   };
 
   const handleSearchChange = (e) => {
@@ -198,7 +222,6 @@ const COLLABOCARD = styled.div`
 const WRAPPER = styled.div`
   display: grid;
   margin-top: 2px;
-  /* background-color: gainsboro; */
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   justify-items: center;

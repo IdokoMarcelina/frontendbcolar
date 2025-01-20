@@ -9,44 +9,44 @@ import axios from 'axios'
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 const navigate = useNavigate()
-  const redirectUser = async ()=>{
+  // const redirectUser = async ()=>{
 
-    console.log('dashboard has been clicked');
+  //   console.log('dashboard has been clicked');
     
-    try {
-      const token = localStorage.getItem('token');
-      console.log(token);
+  //   try {
+  //     const token = localStorage.getItem('token');
+  //     console.log(token);
       
-      if (!token) {
-        navigate('/signin');
-        return;
-      }
+  //     if (!token) {
+  //       navigate('/signin');
+  //       return;
+  //     }
 
-      const response = await axios.get('https://backend-bcolar.onrender.com/api/auth/mydashboard', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+  //     const response = await axios.get('https://backend-bcolar.onrender.com/api/auth/mydashboard', {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
         
-      });
-      console.log(response);
+  //     });
+  //     console.log(response);
 
-      const { user_type } = response.data;
-      console.log(user_type);
+  //     const { user_type } = response.data;
+  //     console.log(user_type);
       
-      if (user_type === 'admin') {
-        navigate('/admin');
-      } else if (user_type === 'artisan') {
-        navigate('/artisandashboard');
-      } else {
-        navigate('/userdashboard');
-      }
-    } catch (error) {
-      // console.error('Error fetching user details:', error);
-      // navigate('/signin');
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     if (user_type === 'admin') {
+  //       navigate('/admin');
+  //     } else if (user_type === 'artisan') {
+  //       navigate('/artisandashboard');
+  //     } else {
+  //       navigate('/userdashboard');
+  //     }
+  //   } catch (error) {
+  //     // console.error('Error fetching user details:', error);
+  //     // navigate('/signin');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   // Items for Signup dropdown menu
   const signupMenu = (
     <Menu>
@@ -79,11 +79,11 @@ const navigate = useNavigate()
           <Dropdown overlay={signupMenu} trigger={['click']} placement="bottomCenter">
             <span className="signup-dropdown" style={{ cursor: 'pointer' }}>Signup</span>
           </Dropdown>
-          <span className="divider">|</span>
+          {/* <span className="divider">|</span> */}
 
-          <a onClick={redirectUser}>
+          {/* <a onClick={redirectUser}>
             Dashboard
-          </a>
+          </a> */}
           {/* <Link onClick={redirectUser}>Dashboard itself</Link>   */}
         </div>
 

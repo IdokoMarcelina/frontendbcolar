@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ArtisanCard from '../../Components/ArtisanCard/ArtisanCard';
 import './ProductPage.css';
-
+import Card from '../../Components/ProductPageCard/Card'
 const ProductPage = () => {
   const navigate = useNavigate();
   const [artisans, setArtisans] = useState([]);
@@ -141,7 +141,7 @@ const ProductPage = () => {
             <p className="error">Error: {error}</p>
           ) : filteredArtisans.length > 0 ? (
             filteredArtisans.map((artisan, index) => (
-              <ArtisanCard
+              <Card
                 key={index}
                 service={artisan.category || "N/A"}
                 name={artisan.name || artisan.title || "No Name Provided"}

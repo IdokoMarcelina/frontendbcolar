@@ -1,0 +1,46 @@
+.artisan-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  width: 300px;
+  margin: 16px;
+}
+
+.card-header {
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.artisan-details {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.message-btn {
+  background-color: #28a745;
+}
+
+.message-btn:hover {
+  background-color: #218838;
+}

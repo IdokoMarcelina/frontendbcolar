@@ -1,5 +1,4 @@
 import React from 'react'
-import './Userend.css'
 import { Link } from 'react-router-dom'
 import Cards from './Cards'
 const Userend = () => {

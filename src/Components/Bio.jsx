@@ -6,25 +6,22 @@ import EditButton from "./chat-button/EditButton";
 
 const Bio = () => {
   const [unreadMessages, setUnreadMessages] = useState(0);
-  const [about, setAbout] = useState("");  // State to store the 'about' data
-  const [loading, setLoading] = useState(true); // Loading state to track API call
+  const [about, setAbout] = useState("");  
+  const [loading, setLoading] = useState(true); 
 
   const user = JSON.parse(localStorage.getItem('user'));
-  console.log(user._id);
   const artisanId = user._id
   
-  // Fetch 'about' info from backend on component mount
   useEffect(() => {
     const fetchUserAbout = async () => {
-      const url = "https://backend-bcolar.onrender.com/api/profile/getuser"; // Your API URL
+      const url = "https://backend-bcolar.onrender.com/api/profile/getuser"; 
       try {
-        const token = localStorage.getItem("token"); // Get token from localStorage
-        console.log("Token:", token); // Log token to check it's being retrieved correctly
+        const token = localStorage.getItem("token"); 
 
         const response = await fetch(url, {
-          method: 'GET', // Ensure it's a GET request
+          method: 'GET',
           headers: {
-            "Authorization": `Bearer ${token}`, // Send token in the header
+            "Authorization": `Bearer ${token}`,
           },
         });
 
@@ -33,31 +30,26 @@ const Bio = () => {
         }
 
         const data = await response.json();
-        console.log("Fetched Data:", data); // Log the fetched data to see the response
 
-        // Ensure that the 'about' field exists and is properly set
         if (data && data.about) {
-          setAbout(data.about); // Set the 'about' data if it exists
+          setAbout(data.about);
         } else {
-          console.warn("No 'about' field found in the response.");
-          setAbout("Tell us about yourself here"); // Fallback text if no 'about' field is found
+          setAbout("Tell us about yourself here"); 
         }
       } catch (error) {
-        console.error("Error fetching user about info:", error);
-        setAbout("Error loading about info");  // Set an error message if fetch fails
+        setAbout("Error loading about info");  
       } finally {
-        setLoading(false); // Mark loading as complete
+        setLoading(false); 
       }
     };
 
-    fetchUserAbout(); // Call function to fetch user about info
-  }, []);  // Run once on component mount
+    fetchUserAbout();
+  }, []);  
 
   const receiveMessage = () => {
     setUnreadMessages(prev => prev + 1);
   };
 
-  // Function to mark messages as read
   const markAsRead = () => {
     setUnreadMessages(0);
   };
@@ -71,9 +63,23 @@ const Bio = () => {
         <Link to="/chat">
           <ClickButton />
         </Link>
+        <Link
+          to="/logout"
+          style={{
+            display: 'inline',
+            marginLeft: '10px',
+            textDecoration: 'none',
+            padding: '8px 20px',
+            border: 'none',
+            backgroundColor: 'red',
+            borderRadius: '5px',
+            color: 'white',
+          }}
+        >
+          <p style={{ cursor: 'pointer', margin: 0 }}>logout</p>
+        </Link>
       </div>
 
-      {/* statics */}
       <div className='statics'>
         <h3>Pages</h3>
         <div className='Cards'>
@@ -89,14 +95,9 @@ const Bio = () => {
             </Link>
           </div>
 
-          <div className='card-3'>
-            <p>Collabo Applications</p>
-          </div>
-
           <div className='card-4'>
-            <Link to = '/servicepost'>
-                <p>My Service Post</p>
-
+            <Link to='/servicepost'>
+              <p>My Service Post</p>
             </Link>
           </div>
 
@@ -108,13 +109,12 @@ const Bio = () => {
         </div>
       </div>
 
-      {/* about */}
       <div className='about'>
         <h3>About</h3>
         {loading ? (
-          <p>Loading...</p> // Display loading while the data is being fetched
+          <p>Loading...</p> 
         ) : (
-          <p>{about}</p> // Display fetched about data or fallback text
+          <p>{about}</p> 
         )}
       </div>
     </div>

@@ -28,9 +28,10 @@ import UserDashRoutes from './Components/UserDash/UserDashRoutes';
 import CategoryDetails from './Components/HomeComps/CategoryDetails';
 import Category from './Components/HomeComps/Category';
 import Edit from './Components/Edit-profile/Edit';
-import Client from './Pages/Client';
 import CollaboPosts from './Components/Posts/CollaboPost';
 import ServicePosts from './Components/Posts/ServicePost';
+import ArtisanCard from './Components/ArtisanCard/ArtisanCard';
+import Book from './Components/Book';
 
 
 
@@ -40,7 +41,9 @@ const Layout = ({ children }) => {
   const hiddenRoutes = [
     '/admin', '/artisandashboard', '/userdashboard', '/signin',
     '/signup-artisan', '/signup-user', '/verification', '/chat',
-    '/editProfile', '/booking-history', '/edit', '/collaboposts', '/servicepost'
+    '/editProfile', '/booking-history', '/edit', '/collaboposts', '/servicepost',
+    '/artisancard','/collabo','/productpage'
+
   ];
 
   const hideHeaderFooter = hiddenRoutes.includes(location.pathname);
@@ -69,7 +72,7 @@ function App() {
           <Route path="/signup-user" element={<UserSignup />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/collabo" element={<Collabo />} />
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/chat/:artisanId" element={<Chat />} />
           <Route path="/Usermanagement" element={<UserManagementCard />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
@@ -78,13 +81,14 @@ function App() {
           <Route path="/admin-profile-edit" element={<ProfileCard />} />
           <Route path="/artisandashboard" element={<Profile />} />
           <Route path="/edit" element={<Edit />} />
-          <Route path="/client" element={<Client />} />
           <Route path="/artisan/:artisanId" element={<Bio />} />
           <Route path="/collaboposts" element={<CollaboPosts />} />
           <Route path="/servicepost" element={<ServicePosts />} />
+          <Route path="/book" element={<Book />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/addService" element={<ServiceForm />} />
           <Route path="/*" element={<UserDashRoutes />} />
+          <Route path="/artisancard" element={<ArtisanCard />} />
 
           <Route path="/category" element={<Category/>} />
           <Route path="/categories/:category" element={<CategoryDetails/>} />

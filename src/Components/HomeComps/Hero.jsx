@@ -34,7 +34,7 @@ export default Hero;
 
 const HeroDiv = styled.div`
     background-color: #F5F5F7 ;
-    max-width: 1440px;
+    /* max-width: 1440px; */
     padding: 50px;
     color: #181444;
     height: calc(100vh - 80px);
@@ -42,7 +42,8 @@ const HeroDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin:  auto;
+    /* margin:  0px 1px; */
+    margin-top: 70px;
 
     .buttons{
         max-width: 350px;

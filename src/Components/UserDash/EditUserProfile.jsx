@@ -1,171 +1,193 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import UserDashLayout from './UserDashLayout';
+import React, { useState, useEffect } from 'react';
+import '../Edit-profile/Edit.css';
+import { useNavigate } from 'react-router-dom';
 
-const EditUserProfile = () => {
-    const [formData, setFormData] = useState({
-        fullName: '',
-        email: '',
-        phoneNumber: '',
-        state: '',
-        lga: '',
-    });
+const EditUserProfile = ({ onClose = () => {} }) => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [Lga, setLga] = useState("");
+  const [state, setState] = useState("");
+  const [avatar, setAvatar] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-    const [responseMessage, setResponseMessage] = useState('');
-    const [isSuccess, setIsSuccess] = useState(false);
-    const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
+  // Fetch user details from the DB when the component mounts
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      const url = "https://backend-bcolar.onrender.com/api/profile/getuser";
 
-    const updateUser = async () => {
-        try {
-            const response = await axios.patch(
-                'https://backend-bcolar.onrender.com/api/profile/updateuser',
-                formData,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`, 
-                    }
-                }
-            );
-            setResponseMessage('Update successful!');
-            setIsSuccess(true);
-        } catch (error) {
-            setResponseMessage(error.response ? error.response.data.message : error.message);
-            setIsSuccess(false);
+      try {
+        const token = localStorage.getItem("token");
+        console.log("Token retrieved:", token);  // Log the token
+
+        if (!token) {
+          alert("No token found, please log in again.");
+          return;
         }
+
+        const response = await fetch(url, {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch user details");
+        }
+
+        const data = await response.json();
+        console.log("Fetched user data:", data);  // Log the fetched user data
+
+        setName(data.user.name || "");
+        setPhone(data.user.phone || "");
+        setLga(data.user.LGA || "");
+        setState(data.user.state || "");
+        setAvatar(data.user.avatar || null);
+      } catch (error) {
+        console.error("Error fetching user details:", error.message);
+        alert("Failed to fetch user details.");
+      }
     };
 
-    return (
-        <UserDashLayout>
-        <Container>
-            <Title>Edit Profile</Title>
-            <Form onSubmit={(e) => e.preventDefault()}>
-                <div>
-                    <Label>Full Name:</Label>
-                    <Input
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        placeholder="Enter full name"
-                    />
-                </div>
-                <div>
-                    <Label>Email:</Label>
-                    <Input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Enter email"
-                    />
-                </div>
-                <div>
-                    <Label>Phone Number:</Label>
-                    <Input
-                        type="text"
-                        name="phoneNumber"
-                        value={formData.phoneNumber}
-                        onChange={handleChange}
-                        placeholder="Enter phone number"
-                    />
-                </div>
-                <div>
-                    <Label>State:</Label>
-                    <Input
-                        type="text"
-                        name="state"
-                        value={formData.state}
-                        onChange={handleChange}
-                        placeholder="Enter state"
-                    />
-                </div>
-                <div>
-                    <Label>LGA:</Label>
-                    <Input
-                        type="text"
-                        name="lga"
-                        value={formData.lga}
-                        onChange={handleChange}
-                        placeholder="Enter LGA"
-                    />
-                </div>
-                <Button type="button" onClick={updateUser}>
-                    Update
-                </Button>
-            </Form>
-            {responseMessage && <Message success={isSuccess}>{responseMessage}</Message>}
-        </Container>
-        </UserDashLayout>
-    );
+    fetchUserDetails();
+  }, []);
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    const url = "https://backend-bcolar.onrender.com/api/profile/updateuser";
+    const formData = new FormData();
+
+    console.log("Submitting profile update:", { name, phone, Lga, state, avatar });  // Log form data before submission
+
+    if (name) formData.append("name", name);
+    if (phone) formData.append("phone", phone);
+    if (Lga) formData.append("LGA", Lga);
+    if (state) formData.append("state", state);
+
+    if (avatar) {
+      console.log("Avatar file selected:", avatar.name);  // Log selected avatar file name
+      formData.append("avatar", avatar);
+    }
+
+    try {
+      setLoading(true);
+      const response = await fetch(url, {
+        method: "PATCH",
+        body: formData,
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      const text = await response.text();
+      console.log("Response text:", text);  // Log raw response text
+
+      if (!response.ok) {
+        console.error("API Error:", text);
+        throw new Error("Failed to update profile");
+      }
+
+      const contentType = response.headers.get("Content-Type");
+      if (contentType && contentType.includes("application/json")) {
+        try {
+          const result = JSON.parse(text);
+          console.log("Updated user profile:", result);  // Log updated user profile data
+          alert("Profile updated successfully!");
+          onClose();
+          navigate('/userdashboard');
+        } catch (error) {
+          console.error("Error parsing JSON:", error);
+          alert("Failed to update profile. Invalid response format.");
+        }
+      } else {
+        console.error("Received non-JSON response:", text);
+        alert("Failed to update profile. Invalid response format.");
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error.message);
+      alert("Failed to update profile.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="edit-modal">
+      <div className="edit-container">
+        <form className="edit-form" onSubmit={handleUpdate}>
+          <h2 className="edit-header">Edit Profile</h2>
+
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your name"
+              className="input-field"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="phone">Phone</label>
+            <input
+              type="text"
+              id="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Enter your phone"
+              className="input-field"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="LGA">LGA</label>
+            <input
+              type="text"
+              id="LGA"
+              value={Lga}
+              onChange={(e) => setLga(e.target.value)}
+              placeholder="Enter your LGA"
+              className="input-field"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="state">State</label>
+            <input
+              type="text"
+              id="state"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              placeholder="Enter your state"
+              className="input-field"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="avatar">Profile Picture</label>
+            <input
+              type="file"
+              id="avatar"
+              accept="image/*"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                console.log("File selected:", file);  // Log the selected file
+                setAvatar(file);
+              }}
+              className="input-file"
+            />
+          </div>
+
+          <button type="submit" className="update-button" disabled={loading}>
+            {loading ? "Updating..." : "Update Profile"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default EditUserProfile;
-
-const Container = styled.div`
-    padding: 20px;
-    max-width: 400px;
-    margin: 50px auto;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    div{
-        display: flex;
-        justify-content: space-evenly;
-    }
-`;
-
-const Title = styled.h2`
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-`;
-
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-`;
-
-const Label = styled.label`
-    font-size: 14px;
-    color: #555;
-`;
-
-const Input = styled.input`
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    &:focus {
-        border-color: #0000ff;
-        outline: none;
-    }
-`;
-
-const Button = styled.button`
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #0000ff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    &:hover {
-        background-color: #3a3af1;
-    }
-`;
-
-const Message = styled.p`
-    text-align: center;
-    font-size: 14px;
-    color: ${(props) => (props.success ? 'green' : 'red')};
-`;

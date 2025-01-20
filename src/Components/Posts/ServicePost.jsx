@@ -14,12 +14,18 @@ const PostContainer = styled.div`
   margin: 10px;
   color: black;
   font-size: 16px;
-  width: 50%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* Center the content vertically */
+  align-items: center;  /* Center the content horizontally */
+  text-align: center; 
 `;
 
 const PostImage = styled.img`
   max-width: 200px;
   height: auto;
+  margin-bottom: 50px;
 `;
 
 const ServicePosts = () => {
@@ -77,6 +83,29 @@ const ServicePosts = () => {
     fetchServicePosts(); 
   }, [artisanId, token]);
 
+  const deletePost = async (postId) => {
+    const apiUrl = `https://backend-bcolar.onrender.com/api/service/deleteartisanpost/${postId}`;
+    
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete post');
+      }
+
+      // Remove the deleted post from the UI
+      setPosts((prevPosts) => prevPosts.filter((post) => post._id !== postId));
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -97,6 +126,22 @@ const ServicePosts = () => {
               <p><strong>Region:</strong> {post.region}</p>
               <p><strong>Date:</strong> {new Date(post.date).toLocaleDateString()}</p>
               {post.productPic && <PostImage src={post.productPic} alt={post.name} />}
+              <button
+                style={{
+                  backgroundColor: 'red',
+                  color: 'white',
+                  padding: '5px 10px',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  margin: '0px',
+                  width: '200px',
+                  height: '40px'
+                }}
+                onClick={() => deletePost(post._id)} 
+              >
+                Delete
+              </button>
             </PostContainer>
           ))
         ) : (

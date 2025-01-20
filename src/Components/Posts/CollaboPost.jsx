@@ -1,171 +1,180 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams to extract the artisanId from the URL
 import styled from 'styled-components';
-import axios from 'axios';
-import { FaTrash } from 'react-icons/fa';
 
-function CollaboPosts() {
-  const { artisanId } = useParams(); // Extract artisanId from the URL params
+const Container = styled.div`
+  padding: 20px;
+  h1 {
+    color: black;
+  }
+`;
+
+const PostContainer = styled.div`
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  color: black;
+  font-size: 16px;
+  width: 50%;
+`;
+
+const PostImage = styled.img`
+  max-width: 200px;
+  height: auto;
+`;
+
+const Button = styled.button`
+  margin: 10px;
+  padding: 8px 12px;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+`;
+
+const DeleteButton = styled(Button)`
+  background-color: red;
+`;
+
+const ViewButton = styled(Button)`
+  background-color: blue;
+`;
+
+const ApplyButton = styled(Button)`
+  background-color: green;
+`;
+
+const CollaboPosts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [applicants, setApplicants] = useState([]);
+
+  // Retrieve user from localStorage
+  const user = JSON.parse(localStorage.getItem('user'));
+  const artisanId = user?.id || user?._id;
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    console.log('hello');
-    
-    const fetchArtisanPosts = async () => {
-      setLoading(true);
+    if (!artisanId) {
+      console.error("Artisan ID not found.");
+      setError('Artisan ID not found.');
+      setLoading(false);
+      return;
+    }
+
+    const apiUrl = `https://backend-bcolar.onrender.com/api/collabo/getArticanCollaboPost/${artisanId}`;
+
+    const fetchCollaboPosts = async () => {
       try {
-        if (!artisanId) {
-          console.error("Artisan ID is missing!"); // Log if artisanId is missing
-          setLoading(false);
-          return;
-        }
-
-        const token = localStorage.getItem('token');
-         const artisanId = localStorage.getItem('user', _id);
         if (!token) {
-          console.error('No token found. Please log in.');
+          setError('No authentication token found.');
           setLoading(false);
           return;
         }
 
-        console.log("Fetching collabo posts for Artisan ID:", artisanId); // Log artisanId
-
-        const response = await axios.get(
-          `https://backend-bcolar.onrender.com/api/collabo/getArticanCollaboPost/${artisanId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        const response = await fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
           }
-        );
+        });
 
-        console.log("Collabo response:", response.data); // Log the API response
-
-        if (Array.isArray(response.data)) {
-          setPosts(response.data);
-        } else {
-          console.error('Expected an array of posts, but got:', response.data);
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} - ${response.statusText}`);
         }
-      } catch (error) {
-        console.error('Error fetching artisan posts:', error.response || error);
+
+        const data = await response.json();
+        setPosts(data);
+      } catch (err) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    if (artisanId) {
-      fetchArtisanPosts();
-    }
-  }, []); 
+    fetchCollaboPosts();
+  }, [artisanId, token]);
 
-  const handleDelete = async (id) => {
+  // Delete a post
+  const deletePost = async (postId) => {
+    const apiUrl = `https://backend-bcolar.onrender.com/api/collabo/deleteCollabo/${postId}`;
+
     try {
-      const token = localStorage.getItem('token');
-      const artisanId = localStorage.getItem('user', _id);
-      await axios.delete(`https://backend-bcolar.onrender.com/api/collabo/deleteCollabo/${id}`, {
+      const response = await fetch(apiUrl, {
+        method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
         },
       });
-      setPosts(posts.filter(post => post._id !== id));
-    } catch (error) {
-      console.error('Error deleting post:', error);
+
+      if (!response.ok) {
+        throw new Error('Failed to delete post.');
+      }
+
+      setPosts(posts.filter(post => post._id !== postId));
+      alert('Post deleted successfully');
+    } catch (err) {
+      alert(err.message);
     }
   };
 
+  // Fetch applicants for a post
+  const viewApplicants = async (postId) => {
+    const apiUrl = `https://backend-bcolar.onrender.com/api/collabo/viewCollaboApplicants/${postId}`;
 
-  useEffect(() => {
-    console.log('Updated posts:', posts);
-  }, [posts]);
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch applicants.');
+      }
+
+      const data = await response.json();
+      setApplicants(data);
+      alert(`Applicants: ${data.length > 0 ? data.map(a => a.name).join(', ') : "No applicants yet"}`);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : posts.length === 0 ? (
-        <p>No collaboration posts found.</p>
-      ) : (
-        <WRAPPER>
-          {posts.map((post) => (
-            <COLLABOCARD key={post._id}>
-              <IMAGE>
-                <img src={post.collaboPic || 'default-placeholder.png'} alt={post.category} />
-              </IMAGE>
-              <TEXT>
-                <p><strong>Category:</strong> {post.category}</p>
-                <p><strong>Description:</strong> {post.description}</p>
-                <div><strong>Requirement:</strong> {post.requirements}</div>
-              </TEXT>
-              <DeleteButton onClick={() => handleDelete(post._id)}>
-                <FaTrash /> Delete
-              </DeleteButton>
-            </COLLABOCARD>
-          ))}
-        </WRAPPER>
-      )}
-    </div>
+    <Container>
+      <h1>Collabo Posts by Artisan {artisanId}</h1>
+      <div>
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <PostContainer key={post._id}>
+              <h3>{post.category}</h3>
+              <p><strong>Description:</strong> {post.description}</p>
+              <p><strong>Requirements:</strong> {post.requirements}</p>
+              <p><strong>Date:</strong> {new Date(post.date).toLocaleDateString()}</p>
+              {post.collaboPic && <PostImage src={post.collaboPic} alt={post.category} />}
+              <p><strong>Applicants:</strong> {post.applicants.length}</p>
+
+              {/* Action Buttons */}
+              <DeleteButton onClick={() => deletePost(post._id)}>Delete</DeleteButton>
+              <ViewButton onClick={() => viewApplicants(post._id)}>View Applicants</ViewButton>
+            </PostContainer>
+          ))
+        ) : (
+          <p>No collabo posts available.</p>
+        )}
+      </div>
+    </Container>
   );
-}
+};
 
 export default CollaboPosts;
-
-const WRAPPER = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  justify-items: center;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const COLLABOCARD = styled.div`
-  max-width: 400px;
-  background-color: white;
-  margin-top: 20px;
-  border: 1px solid gainsboro;
-  border-radius: 9px;
-  text-align: center;
-`;
-
-const IMAGE = styled.div`
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-const TEXT = styled.div`
-  width: 350px;
-  padding: 10px;
-  text-align: justify;
-`;
-
-const DeleteButton = styled.button`
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 10px;
-  width: 100%;
-  cursor: pointer;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-
-  &:hover {
-    background-color: darkred;
-  }
-`;

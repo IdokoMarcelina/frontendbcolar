@@ -37,7 +37,7 @@ const Edit = ({ onClose = () => {} }) => {
         // Populate fields with user details
         setName(data.name || "");
         setPhone(data.phone || "");
-        setLga(data.regionLGA || "");
+        setLga(data.LGA || "");
         setBio(data.bio || "");
         setAbout(data.about || ""); // Populate about field
         setState(data.state || "");
