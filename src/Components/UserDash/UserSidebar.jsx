@@ -92,6 +92,8 @@ const UserSidebar = () => {
         <SidebarItem to="/booking-history">
           <FiBook /> Booking History
         </SidebarItem>
+
+        
         <SidebarItem to="/chat">
           <FiMessageSquare /> Chat
         </SidebarItem>
@@ -113,7 +115,7 @@ const SidebarContainer = styled.div`
   background-color: #e1e7f3;
   color: #0000ff;
   padding: 20px;
-  height: calc(100vh - 50px);
+  height: 100vh;
   margin-top: 45px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   display: flex;
