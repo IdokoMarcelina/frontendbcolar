@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ChatList from '../Components/Chat/ChatList';
+import ChatList from '../Components/Chat/Chatlist'
 import ChatArea from '../Components/Chat/ChatArea';
 
 const AppContainer = styled.div`
