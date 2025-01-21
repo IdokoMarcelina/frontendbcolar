@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import ArtisanCard from '../../Components/ArtisanCard/ArtisanCard';
 import './ProductPage.css';
 import Card from '../../Components/ProductPageCard/Card'
+import GotoButton from "../../Components/GotoButton";
+
 const ProductPage = () => {
   const navigate = useNavigate();
   const [artisans, setArtisans] = useState([]);
@@ -59,6 +61,8 @@ const ProductPage = () => {
     <div className="ProductContainer">
       <div className="ProductWrapper">
         <h1 className="mainTitle">Find Your Service</h1>
+         <GotoButton/>
+
         <div className="productNavbar">
           <div className="addServiceFlex">
             <button className="addService" onClick={handleAddService}>

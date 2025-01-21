@@ -12,6 +12,7 @@ import Solar from "../../assets/categories/solar.jpg"
 import Tailor from "../../assets/categories/tailor.jpg"
 import Welder from "../../assets/categories/welder.jpg"
 import Sidebar from "./Sidebar";
+import GotoButton from "../GotoButton";
 
 const categories = [
   { title: "Barbers", image : Barber, element: "barber" },
@@ -29,6 +30,7 @@ const categories = [
 const Category = () => {
   return ( <CategoryDiv>
     <h2>Explore by Category</h2>
+    <GotoButton/>
 
     <input type="search"  id="searchHidden" placeholder="Search" />
 

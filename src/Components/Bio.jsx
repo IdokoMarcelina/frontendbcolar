@@ -64,7 +64,7 @@ const Bio = () => {
           <ClickButton />
         </Link>
         <Link
-          to="/logout"
+          to="/"
           style={{
             display: 'inline',
             marginLeft: '10px',
