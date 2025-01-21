@@ -15,8 +15,8 @@ const ArtisanCard = ({artisan}) => {
             <Link to={`/artisancard/${artisan.userId}`}>
                     <button className="profileButton">View Profile</button>
                 </Link>
-                <Link to= "/chat">
-                    <button className="Message">Book Service</button>
+                <Link to="/chat">
+                    <button className="bookService">Message</button>
                 </Link>
                 {/* <Link to={`/book/${artisan.userId}`}>
                     <button className="bookService">Book Service</button>
