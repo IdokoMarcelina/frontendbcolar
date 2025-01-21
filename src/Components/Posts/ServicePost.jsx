@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import GotoButton from '../GotoButton';
 
 const Container = styled.div`
   padding: 20px;
@@ -116,6 +117,7 @@ const ServicePosts = () => {
 
   return (
     <Container>
+      <GotoButton/>
       <h1>Service Posts by Artisan {artisanId}</h1>
       <div>
         {posts.length > 0 ? (

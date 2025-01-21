@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FaPlusCircle } from 'react-icons/fa';
+import GotoButton from '../GotoButton';
 
 function CardCollabo() {
   const [posts, setPosts] = useState([]);
@@ -85,6 +86,7 @@ function CardCollabo() {
 
   return (
     <div>
+      <GotoButton/>
       <SearchWrapper>
         <SearchInput
           type="text"

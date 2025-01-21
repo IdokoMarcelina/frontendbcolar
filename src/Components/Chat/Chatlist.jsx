@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import GotoButton from '../GotoButton';
 
 const ChatListWrapper = styled.div`
     height: 100%;
@@ -60,6 +61,7 @@ const ChatList = ({ onChatClick }) => {
 
     return (
         <ChatListWrapper>
+            <GotoButton/>
             {chats.map((chat) => (
                 <ChatItem key={chat.id} onClick={() => onChatClick(chat)}>
                     <ProfilePicture src={chat.otherMember.profilePic ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4YreOWfDX3kK-QLAbAL4ufCPc84ol2MA8Xg&s'} alt={`${chat.otherMember.name}'s profile`} />
