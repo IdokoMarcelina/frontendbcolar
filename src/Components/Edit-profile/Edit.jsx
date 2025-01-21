@@ -98,7 +98,7 @@ const Edit = ({ onClose = () => {} }) => {
           alert("Profile updated successfully!");
           console.log("Update successful:", result);
           onClose(); // Close modal after successful update
-          navigate('/dashboard'); // Navigate to the dashboard after successful update
+          navigate('/artisandashboard'); // Navigate to the dashboard after successful update
         } catch (error) {
           console.error("Error parsing JSON:", error);
           alert("Failed to update profile. Invalid response format.");
