@@ -42,7 +42,7 @@ const Layout = ({ children }) => {
     '/admin', '/artisandashboard', '/userdashboard', '/signin',
     '/signup-artisan', '/signup-user', '/verification', '/chat','chatarea',
     '/editProfile', '/booking-history', '/edit', '/collaboposts', '/servicepost',
-    '/artisancard','/collabo','/productpage'
+    '/artisancard','/collabo','/productpage','/category',
 
   ];
 
